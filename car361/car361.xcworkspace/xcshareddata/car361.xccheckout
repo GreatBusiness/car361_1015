@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A7C3604E-4FE3-4915-9DBC-8C55A4986B43</string>
+	<key>IDESourceControlProjectName</key>
+	<string>car361</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>00A027018AE94068A725525C85B01FB6CBC4AEEF</key>
+		<string>https://github.com/GreatBusiness/car361.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>car361/car361.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>00A027018AE94068A725525C85B01FB6CBC4AEEF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/GreatBusiness/car361.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>00A027018AE94068A725525C85B01FB6CBC4AEEF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>00A027018AE94068A725525C85B01FB6CBC4AEEF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>car361_Git</string>
+		</dict>
+	</array>
+</dict>
+</plist>
