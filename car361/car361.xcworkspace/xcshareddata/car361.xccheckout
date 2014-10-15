@@ -12,22 +12,34 @@
 	<dict>
 		<key>00A027018AE94068A725525C85B01FB6CBC4AEEF</key>
 		<string>https://github.com/GreatBusiness/car361.git</string>
+		<key>A7B803EB1B8A2855196656476AE0AF3EF81398B5</key>
+		<string>https://github.com/GreatBusiness/car361_1015.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>car361/car361.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>00A027018AE94068A725525C85B01FB6CBC4AEEF</key>
+		<string>../../../car361_Git</string>
+		<key>A7B803EB1B8A2855196656476AE0AF3EF81398B5</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/GreatBusiness/car361.git</string>
+	<string>https://github.com/GreatBusiness/car361_1015.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>00A027018AE94068A725525C85B01FB6CBC4AEEF</string>
+	<string>A7B803EB1B8A2855196656476AE0AF3EF81398B5</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A7B803EB1B8A2855196656476AE0AF3EF81398B5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>car361_1015</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

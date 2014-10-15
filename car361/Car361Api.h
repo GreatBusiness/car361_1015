@@ -10,4 +10,7 @@
 #define car361_Car361Api_h
 
 
+//封面图片
+#define CAR_APP_COVER @"http://www.car361.cn/api.php?c=misc&a=getcover&type=json"
+
 #endif

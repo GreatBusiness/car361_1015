@@ -39,8 +39,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    
     self.view.backgroundColor = [UIColor whiteColor];
     
     //适配ios7navigationbar高度
@@ -48,7 +46,7 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"daohanglan_bg_640_88"] forBarMetrics: UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_backGroud"] forBarMetrics: UIBarMetricsDefault];
     
     UIBarButtonItem *spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     spaceButton.width = -5;
