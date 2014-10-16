@@ -17,7 +17,7 @@
 
 @interface RootViewController ()
 {
-    UIImageView *cover_imageView;
+    
 }
 
 @end
@@ -30,10 +30,7 @@
     
     [self preprareViewControllers];
     
-    cover_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
-    cover_imageView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:cover_imageView];
-    [self getAppCover];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -174,33 +171,6 @@
     }
     
     self.selectedIndex = sender.tag - 100;
-}
-
-#pragma mark - 网络请求
-
-//封面图片
-- (void)getAppCover
-{
-    LTools *tool = [[LTools alloc]initWithUrl:CAR_APP_COVER isPost:NO postData:nil];
-    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
-        
-        NSString *coverurl = [result objectForKey:@"coverurl"];
-        
-        [cover_imageView sd_setImageWithURL:[NSURL URLWithString:coverurl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            
-            [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(hideCover) userInfo:nil repeats:NO];
-            
-        }];
-        
-    } failBlock:^(NSDictionary *failDic, NSError *erro) {
-        
-    }];
-}
-- (void)hideCover
-{
-    cover_imageView.hidden = YES;
-    [cover_imageView removeFromSuperview];
-    cover_imageView = nil;
 }
 
 @end
