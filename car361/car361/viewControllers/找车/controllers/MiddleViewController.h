@@ -8,6 +8,11 @@
 
 #import "FBBaseViewController.h"
 
-@interface MiddleViewController : FBBaseViewController
+@interface MiddleViewController : FBBaseViewController<UIWebViewDelegate>{
+
+    UIWebView *theWebV;
+    
+    MBProgressHUD *hudView;
+}
 
 @end

@@ -108,7 +108,7 @@
     NSArray *images_normal = @[@"fuwu",@"shangjia",@"youhui",@"changshi",@"gengduo"];
     NSArray *images_selected = @[@"fuwuhover",@"shangjiahover",@"youhuihover",@"changshihover",@"gengduohover"];
     
-    NSArray *titles = @[@"服务",@"商家",@"优惠",@"商家",@"更多"];
+    NSArray *titles = @[@"服务",@"商家",@"优惠",@"常识",@"更多"];
     
     for (int i = 0; i < 5; i ++) {
         

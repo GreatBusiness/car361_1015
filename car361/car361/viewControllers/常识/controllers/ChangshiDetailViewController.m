@@ -1,24 +1,22 @@
 //
-//  MiddleViewController.m
+//  ChangshiDetailViewController.m
 //  car361
 //
-//  Created by lichaowei on 14-10-14.
+//  Created by szk on 14-10-17.
 //  Copyright (c) 2014年 lcw. All rights reserved.
 //
 
-#import "MiddleViewController.h"
+#import "ChangshiDetailViewController.h"
 
-@interface MiddleViewController ()
+@interface ChangshiDetailViewController ()
 
 @end
 
-@implementation MiddleViewController
+@implementation ChangshiDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-    self.view.backgroundColor = [UIColor orangeColor];
     
     theWebV=[[UIWebView alloc]initWithFrame:self.view.bounds];
     
@@ -26,7 +24,7 @@
     
     theWebV.delegate=self;
     
-    [theWebV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.car361.cn/wap/event/"]]];
+    [theWebV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.car361.cn/api.php?c=listnews&a=shownews&id=%@&type=json",self.theid]]]];
     
     
     
@@ -38,23 +36,23 @@
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
     hudView=[LTools MBProgressWithText:LOADING_TITLE addToView:self.view];
-
-
+    
+    
     [hudView show:YES];
-
+    
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
-
+    
     [hudView hide:YES afterDelay:0.4f];
-
+    
     
 }
 
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-
-
+    
+    
     
 }
 
