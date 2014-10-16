@@ -334,6 +334,26 @@
     
 }
 
+#pragma mark - 文件本地存储
+
+//根据url获取SDWebImage 缓存的图片
+
++ (UIImage *)sd_imageForUrl:(NSString *)url
+{
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    NSString *imageKey = [manager cacheKeyForURL:[NSURL URLWithString:url]];
+    
+    SDImageCache *cache = [SDImageCache sharedImageCache];
+    UIImage *cacheImage = [cache imageFromDiskCacheForKey:imageKey];
+    
+    return cacheImage;
+}
+
+- (void)cacheImage:(UIImage *)aImage name:(NSString *)imageName
+{
+    
+}
+
 //取
 + (id)cacheForKey:(NSString *)key
 {

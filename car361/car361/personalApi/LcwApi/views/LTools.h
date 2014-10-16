@@ -90,6 +90,13 @@ typedef void(^versionBlock)(BOOL isNewVersion,NSString *updateUrl,NSString *upda
 //取
 + (id)cacheForKey:(NSString *)key;
 
+
+#pragma mark - 文件本地存储
+
+//根据url获取SDWebImage 缓存的图片
+
++ (UIImage *)sd_imageForUrl:(NSString *)url;
+
 #pragma mark - 常用视图快速创建
 
 + (UIButton *)createButtonWithType:(UIButtonType)buttonType
