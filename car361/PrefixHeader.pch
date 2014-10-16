@@ -19,6 +19,7 @@
 
 #import "LTools.h"
 #import "Car361Api.h"
+#import "SzkLoadData.h"
 #import "UIImageView+LBBlurredImage.h"
 #endif
 
