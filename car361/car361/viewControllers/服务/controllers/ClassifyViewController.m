@@ -7,8 +7,12 @@
 //
 
 #import "ClassifyViewController.h"
+#import "ServiceClass.h"
 
 @interface ClassifyViewController ()
+{
+    NSMutableArray *dataArray;
+}
 
 @end
 
@@ -17,11 +21,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    UIBarButtonItem *spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spaceButton.width = -5;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIButton *_button_back=[[UIButton alloc]initWithFrame:CGRectMake(0,0,40,44)];
+    [_button_back addTarget:self action:@selector(clickToBack:) forControlEvents:UIControlEventTouchUpInside];
+    [_button_back setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    _button_back.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:_button_back];
+    self.navigationItem.leftBarButtonItems=@[spaceButton,back_item];
+
+    UILabel *_titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 21)];
+    _titleLabel.textAlignment = NSTextAlignmentCenter;
+    _titleLabel.textColor = [UIColor whiteColor];
+    _titleLabel.text = @"服务类别";
+    
+    self.navigationItem.titleView = _titleLabel;
+    
+    
+    dataArray = [NSMutableArray array];
+    
+    [self getClassData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,29 +49,74 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - 创建视图
+
+#pragma mark - 事件处理
+
+- (void)clickToBack:(UIButton *)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - 网络请求
+
+- (void)getClassData
+{
+    __weak typeof(dataArray)weakDataArray = dataArray;
+    __weak typeof(self)weakSelf = self;
+    LTools *tool = [[LTools alloc]initWithUrl:CAR_SERVICE_CLSSES isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+                
+        if ([result isKindOfClass:[NSArray class]]) {
+            NSArray *result_arr = (NSArray *)result;
+            for (NSDictionary *aDic  in result_arr) {
+                ServiceClass *class = [[ServiceClass alloc]initWithDictionary:aDic];
+                [weakDataArray addObject:class];
+            }
+            [weakSelf.tableView reloadData];
+            
+        }
+        
+//        NSDictionary *dic = [result objectForKey:@"content"];
+        
+        
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        
+    }];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return dataArray.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    ServiceClass *class = [dataArray objectAtIndex:section];
+    return class.pname;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    ServiceClass *class = [dataArray objectAtIndex:section];
+    return class.content.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    static NSString *identify = @"cell1";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+    }
+    ServiceClass *class = [dataArray objectAtIndex:indexPath.section];
+    NSDictionary *second = [class.content objectAtIndex:indexPath.row];
+    cell.textLabel.text = [second objectForKey:@"name"];
+    cell.textLabel.font = [UIFont systemFontOfSize:12];
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.

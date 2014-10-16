@@ -178,25 +178,27 @@
     if (_data.length > 0) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:_data options:0 error:nil];
         
-        if ([dic isKindOfClass:[NSDictionary class]]) {
-            
-            int erroCode = [[dic objectForKey:@"errcode"]intValue];
-            NSString *erroInfo = [dic objectForKey:@"errinfo"];
-            
-            
-            
-            if (erroCode != 0) { //0代表无错误,  && erroCode != 1 1代表无结果
-                
-                
-                NSDictionary *failDic = @{ERROR_INFO:erroInfo,@"errcode":[NSString stringWithFormat:@"%d",erroCode]};
-                failBlock(failDic,0);
-                
-                return ;
-            }else
-            {
-                successBlock(dic,0);//传递的已经是没有错误的结果
-            }
-        }
+//        if ([dic isKindOfClass:[NSDictionary class]]) {
+//            
+//            int erroCode = [[dic objectForKey:@"errcode"]intValue];
+//            NSString *erroInfo = [dic objectForKey:@"errinfo"];
+//            
+//            
+//            
+//            if (erroCode != 0) { //0代表无错误,  && erroCode != 1 1代表无结果
+//                
+//                
+//                NSDictionary *failDic = @{ERROR_INFO:erroInfo,@"errcode":[NSString stringWithFormat:@"%d",erroCode]};
+//                failBlock(failDic,0);
+//                
+//                return ;
+//            }else
+//            {
+//                successBlock(dic,0);//传递的已经是没有错误的结果
+//            }
+//        }
+        
+        successBlock(dic,0);//传递的已经是没有错误的结果
         
     }
     

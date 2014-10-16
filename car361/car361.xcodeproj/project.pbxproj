@@ -80,6 +80,8 @@
 		138BD03419ED76B500575692 /* tabbar_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BD03319ED76B500575692 /* tabbar_selected@2x.png */; };
 		13FAFBBC19F020990064FC8F /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FAFBBA19F020990064FC8F /* ClassifyViewController.m */; };
 		13FAFBBD19F020990064FC8F /* ClassifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13FAFBBB19F020990064FC8F /* ClassifyViewController.xib */; };
+		13FAFBC619F027C10064FC8F /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FAFBC519F027C10064FC8F /* BaseModel.m */; };
+		13FAFBCC19F0283D0064FC8F /* ServiceClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FAFBCB19F0283D0064FC8F /* ServiceClass.m */; };
 		AC61C6B5E82C4247A22F8C8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168A2299D704DECB1769488 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +197,10 @@
 		13FAFBB919F020990064FC8F /* ClassifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyViewController.h; sourceTree = "<group>"; };
 		13FAFBBA19F020990064FC8F /* ClassifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyViewController.m; sourceTree = "<group>"; };
 		13FAFBBB19F020990064FC8F /* ClassifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassifyViewController.xib; sourceTree = "<group>"; };
+		13FAFBC419F027C10064FC8F /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = SOURCE_ROOT; };
+		13FAFBC519F027C10064FC8F /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = SOURCE_ROOT; };
+		13FAFBCA19F0283D0064FC8F /* ServiceClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceClass.h; sourceTree = SOURCE_ROOT; };
+		13FAFBCB19F0283D0064FC8F /* ServiceClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceClass.m; sourceTree = SOURCE_ROOT; };
 		7CBCF099D93244A58F63258C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9168A2299D704DECB1769488 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -522,6 +528,10 @@
 		138BCF6219ED6D3F00575692 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				13FAFBC419F027C10064FC8F /* BaseModel.h */,
+				13FAFBC519F027C10064FC8F /* BaseModel.m */,
+				13FAFBCA19F0283D0064FC8F /* ServiceClass.h */,
+				13FAFBCB19F0283D0064FC8F /* ServiceClass.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -789,6 +799,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13FAFBCC19F0283D0064FC8F /* ServiceClass.m in Sources */,
 				138BCF7719ED6F4000575692 /* BusinessViewController.m in Sources */,
 				138BCF7C19ED6F5900575692 /* CommonViewController.m in Sources */,
 				138BCF8619ED70B900575692 /* MiddleViewController.m in Sources */,
@@ -810,6 +821,7 @@
 				13FAFBBC19F020990064FC8F /* ClassifyViewController.m in Sources */,
 				132CE10D19EEC39400C87D2B /* RefreshTableView.m in Sources */,
 				13753DE219EEBEA400F6179E /* LTools.m in Sources */,
+				13FAFBC619F027C10064FC8F /* BaseModel.m in Sources */,
 				13753DD719EEBE2B00F6179E /* LBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

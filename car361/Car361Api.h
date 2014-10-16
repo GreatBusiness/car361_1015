@@ -31,4 +31,7 @@
 //封面图片
 #define CAR_APP_COVER @"http://www.car361.cn/api.php?c=misc&a=getcover&type=json"
 
+//服务类别
+#define CAR_SERVICE_CLSSES @"http://www.car361.cn/api.php?c=service&a=showindex&type=json"
+
 #endif

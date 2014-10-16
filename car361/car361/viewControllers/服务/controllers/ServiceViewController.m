@@ -25,6 +25,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.titleLabel.text = @"服务";
+    
     [self createCoverView];
     [self createBackView];
     
@@ -57,7 +59,7 @@
         btn.frame = CGRectMake(i % 2 * (75 + 10), (i / 2) * (75 + 10), 75, 75);
         [btn setBackgroundColor:[UIColor blackColor]];
         btn.alpha = 0.5f;
-        
+        btn.tag = 100 + i;
         [btn addTarget:self action:@selector(clickToDo:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
@@ -95,8 +97,12 @@
 
 - (void)clickToDo:(UIButton *)sender
 {
-    ClassifyViewController *class = [[ClassifyViewController alloc]init];
-    [self.navigationController pushViewController:class animated:YES];
+    if (sender.tag == 103) {
+        ClassifyViewController *class = [[ClassifyViewController alloc]init];
+        class.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:class animated:YES];
+    }
+    
 }
 
 #pragma mark - 网络请求
@@ -113,7 +119,7 @@
         
         [cover_imageView sd_setImageWithURL:[NSURL URLWithString:coverurl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
-            [backImageView setImageToBlur:image blurRadius:0.1f completionBlock:^{
+            [backImageView setImageToBlur:image blurRadius:0.5f completionBlock:^{
                 
             }];
             
