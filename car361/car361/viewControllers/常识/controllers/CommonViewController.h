@@ -8,6 +8,15 @@
 
 #import "FBBaseViewController.h"
 
-@interface CommonViewController : FBBaseViewController
+@interface CommonViewController : FBBaseViewController<UITableViewDataSource,UITableViewDelegate>
+{
+    NSMutableArray *allArr;
+    
+    int currentpage;
+    
+    
+    UITableView *mainTabV;
+
+}
 
 @end

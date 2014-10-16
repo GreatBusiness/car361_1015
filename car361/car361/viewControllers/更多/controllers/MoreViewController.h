@@ -8,6 +8,6 @@
 
 #import "FBBaseViewController.h"
 
-@interface MoreViewController : FBBaseViewController
+@interface MoreViewController : FBBaseViewController<UIAlertViewDelegate>
 
 @end

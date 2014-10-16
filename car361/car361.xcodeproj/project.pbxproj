@@ -58,7 +58,7 @@
 		138BD00E19ED716B00575692 /* gengduo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFE919ED716B00575692 /* gengduo@2x.png */; };
 		138BD00F19ED716B00575692 /* gengduo_chenggong.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFEA19ED716B00575692 /* gengduo_chenggong.png */; };
 		138BD01019ED716B00575692 /* gengduo_shouye_anniu.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFEB19ED716B00575692 /* gengduo_shouye_anniu.png */; };
-		138BD01119ED716B00575692 /* gengduo_shouye_jiantou.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFEC19ED716B00575692 /* gengduo_shouye_jiantou.png */; };
+		138BD01119ED716B00575692 /* gengduo_shouye_jiantou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFEC19ED716B00575692 /* gengduo_shouye_jiantou@2x.png */; };
 		138BD01319ED716B00575692 /* horn.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFEE19ED716B00575692 /* horn.png */; };
 		138BD01419ED716B00575692 /* hornxia.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFEF19ED716B00575692 /* hornxia.png */; };
 		138BD01519ED716B00575692 /* hornxiahover.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFF019ED716B00575692 /* hornxiahover.png */; };
@@ -78,6 +78,10 @@
 		138BD03019ED738D00575692 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 138BD02E19ED738D00575692 /* UIView+Frame.m */; };
 		138BD03219ED753300575692 /* bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BD03119ED753300575692 /* bottom@2x.png */; };
 		138BD03419ED76B500575692 /* tabbar_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BD03319ED76B500575692 /* tabbar_selected@2x.png */; };
+		19C49C2A19F00A9D0090F00E /* ChangshiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C49C2919F00A9D0090F00E /* ChangshiModel.m */; };
+		19C49C2D19F00C2A0090F00E /* SzkLoadData.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C49C2C19F00C2A0090F00E /* SzkLoadData.m */; };
+		19C49C3019F012A40090F00E /* ChangshiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C49C2F19F012A40090F00E /* ChangshiTableViewCell.m */; };
+		19C49C3619F025170090F00E /* ChangshiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C49C3519F025170090F00E /* ChangshiDetailViewController.m */; };
 		AC61C6B5E82C4247A22F8C8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168A2299D704DECB1769488 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -168,7 +172,7 @@
 		138BCFE919ED716B00575692 /* gengduo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gengduo@2x.png"; sourceTree = "<group>"; };
 		138BCFEA19ED716B00575692 /* gengduo_chenggong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gengduo_chenggong.png; sourceTree = "<group>"; };
 		138BCFEB19ED716B00575692 /* gengduo_shouye_anniu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gengduo_shouye_anniu.png; sourceTree = "<group>"; };
-		138BCFEC19ED716B00575692 /* gengduo_shouye_jiantou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gengduo_shouye_jiantou.png; sourceTree = "<group>"; };
+		138BCFEC19ED716B00575692 /* gengduo_shouye_jiantou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gengduo_shouye_jiantou@2x.png"; sourceTree = "<group>"; };
 		138BCFEE19ED716B00575692 /* horn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = horn.png; sourceTree = "<group>"; };
 		138BCFEF19ED716B00575692 /* hornxia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hornxia.png; sourceTree = "<group>"; };
 		138BCFF019ED716B00575692 /* hornxiahover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hornxiahover.png; sourceTree = "<group>"; };
@@ -190,6 +194,14 @@
 		138BD02E19ED738D00575692 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		138BD03119ED753300575692 /* bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom@2x.png"; sourceTree = "<group>"; };
 		138BD03319ED76B500575692 /* tabbar_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_selected@2x.png"; sourceTree = "<group>"; };
+		19C49C2819F00A9D0090F00E /* ChangshiModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangshiModel.h; sourceTree = "<group>"; };
+		19C49C2919F00A9D0090F00E /* ChangshiModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangshiModel.m; sourceTree = "<group>"; };
+		19C49C2B19F00C2A0090F00E /* SzkLoadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SzkLoadData.h; sourceTree = "<group>"; };
+		19C49C2C19F00C2A0090F00E /* SzkLoadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SzkLoadData.m; sourceTree = "<group>"; };
+		19C49C2E19F012A40090F00E /* ChangshiTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangshiTableViewCell.h; sourceTree = "<group>"; };
+		19C49C2F19F012A40090F00E /* ChangshiTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangshiTableViewCell.m; sourceTree = "<group>"; };
+		19C49C3419F025170090F00E /* ChangshiDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangshiDetailViewController.h; sourceTree = "<group>"; };
+		19C49C3519F025170090F00E /* ChangshiDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangshiDetailViewController.m; sourceTree = "<group>"; };
 		7CBCF099D93244A58F63258C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9168A2299D704DECB1769488 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -259,6 +271,8 @@
 		138BCF0E19ED630D00575692 = {
 			isa = PBXGroup;
 			children = (
+				19C49C2B19F00C2A0090F00E /* SzkLoadData.h */,
+				19C49C2C19F00C2A0090F00E /* SzkLoadData.m */,
 				132CE11219EEC74D00C87D2B /* Car361Api.h */,
 				132CE11119EEC5C900C87D2B /* PrefixHeader.pch */,
 				138BCF1919ED630D00575692 /* car361 */,
@@ -348,7 +362,7 @@
 			children = (
 				138BCF5019ED6D3F00575692 /* 商家 */,
 				138BCF5419ED6D3F00575692 /* 常识 */,
-				138BCF5819ED6D3F00575692 /* 找车 */,
+				138BCF5819ED6D3F00575692 /* 优惠 */,
 				138BCF5C19ED6D3F00575692 /* 更多 */,
 				138BCF6019ED6D3F00575692 /* 服务 */,
 			);
@@ -404,6 +418,8 @@
 			children = (
 				138BCF7919ED6F5900575692 /* CommonViewController.h */,
 				138BCF7A19ED6F5900575692 /* CommonViewController.m */,
+				19C49C3419F025170090F00E /* ChangshiDetailViewController.h */,
+				19C49C3519F025170090F00E /* ChangshiDetailViewController.m */,
 				138BCF7B19ED6F5900575692 /* CommonViewController.xib */,
 			);
 			path = controllers;
@@ -412,6 +428,8 @@
 		138BCF5619ED6D3F00575692 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				19C49C2819F00A9D0090F00E /* ChangshiModel.h */,
+				19C49C2919F00A9D0090F00E /* ChangshiModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -419,17 +437,20 @@
 		138BCF5719ED6D3F00575692 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				19C49C2E19F012A40090F00E /* ChangshiTableViewCell.h */,
+				19C49C2F19F012A40090F00E /* ChangshiTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
 		};
-		138BCF5819ED6D3F00575692 /* 找车 */ = {
+		138BCF5819ED6D3F00575692 /* 优惠 */ = {
 			isa = PBXGroup;
 			children = (
 				138BCF5919ED6D3F00575692 /* controllers */,
 				138BCF5A19ED6D3F00575692 /* model */,
 				138BCF5B19ED6D3F00575692 /* view */,
 			);
+			name = "优惠";
 			path = "找车";
 			sourceTree = "<group>";
 		};
@@ -558,7 +579,7 @@
 				138BCFE919ED716B00575692 /* gengduo@2x.png */,
 				138BCFEA19ED716B00575692 /* gengduo_chenggong.png */,
 				138BCFEB19ED716B00575692 /* gengduo_shouye_anniu.png */,
-				138BCFEC19ED716B00575692 /* gengduo_shouye_jiantou.png */,
+				138BCFEC19ED716B00575692 /* gengduo_shouye_jiantou@2x.png */,
 				138BCFEE19ED716B00575692 /* horn.png */,
 				138BCFEF19ED716B00575692 /* hornxia.png */,
 				138BCFF019ED716B00575692 /* hornxiahover.png */,
@@ -697,7 +718,7 @@
 				138BD00C19ED716B00575692 /* fuwu_pingjia_xuxian.png in Resources */,
 				138BD01719ED716B00575692 /* img02.png in Resources */,
 				138BCF2B19ED630D00575692 /* LaunchScreen.xib in Resources */,
-				138BD01119ED716B00575692 /* gengduo_shouye_jiantou.png in Resources */,
+				138BD01119ED716B00575692 /* gengduo_shouye_jiantou@2x.png in Resources */,
 				138BD01419ED716B00575692 /* hornxia.png in Resources */,
 				138BCFFA19ED716B00575692 /* back.png in Resources */,
 				138BD00B19ED716B00575692 /* fuwu_pingjia_starblue.png in Resources */,
@@ -782,6 +803,7 @@
 			files = (
 				138BCF7719ED6F4000575692 /* BusinessViewController.m in Sources */,
 				138BCF7C19ED6F5900575692 /* CommonViewController.m in Sources */,
+				19C49C2A19F00A9D0090F00E /* ChangshiModel.m in Sources */,
 				138BCF8619ED70B900575692 /* MiddleViewController.m in Sources */,
 				138BCF2019ED630D00575692 /* AppDelegate.m in Sources */,
 				138BCF7219ED6F0200575692 /* MoreViewController.m in Sources */,
@@ -789,9 +811,12 @@
 				138BD02F19ED738D00575692 /* UIColor+ConvertColor.m in Sources */,
 				138BCF1D19ED630D00575692 /* main.m in Sources */,
 				13753DDD19EEBE2B00F6179E /* LSecionView.m in Sources */,
+				19C49C3019F012A40090F00E /* ChangshiTableViewCell.m in Sources */,
+				19C49C3619F025170090F00E /* ChangshiDetailViewController.m in Sources */,
 				138BCF6719ED6D6600575692 /* RootViewController.m in Sources */,
 				13753DD619EEBE2B00F6179E /* LActionSheet.m in Sources */,
 				138BCF6D19ED6EC500575692 /* ServiceViewController.m in Sources */,
+				19C49C2D19F00C2A0090F00E /* SzkLoadData.m in Sources */,
 				13753DD819EEBE2B00F6179E /* LButtonView.m in Sources */,
 				138BCF4C19ED6C1200575692 /* FBBaseViewController.m in Sources */,
 				13753DDA19EEBE2B00F6179E /* LMoveView.m in Sources */,
