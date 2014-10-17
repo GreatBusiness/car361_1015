@@ -50,7 +50,12 @@
         
     }
     
+    hudView=[LTools MBProgressWithText:LOADING_TITLE addToView:self.view];
     
+    
+    [hudView show:YES];
+    
+    __weak typeof(hudView)weakview=hudView;
     
 
     SzkLoadData *loadda=[[SzkLoadData alloc]init];
@@ -58,6 +63,8 @@
     __weak typeof(mainTabV)weakmainTabV=mainTabV;
     
     [loadda SeturlStr:[NSString stringWithFormat: @"http://www.car361.cn/api.php?c=listnews&a=listnews&classid=24&type=json&page=%d",currentpage] mytest:^(NSDictionary *dicinfo, int errcode) {
+        
+        [weakview hide:YES afterDelay:0.4];
         
         NSArray *array=(NSArray *)dicinfo;
         

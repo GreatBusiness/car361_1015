@@ -13,6 +13,8 @@
     NSMutableArray *allArr;
     
     int currentpage;
+    MBProgressHUD *hudView;
+
     
     
     UITableView *mainTabV;

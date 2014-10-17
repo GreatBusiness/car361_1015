@@ -1,5 +1,8 @@
 pod 'AFNetworking', '~> 2.4.1'
 
+   pod 'UMeng', '~> 2.2.1'
+   pod 'UMengFeedback', '~> 1.4.2.1'
+
 pod 'MBProgressHUD', '~> 0.9'
 
 pod 'ASIHTTPRequest', '~> 1.8.2'

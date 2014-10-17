@@ -8,6 +8,9 @@
 
 #import "FBBaseViewController.h"
 
-@interface BusinessViewController : FBBaseViewController
+@interface BusinessViewController : FBBaseViewController{
+    NSArray *arrtitle;//上面切换的三个title
+
+}
 
 @end

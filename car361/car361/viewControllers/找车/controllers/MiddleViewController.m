@@ -26,7 +26,7 @@
     
     theWebV.delegate=self;
     
-    [theWebV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.car361.cn/wap/event/"]]];
+    [theWebV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.car361.cn/wap/event/index.php"]]];
     
     
     

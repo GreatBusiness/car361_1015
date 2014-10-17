@@ -8,6 +8,11 @@
 
 #import "MoreViewController.h"
 
+#import "UMFeedbackViewController.h"
+
+#import "AboutUsViewController.h"
+
+
 @interface MoreViewController ()
 
 @end
@@ -59,12 +64,28 @@
         {
             NSLog(@"清空缓存");
             
+
+            
+          CGFloat mm=  [[SDImageCache sharedImageCache] getSize];
+            
+            
+            [[SDImageCache sharedImageCache] clearDisk];
+            
+
+            
+            UIAlertView *alertV=[[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"清理缓存%.2fk",mm/1000] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            
+            [alertV show];
             
         }
             break;
         case 9001:
         {
             NSLog(@"意见反馈");
+            
+            
+            [self showNativeFeedbackWithAppkey:@"5440c181fd98c5a723000ea0"];
+            
 
         }
             break;
@@ -87,6 +108,13 @@
         case 9003:
         {
             NSLog(@"关于我们");
+            
+            AboutUsViewController *_aboutVC=[[AboutUsViewController alloc]init];
+            
+            [self setHidesBottomBarWhenPushed:YES];
+            
+            [self.navigationController pushViewController:_aboutVC animated:YES];
+            
 
         }
             break;
@@ -98,6 +126,42 @@
 
 
 }
+
+
+- (void)showNativeFeedbackWithAppkey:(NSString *)appkey {
+    
+    UMFeedbackViewController *feedbackViewController = [[UMFeedbackViewController alloc] initWithNibName:@"UMFeedbackViewController" bundle:nil];
+    feedbackViewController.appkey = appkey;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:feedbackViewController];
+    //    navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    //    navigationController.navigationBar.translucent = NO;
+   // [self.navigationController pushViewController:navigationController animated:YES];
+    
+    [self presentViewController:navigationController animated:YES completion:^{
+        
+    }];
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:NO];
+    [self setHidesBottomBarWhenPushed:NO];
+    
+    
+    
+    
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self setHidesBottomBarWhenPushed:NO];
+    [super viewDidDisappear:animated];
+}
+
+
+#pragma mark--uialertviewMethod
+
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
 
