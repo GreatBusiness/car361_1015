@@ -23,16 +23,47 @@
     [self.view addSubview:theWebV];
     
     theWebV.delegate=self;
+//    
+//    [theWebV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.car361.cn/api.php?c=listnews&a=shownews&id=%@&type=json",self.theid]]]];
     
-    [theWebV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.car361.cn/api.php?c=listnews&a=shownews&id=%@&type=json",self.theid]]]];
     
-    
+    [self loadChangshiData];
     
     
     
     
     
 }
+
+#pragma mark--获取网络数据
+
+-(void)loadChangshiData{
+
+    
+    
+    
+    SzkLoadData *loadda=[[SzkLoadData alloc]init];
+    
+    __weak typeof(theWebV) weakweb=theWebV;
+    
+    
+    [loadda SeturlStr:[NSString stringWithFormat:@"http://www.car361.cn/api.php?c=listnews&a=shownews&id=%@&type=json",self.theid] mytest:^(NSDictionary *dicinfo, int errcode) {
+        
+ 
+        NSLog(@"theinfo===%@",dicinfo);
+        
+        NSString *strhtml=[NSString stringWithFormat:@"%@",[dicinfo objectForKey:@"allcontent"]];
+        
+        [weakweb loadHTMLString:strhtml baseURL:nil];
+        
+    }];
+    
+    
+    
+}
+
+
+
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
     hudView=[LTools MBProgressWithText:LOADING_TITLE addToView:self.view];

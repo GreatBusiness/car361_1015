@@ -8,6 +8,9 @@
 
 #import "MoreViewController.h"
 
+#import "UMFeedbackViewController.h"
+
+
 @interface MoreViewController ()
 
 @end
@@ -65,6 +68,10 @@
         case 9001:
         {
             NSLog(@"意见反馈");
+            
+            
+            [self showNativeFeedbackWithAppkey:@"5440c181fd98c5a723000ea0"];
+            
 
         }
             break;
@@ -98,6 +105,23 @@
 
 
 }
+
+
+- (void)showNativeFeedbackWithAppkey:(NSString *)appkey {
+    
+    UMFeedbackViewController *feedbackViewController = [[UMFeedbackViewController alloc] initWithNibName:@"UMFeedbackViewController" bundle:nil];
+    feedbackViewController.appkey = appkey;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:feedbackViewController];
+    //    navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    //    navigationController.navigationBar.translucent = NO;
+   // [self.navigationController pushViewController:navigationController animated:YES];
+    
+    [self presentViewController:navigationController animated:YES completion:^{
+        
+    }];
+}
+
+
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
 
