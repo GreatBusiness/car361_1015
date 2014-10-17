@@ -116,6 +116,7 @@
 		19C49C2A19F00A9D0090F00E /* ChangshiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C49C2919F00A9D0090F00E /* ChangshiModel.m */; };
 		19C49C3019F012A40090F00E /* ChangshiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C49C2F19F012A40090F00E /* ChangshiTableViewCell.m */; };
 		19C49C3619F025170090F00E /* ChangshiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C49C3519F025170090F00E /* ChangshiDetailViewController.m */; };
+		19D1382F19F10F8700819360 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1382E19F10F8700819360 /* AboutUsViewController.m */; };
 		AC61C6B5E82C4247A22F8C8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168A2299D704DECB1769488 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -278,6 +279,8 @@
 		19C49C2F19F012A40090F00E /* ChangshiTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangshiTableViewCell.m; sourceTree = "<group>"; };
 		19C49C3419F025170090F00E /* ChangshiDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangshiDetailViewController.h; sourceTree = "<group>"; };
 		19C49C3519F025170090F00E /* ChangshiDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangshiDetailViewController.m; sourceTree = "<group>"; };
+		19D1382D19F10F8700819360 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		19D1382E19F10F8700819360 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		7CBCF099D93244A58F63258C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9168A2299D704DECB1769488 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -569,6 +572,8 @@
 			children = (
 				138BCF6F19ED6F0200575692 /* MoreViewController.h */,
 				138BCF7019ED6F0200575692 /* MoreViewController.m */,
+				19D1382D19F10F8700819360 /* AboutUsViewController.h */,
+				19D1382E19F10F8700819360 /* AboutUsViewController.m */,
 				138BCF7119ED6F0200575692 /* MoreViewController.xib */,
 			);
 			path = controllers;
@@ -989,6 +994,7 @@
 				194011CE19F102F90065053D /* UMFeedbackTableViewCellRight.m in Sources */,
 				138BCF7719ED6F4000575692 /* BusinessViewController.m in Sources */,
 				13FAFBD019F02F030064FC8F /* SzkLoadData.m in Sources */,
+				19D1382F19F10F8700819360 /* AboutUsViewController.m in Sources */,
 				138BCF7C19ED6F5900575692 /* CommonViewController.m in Sources */,
 				19C49C2A19F00A9D0090F00E /* ChangshiModel.m in Sources */,
 				194011CB19F102F90065053D /* UMContactViewController.m in Sources */,

@@ -10,6 +10,8 @@
 
 #import "UMFeedbackViewController.h"
 
+#import "AboutUsViewController.h"
+
 
 @interface MoreViewController ()
 
@@ -62,6 +64,18 @@
         {
             NSLog(@"清空缓存");
             
+
+            
+          CGFloat mm=  [[SDImageCache sharedImageCache] getSize];
+            
+            
+            [[SDImageCache sharedImageCache] clearDisk];
+            
+
+            
+            UIAlertView *alertV=[[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"清理缓存%.2fk",mm/1000] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            
+            [alertV show];
             
         }
             break;
@@ -94,6 +108,13 @@
         case 9003:
         {
             NSLog(@"关于我们");
+            
+            AboutUsViewController *_aboutVC=[[AboutUsViewController alloc]init];
+            
+            [self setHidesBottomBarWhenPushed:YES];
+            
+            [self.navigationController pushViewController:_aboutVC animated:YES];
+            
 
         }
             break;
@@ -121,6 +142,25 @@
     }];
 }
 
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:NO];
+    [self setHidesBottomBarWhenPushed:NO];
+    
+    
+    
+    
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self setHidesBottomBarWhenPushed:NO];
+    [super viewDidDisappear:animated];
+}
+
+
+#pragma mark--uialertviewMethod
 
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

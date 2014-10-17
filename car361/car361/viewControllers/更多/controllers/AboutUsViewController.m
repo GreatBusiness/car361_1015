@@ -1,32 +1,28 @@
 //
-//  MiddleViewController.m
+//  AboutUsViewController.m
 //  car361
 //
-//  Created by lichaowei on 14-10-14.
+//  Created by szk on 14-10-17.
 //  Copyright (c) 2014年 lcw. All rights reserved.
 //
 
-#import "MiddleViewController.h"
+#import "AboutUsViewController.h"
 
-@interface MiddleViewController ()
+@interface AboutUsViewController ()
 
 @end
 
-@implementation MiddleViewController
+@implementation AboutUsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    self.view.backgroundColor = [UIColor orangeColor];
-    
     theWebV=[[UIWebView alloc]initWithFrame:self.view.bounds];
     
     [self.view addSubview:theWebV];
     
     theWebV.delegate=self;
     
-    [theWebV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.car361.cn/wap/event/index.php"]]];
+    [theWebV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.car361.cn/wap/about/index.php"]]];
     
     
     
@@ -38,26 +34,25 @@
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
     hudView=[LTools MBProgressWithText:LOADING_TITLE addToView:self.view];
-
-
+    
+    
     [hudView show:YES];
-
+    
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
-
+    
     [hudView hide:YES afterDelay:0.4f];
-
+    
     
 }
 
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-
-
+    
+    
     
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
