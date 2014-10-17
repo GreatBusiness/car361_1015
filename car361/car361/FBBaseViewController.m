@@ -53,7 +53,7 @@
     
     self.button_back=[[UIButton alloc]initWithFrame:CGRectMake(0,0,40,44)];
     [_button_back addTarget:self action:@selector(clickToBack:) forControlEvents:UIControlEventTouchUpInside];
-//    [_button_back setImage:FBAUTO_BACK_IMAGE forState:UIControlStateNormal];
+    [_button_back setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     _button_back.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:_button_back];
     self.navigationItem.leftBarButtonItems=@[spaceButton,back_item];
