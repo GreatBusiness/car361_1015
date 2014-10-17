@@ -117,6 +117,12 @@
 		19C49C3019F012A40090F00E /* ChangshiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C49C2F19F012A40090F00E /* ChangshiTableViewCell.m */; };
 		19C49C3619F025170090F00E /* ChangshiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C49C3519F025170090F00E /* ChangshiDetailViewController.m */; };
 		19D1382F19F10F8700819360 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1382E19F10F8700819360 /* AboutUsViewController.m */; };
+		19D1383219F15E4700819360 /* BusinessDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1383119F15E4700819360 /* BusinessDetailViewController.m */; };
+		19D1383519F1614800819360 /* FuwujieshaoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1383419F1614800819360 /* FuwujieshaoModel.m */; };
+		19D1383819F1618B00819360 /* ShangjiaJieShaoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1383719F1618B00819360 /* ShangjiaJieShaoModel.m */; };
+		19D1383B19F161AD00819360 /* ShangjiafuwuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1383A19F161AD00819360 /* ShangjiafuwuModel.m */; };
+		19D1383E19F1697E00819360 /* FuwujieshaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1383D19F1697E00819360 /* FuwujieshaoView.m */; };
+		19D1384119F1702100819360 /* fuwujieshaoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1384019F1702100819360 /* fuwujieshaoTableViewCell.m */; };
 		AC61C6B5E82C4247A22F8C8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168A2299D704DECB1769488 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -281,6 +287,18 @@
 		19C49C3519F025170090F00E /* ChangshiDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangshiDetailViewController.m; sourceTree = "<group>"; };
 		19D1382D19F10F8700819360 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		19D1382E19F10F8700819360 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		19D1383019F15E4700819360 /* BusinessDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailViewController.h; sourceTree = "<group>"; };
+		19D1383119F15E4700819360 /* BusinessDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessDetailViewController.m; sourceTree = "<group>"; };
+		19D1383319F1614800819360 /* FuwujieshaoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuwujieshaoModel.h; sourceTree = "<group>"; };
+		19D1383419F1614800819360 /* FuwujieshaoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuwujieshaoModel.m; sourceTree = "<group>"; };
+		19D1383619F1618B00819360 /* ShangjiaJieShaoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShangjiaJieShaoModel.h; sourceTree = "<group>"; };
+		19D1383719F1618B00819360 /* ShangjiaJieShaoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShangjiaJieShaoModel.m; sourceTree = "<group>"; };
+		19D1383919F161AD00819360 /* ShangjiafuwuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShangjiafuwuModel.h; sourceTree = "<group>"; };
+		19D1383A19F161AD00819360 /* ShangjiafuwuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShangjiafuwuModel.m; sourceTree = "<group>"; };
+		19D1383C19F1697E00819360 /* FuwujieshaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuwujieshaoView.h; sourceTree = "<group>"; };
+		19D1383D19F1697E00819360 /* FuwujieshaoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuwujieshaoView.m; sourceTree = "<group>"; };
+		19D1383F19F1702100819360 /* fuwujieshaoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fuwujieshaoTableViewCell.h; sourceTree = "<group>"; };
+		19D1384019F1702100819360 /* fuwujieshaoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fuwujieshaoTableViewCell.m; sourceTree = "<group>"; };
 		7CBCF099D93244A58F63258C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9168A2299D704DECB1769488 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -463,6 +481,8 @@
 			children = (
 				138BCF7419ED6F4000575692 /* BusinessViewController.h */,
 				138BCF7519ED6F4000575692 /* BusinessViewController.m */,
+				19D1383019F15E4700819360 /* BusinessDetailViewController.h */,
+				19D1383119F15E4700819360 /* BusinessDetailViewController.m */,
 				138BCF7619ED6F4000575692 /* BusinessViewController.xib */,
 			);
 			path = controllers;
@@ -471,6 +491,12 @@
 		138BCF5219ED6D3F00575692 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				19D1383319F1614800819360 /* FuwujieshaoModel.h */,
+				19D1383419F1614800819360 /* FuwujieshaoModel.m */,
+				19D1383619F1618B00819360 /* ShangjiaJieShaoModel.h */,
+				19D1383719F1618B00819360 /* ShangjiaJieShaoModel.m */,
+				19D1383919F161AD00819360 /* ShangjiafuwuModel.h */,
+				19D1383A19F161AD00819360 /* ShangjiafuwuModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -478,6 +504,10 @@
 		138BCF5319ED6D3F00575692 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				19D1383C19F1697E00819360 /* FuwujieshaoView.h */,
+				19D1383D19F1697E00819360 /* FuwujieshaoView.m */,
+				19D1383F19F1702100819360 /* fuwujieshaoTableViewCell.h */,
+				19D1384019F1702100819360 /* fuwujieshaoTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -999,6 +1029,7 @@
 				19C49C2A19F00A9D0090F00E /* ChangshiModel.m in Sources */,
 				194011CB19F102F90065053D /* UMContactViewController.m in Sources */,
 				138BCF8619ED70B900575692 /* MiddleViewController.m in Sources */,
+				19D1383B19F161AD00819360 /* ShangjiafuwuModel.m in Sources */,
 				138BCF2019ED630D00575692 /* AppDelegate.m in Sources */,
 				138BCF7219ED6F0200575692 /* MoreViewController.m in Sources */,
 				194011CF19F102F90065053D /* UMFeedbackViewController.m in Sources */,
@@ -1010,6 +1041,7 @@
 				19C49C3019F012A40090F00E /* ChangshiTableViewCell.m in Sources */,
 				19C49C3619F025170090F00E /* ChangshiDetailViewController.m in Sources */,
 				138BCF6719ED6D6600575692 /* RootViewController.m in Sources */,
+				19D1383219F15E4700819360 /* BusinessDetailViewController.m in Sources */,
 				13753DD619EEBE2B00F6179E /* LActionSheet.m in Sources */,
 				138BCF6D19ED6EC500575692 /* ServiceViewController.m in Sources */,
 				13753DD819EEBE2B00F6179E /* LButtonView.m in Sources */,
@@ -1017,10 +1049,14 @@
 				194011B319F102F90065053D /* UMEGORefreshTableHeaderView.m in Sources */,
 				13753DDA19EEBE2B00F6179E /* LMoveView.m in Sources */,
 				13753DDC19EEBE2B00F6179E /* LSearchView.m in Sources */,
+				19D1383519F1614800819360 /* FuwujieshaoModel.m in Sources */,
 				132CE11019EEC3AA00C87D2B /* LRefreshTableHeaderView.m in Sources */,
 				138BD03019ED738D00575692 /* UIView+Frame.m in Sources */,
+				19D1383E19F1697E00819360 /* FuwujieshaoView.m in Sources */,
 				13FAFBBC19F020990064FC8F /* ClassifyViewController.m in Sources */,
+				19D1384119F1702100819360 /* fuwujieshaoTableViewCell.m in Sources */,
 				132CE10D19EEC39400C87D2B /* RefreshTableView.m in Sources */,
+				19D1383819F1618B00819360 /* ShangjiaJieShaoModel.m in Sources */,
 				13753DE219EEBEA400F6179E /* LTools.m in Sources */,
 				13FAFBC619F027C10064FC8F /* BaseModel.m in Sources */,
 				13753DD719EEBE2B00F6179E /* LBaseViewController.m in Sources */,

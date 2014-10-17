@@ -37,7 +37,7 @@
         _classid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"classid"]];
         _title=[NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
         _stitle=[NSString stringWithFormat:@"%@",[dic objectForKey:@"stitle"]];
-        _summarys=[NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
+        _summarys=[NSString stringWithFormat:@"%@",[dic objectForKey:@"summarys"]];
         _summary=[NSString stringWithFormat:@"%@",[dic objectForKey:@"summary"]];
         _summaryb=[NSString stringWithFormat:@"%@",[dic objectForKey:@"summaryb"]];
         _photo=[NSString stringWithFormat:@"%@",[dic objectForKey:@"photo"]];
