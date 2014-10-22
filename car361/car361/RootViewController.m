@@ -63,6 +63,28 @@
     
     
     self.viewControllers = [NSArray arrayWithObjects:navc1,navc2,navc3,navc4,navc5,nil];
+    
+    
+    NSArray *images_normal = @[@"fuwu",@"shangjia",@"youhui",@"changshi",@"gengduo"];
+    NSArray *images_selected = @[@"fuwuhover",@"shangjiahover",@"youhuihover",@"changshihover",@"gengduohover"];
+    NSArray *titles = @[@"服务",@"商家",@"优惠",@"常识",@"更多"];
+    for (int i = 0; i < 5; i ++) {
+        
+        UITabBarItem *item = self.tabBar.items[i];
+        UIImage *aImage = [UIImage imageNamed:[images_normal objectAtIndex:i]];
+        aImage = [aImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        item.image = aImage;
+        
+        UIImage *selectImage = [UIImage imageNamed:[images_selected objectAtIndex:i]];
+        selectImage = [selectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        item.selectedImage = selectImage;
+        
+        item.title = [titles objectAtIndex:i];
+    }
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:
+    [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],                                                                                                              NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    self.tabBar.backgroundImage=[UIImage imageNamed:@"bottom"];
         
     
 ////    rootVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"服务" image:[UIImage imageNamed:@"fuwu"] tag:0];
@@ -98,59 +120,59 @@
 //     [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],                                                                                                              NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     
     
-    UIView *tabbar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tabBar.width, self.tabBar.height)];
-    tabbar.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bottom"]];
-    [self.tabBar addSubview:tabbar];
-    
-    
-    CGFloat width = self.view.width / 5.f;
-    
-    NSArray *images_normal = @[@"fuwu",@"shangjia",@"youhui",@"changshi",@"gengduo"];
-    NSArray *images_selected = @[@"fuwuhover",@"shangjiahover",@"youhuihover",@"changshihover",@"gengduohover"];
-    
-    NSArray *titles = @[@"服务",@"商家",@"优惠",@"常识",@"更多"];
-    
-    for (int i = 0; i < 5; i ++) {
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(width * i, 0, width, self.tabBar.height);
-        
-        [button setImage:[UIImage imageNamed:[images_normal objectAtIndex:i]] forState:UIControlStateNormal];
-        
-        [button setImage:[UIImage imageNamed:[images_selected objectAtIndex:i]] forState:UIControlStateSelected];
-        
-        
-        [button setBackgroundImage:[UIImage imageNamed:@"tabbar_selected"] forState:UIControlStateSelected];
-        
-        button.titleEdgeInsets = UIEdgeInsetsMake(0, -23, -30, 0) ;
-        button.imageEdgeInsets = UIEdgeInsetsMake(0, 17, 15, 0);
-        
-        
-        button.tag = 100 + i;
-        
-        
-        if (i == 0) {
-            button.imageEdgeInsets = UIEdgeInsetsMake(0, 17 - 5, 15, 0);
-            
-            button.selected = YES;
-        }
-        
-        if (i == 1) {
-            button.imageEdgeInsets = UIEdgeInsetsMake(0, 17 + 2, 15, 0);
-        }
-        
-        if (i == 3) {
-            button.imageEdgeInsets = UIEdgeInsetsMake(0, 17 - 2, 15, 0);
-        }
-        
-        [button.titleLabel setFont:[UIFont systemFontOfSize:10]];
-        [button setTitle:[titles objectAtIndex:i] forState:UIControlStateNormal];
-        
-        [button addTarget:self action:@selector(clickToDo:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [tabbar addSubview:button];
-        
-    }
+//    UIView *tabbar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tabBar.width, self.tabBar.height)];
+//    tabbar.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bottom"]];
+//    [self.tabBar addSubview:tabbar];
+//    
+//    
+//    CGFloat width = self.view.width / 5.f;
+//    
+//    NSArray *images_normal = @[@"fuwu",@"shangjia",@"youhui",@"changshi",@"gengduo"];
+//    NSArray *images_selected = @[@"fuwuhover",@"shangjiahover",@"youhuihover",@"changshihover",@"gengduohover"];
+//    
+//    NSArray *titles = @[@"服务",@"商家",@"优惠",@"常识",@"更多"];
+//    
+//    for (int i = 0; i < 5; i ++) {
+//        
+//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//        button.frame = CGRectMake(width * i, 0, width, self.tabBar.height);
+//        
+//        [button setImage:[UIImage imageNamed:[images_normal objectAtIndex:i]] forState:UIControlStateNormal];
+//        
+//        [button setImage:[UIImage imageNamed:[images_selected objectAtIndex:i]] forState:UIControlStateSelected];
+//        
+//        
+//        [button setBackgroundImage:[UIImage imageNamed:@"tabbar_selected"] forState:UIControlStateSelected];
+//        
+//        button.titleEdgeInsets = UIEdgeInsetsMake(0, -23, -30, 0) ;
+//        button.imageEdgeInsets = UIEdgeInsetsMake(0, 17, 15, 0);
+//        
+//        
+//        button.tag = 100 + i;
+//        
+//        
+//        if (i == 0) {
+//            button.imageEdgeInsets = UIEdgeInsetsMake(0, 17 - 5, 15, 0);
+//            
+//            button.selected = YES;
+//        }
+//        
+//        if (i == 1) {
+//            button.imageEdgeInsets = UIEdgeInsetsMake(0, 17 + 2, 15, 0);
+//        }
+//        
+//        if (i == 3) {
+//            button.imageEdgeInsets = UIEdgeInsetsMake(0, 17 - 2, 15, 0);
+//        }
+//        
+//        [button.titleLabel setFont:[UIFont systemFontOfSize:10]];
+//        [button setTitle:[titles objectAtIndex:i] forState:UIControlStateNormal];
+//        
+//        [button addTarget:self action:@selector(clickToDo:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        [tabbar addSubview:button];
+//        
+//    }
     
 }
 
