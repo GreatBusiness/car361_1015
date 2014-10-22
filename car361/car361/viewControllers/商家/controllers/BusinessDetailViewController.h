@@ -15,8 +15,31 @@
 #import "ShangjiafuwuModel.h"
 
 
-@interface BusinessDetailViewController : FBBaseViewController{
+@interface BusinessDetailViewController : FBBaseViewController<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>{
     NSArray *arrtitle;//上面切换的四个title
+    
+    UIScrollView *mainScroV;
+    
+    //关于tableview的
+    
+    NSMutableArray *allArr;
+    
+    MBProgressHUD *hudView;
+    
+    
+    UITableView *mainTabV;//商家服务的tableview
+    
+    //关于用户评论的
+    
+    NSMutableArray *commentArr;
+    UITableView *secondTab;
+    
+    int currentpage;
+
+    
+    
+    
+    
     
 }
 

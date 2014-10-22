@@ -10,10 +10,15 @@
 
 #import "FuwujieshaoModel.h"
 
-@interface FuwujieshaoView : UIView{
+
+#import "RTLabel.h"
+
+@interface FuwujieshaoView : UIScrollView{
 
 
 }
+
+
 
 @property(nonatomic,strong)UILabel *nameLabel;
 
@@ -27,7 +32,7 @@
 
 //@property(nonatomic,strong)UITableView *mainTabVC;
 
-@property(nonatomic,strong)UIWebView *contentWebview;
+@property(nonatomic,strong)RTLabel *contentWebview;
 
 @property(nonatomic,strong)FuwujieshaoModel *myModel;
 
@@ -35,4 +40,5 @@
 -(FuwujieshaoView *)initWiththeFrame:(CGRect)frame;
 
 -(void)settheMyModel:(FuwujieshaoModel *)the_myModel;
+
 @end

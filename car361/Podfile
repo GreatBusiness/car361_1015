@@ -11,3 +11,10 @@ pod 'SDWebImage', '~> 3.7.1'
 
 
 pod 'LBBlurredImage', '~> 0.2.0'
+
+
+pod 'RTLabel', '~> 1.0'
+
+
+
+
