@@ -8,11 +8,14 @@
 
 #import "ServiceListController.h"
 #import "MenuSortView.h"
+#import "ListTable.h"
 
 @interface ServiceListController ()
 {
     UIView *menu_back;//选项卡
     MenuSortView *sortView;//排序列表
+    ListTable *areaTable;//地区列表
+    ListTable *classTable;//服务分类列表
 }
 
 @end
@@ -22,7 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     [self createMenuViews];
+    [self createAreaAndClassMenu];
     [self createSortMenu];
 }
 
@@ -63,6 +68,36 @@
     }
 }
 
+- (void)createAreaAndClassMenu
+{
+    areaTable = [[ListTable alloc]initWithFrame:CGRectMake(0, menu_back.bottom, ALL_FRAME.size.width, ALL_FRAME.size.height - 30 - menu_back.bottom - 64) listType:List_Area];
+    [self.view addSubview:areaTable];
+    [areaTable actionBlock:^(ActionType type, NSString *select) {
+        if (type == Action_Back) {
+            
+            //            self.btn.selected = NO;
+
+        }else if (type == Action_Select){
+
+            NSLog(@"select %@",select);
+        }
+    }];
+    
+    
+    classTable = [[ListTable alloc]initWithFrame:CGRectMake(0, menu_back.bottom, ALL_FRAME.size.width, ALL_FRAME.size.height - 30 - menu_back.bottom - 64) listType:List_Service];
+    [self.view addSubview:classTable];
+    [classTable actionBlock:^(ActionType type, NSString *select) {
+        if (type == Action_Back) {
+            
+            
+        }else if (type == Action_Select){
+            
+            NSLog(@"select %@",select);
+        }
+    }];
+
+}
+
 - (void)createSortMenu
 {
     __weak typeof(self)weakSelf = self;
@@ -95,10 +130,26 @@
         {
             btn.selected = NO;
         }
-    }
-    
-    if (sender.tag == 102) {
-        [sortView show:sender.selected];
+        
+        if (sender.tag == 100) {
+            
+            [sortView show:NO];
+            [classTable showOrHidden:NO];
+            [areaTable showOrHidden:sender.selected];
+            
+        }else if (sender.tag == 101){
+            
+            [sortView show:NO];
+            [classTable showOrHidden:sender.selected];
+            [areaTable showOrHidden:NO];
+            
+        }else if (sender.tag == 102){
+        
+            [sortView show:sender.selected];
+            [classTable showOrHidden:NO];
+            [areaTable showOrHidden:NO];
+        }
+        
     }
 }
 
