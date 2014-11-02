@@ -35,6 +35,8 @@
 #define FONT_SIZE_13 13
 #define FONT_SIZE_SMALL 12
 
+#define SCREEN_SIZE [[UIScreen mainScreen]bounds].size //屏幕大小
+
 //通知
 
 #define NOTIFICATION_UPDATE_TOPICLIST @"TOPIC_LIST" //帖子列表更新通知
@@ -99,6 +101,10 @@ typedef void(^versionBlock)(BOOL isNewVersion,NSString *updateUrl,NSString *upda
 
 #pragma mark - 常用视图快速创建
 
++ (UITableViewCell *)cellForIdentify:(NSString *)identify
+                            cellName:(NSString *)cellName
+                            forTable:(UITableView *)tableView;
+
 + (UIButton *)createButtonWithType:(UIButtonType)buttonType
                              frame:(CGRect)aFrame
                        normalTitle:(NSString *)normalTitle
@@ -113,6 +119,8 @@ typedef void(^versionBlock)(BOOL isNewVersion,NSString *updateUrl,NSString *upda
                          font:(CGFloat)size
                         align:(NSTextAlignment)align
                     textColor:(UIColor *)textColor;
+
++ (UITableViewCell *)cellFor;
 
 #pragma mark - 计算宽度、高度
 

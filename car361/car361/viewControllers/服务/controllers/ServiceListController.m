@@ -10,13 +10,17 @@
 #import "MenuSortView.h"
 #import "ListTable.h"
 
-@interface ServiceListController ()
+#import "ServiceCell.h"
+
+@interface ServiceListController ()<UITableViewDataSource,RefreshDelegate>
 {
     UIView *menu_back;//选项卡
     MenuSortView *sortView;//排序列表
     ListTable *areaTable;//地区列表
     ListTable *classTable;//服务分类列表
 }
+
+@property(nonatomic,retain)RefreshTableView *table;
 
 @end
 
@@ -29,6 +33,16 @@
     [self createMenuViews];
     [self createAreaAndClassMenu];
     [self createSortMenu];
+    
+    
+    //数据展示table
+    _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 36, SCREEN_SIZE.width, SCREEN_SIZE.height  - 49 - 36)];
+    _table.refreshDelegate = self;
+    _table.dataSource = self;
+    
+    _table.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:_table];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -154,6 +168,64 @@
 }
 
 #pragma mark - 网络请求
+
+#pragma - mark RefreshDelegate <NSObject>
+
+- (void)loadNewData
+{
+    NSLog(@"loadNewData");
+    
+    
+}
+
+- (void)loadMoreData
+{
+    NSLog(@"loadMoreData");
+    
+}
+
+- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+- (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
+#pragma mark - UITableViewDelegate
+
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * identifier = @"CarSourceCell";
+    
+    ServiceCell *cell = (ServiceCell *)[LTools cellForIdentify:identifier cellName:@"ServiceCell" forTable:tableView];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (indexPath.row % 2 == 0) {
+        cell.contentView.backgroundColor = [UIColor colorWithHexString:@"f2f2f2"];
+    }else
+    {
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+    }
+    
+    return cell;
+    
+}
 
 
 

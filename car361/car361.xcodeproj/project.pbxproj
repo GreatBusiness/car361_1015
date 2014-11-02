@@ -84,6 +84,8 @@
 		138BD03019ED738D00575692 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 138BD02E19ED738D00575692 /* UIView+Frame.m */; };
 		138BD03219ED753300575692 /* bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BD03119ED753300575692 /* bottom@2x.png */; };
 		138BD03419ED76B500575692 /* tabbar_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BD03319ED76B500575692 /* tabbar_selected@2x.png */; };
+		139FA6DB1A061DF300A52786 /* ServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 139FA6D91A061DF300A52786 /* ServiceCell.m */; };
+		139FA6DC1A061DF400A52786 /* ServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139FA6DA1A061DF300A52786 /* ServiceCell.xib */; };
 		13DE6E7019F951D8009741A1 /* ListTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DE6E6F19F951D8009741A1 /* ListTable.m */; };
 		13DE6E7319F95472009741A1 /* MenuAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DE6E7219F95472009741A1 /* MenuAreaView.m */; };
 		13FAFBBC19F020990064FC8F /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FAFBBA19F020990064FC8F /* ClassifyViewController.m */; };
@@ -261,6 +263,9 @@
 		138BD02E19ED738D00575692 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		138BD03119ED753300575692 /* bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom@2x.png"; sourceTree = "<group>"; };
 		138BD03319ED76B500575692 /* tabbar_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_selected@2x.png"; sourceTree = "<group>"; };
+		139FA6D81A061DF300A52786 /* ServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCell.h; sourceTree = "<group>"; };
+		139FA6D91A061DF300A52786 /* ServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCell.m; sourceTree = "<group>"; };
+		139FA6DA1A061DF300A52786 /* ServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceCell.xib; sourceTree = "<group>"; };
 		13DE6E6E19F951D8009741A1 /* ListTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTable.h; sourceTree = "<group>"; };
 		13DE6E6F19F951D8009741A1 /* ListTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTable.m; sourceTree = "<group>"; };
 		13DE6E7119F95472009741A1 /* MenuAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuAreaView.h; sourceTree = "<group>"; };
@@ -378,6 +383,9 @@
 				131108FE19F179310068356B /* MenuCell.h */,
 				131108FF19F179310068356B /* MenuCell.m */,
 				1311090019F179310068356B /* MenuCell.xib */,
+				139FA6D81A061DF300A52786 /* ServiceCell.h */,
+				139FA6D91A061DF300A52786 /* ServiceCell.m */,
+				139FA6DA1A061DF300A52786 /* ServiceCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -967,6 +975,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				138BD01519ED716B00575692 /* hornxiahover@2x.png in Resources */,
+				139FA6DC1A061DF400A52786 /* ServiceCell.xib in Resources */,
 				138BD00919ED716B00575692 /* fuwu_pingjia_defaulatheader.png in Resources */,
 				138BD02019ED723900575692 /* fuwuhover@2x.png in Resources */,
 				138BD00619ED716B00575692 /* fuwu_jieshao_nav_activebg.png in Resources */,
@@ -1141,6 +1150,7 @@
 				194011B319F102F90065053D /* UMEGORefreshTableHeaderView.m in Sources */,
 				13753DDA19EEBE2B00F6179E /* LMoveView.m in Sources */,
 				13753DDC19EEBE2B00F6179E /* LSearchView.m in Sources */,
+				139FA6DB1A061DF300A52786 /* ServiceCell.m in Sources */,
 				19D1383519F1614800819360 /* FuwujieshaoModel.m in Sources */,
 				132CE11019EEC3AA00C87D2B /* LRefreshTableHeaderView.m in Sources */,
 				138BD03019ED738D00575692 /* UIView+Frame.m in Sources */,
