@@ -18,6 +18,8 @@
 #import "LSearchView.h"
 #import "LMoveView.h"
 
+#import "DataManager.h"
+
 
 #define COLOR_VIEW_BACKGROUND [UIColor colorWithRed:246/255.F green:247/255.F blue:249/255.F alpha:1.0]//视图背景颜色
 

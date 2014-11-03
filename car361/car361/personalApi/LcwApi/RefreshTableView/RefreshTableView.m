@@ -182,6 +182,20 @@
     [self performSelector:@selector(finishReloadigData) withObject:nil afterDelay:0];
 }
 
+- (void)reloadData:(NSArray *)data haveMore:(BOOL)haveMore
+{
+    self.isHaveMoreData = haveMore;
+    
+    if (self.isReloadData) {
+        
+        [self.dataArray removeAllObjects];
+        
+    }
+    [self.dataArray addObjectsFromArray:data];
+    
+    [self performSelector:@selector(finishReloadigData) withObject:nil afterDelay:0];
+}
+
 //请求数据失败
 
 - (void)loadFail

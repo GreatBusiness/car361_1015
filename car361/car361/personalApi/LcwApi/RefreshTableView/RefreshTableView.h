@@ -52,6 +52,9 @@
 -(void)showRefreshNoOffset;//无偏移刷新数据
 
 - (void)reloadData:(NSArray *)data total:(int)totalPage;//更新数据
+
+- (void)reloadData:(NSArray *)data haveMore:(BOOL)haveMore;//
+
 - (void)loadFail;//请求数据失败
 
 -(id)initWithFrame:(CGRect)frame showLoadMore:(BOOL)show;

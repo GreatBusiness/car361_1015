@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class ServiceInfoClass;
+
 @interface ServiceCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *iconImageV;
 @property (strong, nonatomic) IBOutlet UIImageView *renzhengImageV;
@@ -20,5 +22,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *phoneBtn;
 
 @property (strong, nonatomic) IBOutlet UIButton *shopDetailBtn;
+@property (strong, nonatomic) IBOutlet UIView *bottomLine;
+@property (strong, nonatomic) IBOutlet UILabel *recommendTint;
+
+-(void)setCellWithModel:(ServiceInfoClass *)infoModel;
 
 @end

@@ -12,12 +12,19 @@
 
 #import "ServiceCell.h"
 
+#import "ServiceInfoClass.h"
+
+#import "RegionClass.h"
+
 @interface ServiceListController ()<UITableViewDataSource,RefreshDelegate>
 {
     UIView *menu_back;//选项卡
     MenuSortView *sortView;//排序列表
     ListTable *areaTable;//地区列表
     ListTable *classTable;//服务分类列表
+    
+    NSArray *region_arr;//区
+    NSDictionary *region_sub_dic;//街道 (key为上级id 字符串)
 }
 
 @property(nonatomic,retain)RefreshTableView *table;
@@ -30,11 +37,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self createMenuViews];
-    [self createAreaAndClassMenu];
-    [self createSortMenu];
-    
-    
     //数据展示table
     _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 36, SCREEN_SIZE.width, SCREEN_SIZE.height  - 49 - 36)];
     _table.refreshDelegate = self;
@@ -43,6 +45,14 @@
     _table.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_table];
     
+    [self createMenuViews];
+    [self createAreaAndClassMenu];
+    [self createSortMenu];
+    
+    [self getServerList];
+    
+    [self getArea];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -167,7 +177,92 @@
     }
 }
 
+#pragma mark - 数据解析
+
+- (void)parseAreaWithArray:(NSArray *)result
+{
+    if ([result isKindOfClass:[NSArray class]]) {
+        
+        NSArray *arr = (NSArray *)result;
+        
+        for (NSDictionary *aDic in arr) {
+            
+            RegionClass *region = [[RegionClass alloc]initWithDictionary:aDic];
+            
+            [DataManager addRegionId:region.regionid regionName:region.regionname];
+            
+            for (NSDictionary *subDic in region.content) {
+                
+                RegionClass *subRegion = [[RegionClass alloc]initWithDictionary:subDic];
+
+                [DataManager addRegionSubId:subRegion.id regionName:subRegion.name parentId:region.regionid];
+                
+            }
+            
+        }
+    }
+
+}
+
 #pragma mark - 网络请求
+
+- (void)getServerList
+{
+    //http://www.car361.cn/api.php?c=service&a=showlist&city=beijing&cid=2&region=1&area=3&lng=116.27079010&lat=39.95080947&square=0.5&page=1&type=json
+    
+    
+    
+    NSString *city = @"beijing";
+    int cityId = 2;
+    int region = 1;
+    int area  = 3;
+    NSString *lng = @"116.27079010";//经度
+    NSString *lat = @"39.95080947";//纬度
+    float square = 100.0;
+    
+    NSString *url = [NSString stringWithFormat:CAR_SERVICE_LIST,city,cityId,region,area,lng,lat,square,_table.pageNum];
+    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        if ([result isKindOfClass:[NSArray class]]) {
+            
+            NSArray *arr = (NSArray *)result;
+            NSMutableArray *tempArr = [NSMutableArray arrayWithCapacity:arr.count];
+            
+            for (NSDictionary *aDic in arr) {
+                
+                ServiceInfoClass *infoClass = [[ServiceInfoClass alloc]initWithDictionary:aDic];
+                [tempArr addObject:infoClass];
+                
+            }
+            
+            BOOL haveMore = tempArr.count > 0  ? YES : NO;
+            
+            [_table reloadData:tempArr haveMore:haveMore];
+        }
+        
+        
+        
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        ;
+    }];
+}
+
+- (void)getArea
+{
+    __weak typeof(self)weakSelf = self;
+    
+    NSString *url = [NSString stringWithFormat:CAR_AREA_STREET];
+    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        [weakSelf parseAreaWithArray:(NSArray *)result];
+        
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        
+        
+    }];
+}
 
 #pragma - mark RefreshDelegate <NSObject>
 
@@ -205,7 +300,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return _table.dataArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -216,12 +311,15 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if (indexPath.row % 2 == 0) {
-        cell.contentView.backgroundColor = [UIColor colorWithHexString:@"f2f2f2"];
-    }else
-    {
-        cell.contentView.backgroundColor = [UIColor whiteColor];
-    }
+    ServiceInfoClass *info = [_table.dataArray objectAtIndex:indexPath.row];
+    [cell setCellWithModel:info];
+    
+    cell.bottomLine.backgroundColor = COLOR_TABLE_LINE;
+    
+    cell.phoneBtn.layer.cornerRadius = 3.f;
+    
+    cell.shopDetailBtn.layer.cornerRadius = 3.f;
+
     
     return cell;
     
