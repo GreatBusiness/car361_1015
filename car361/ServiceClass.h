@@ -10,8 +10,14 @@
 
 @interface ServiceClass : BaseModel
 
-@property(nonatomic,retain)NSString *pid;
+//一级服务
+@property(nonatomic,assign)int pid;
 @property(nonatomic,retain)NSString *pname;
 @property(nonatomic,retain)NSArray *content;
+
+//二级服务
+
+@property(nonatomic,assign)int id;
+@property(nonatomic,retain)NSString *name;
 
 @end

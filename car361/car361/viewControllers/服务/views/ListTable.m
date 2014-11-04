@@ -8,6 +8,9 @@
 
 #import "ListTable.h"
 
+#import "RegionClass.h"
+#import "ServiceClass.h"
+
 #define SUMHEIGHT 400
 #define HEADER_HEIGHT 40
 
@@ -20,6 +23,8 @@
     ListActionBlock _aBlock;
     UIButton *bottomBtn;//底部button
     ListType _listType;
+    
+    NSArray *distace_arr;//距离数组
 }
 
 -(instancetype)initWithFrame:(CGRect)frame listType:(ListType)listType
@@ -33,8 +38,16 @@
         
         self.clipsToBounds = YES;
         
-        left_arr = @[@"赤",@"橙",@"黄",@"绿",@"青",@"蓝",@"紫"];
-        right_arr = @[@"11",@"22",@"33",@"44",@"55",@"66",@"77",@"88",@"99"];
+        
+        if (listType == List_Area) {
+            
+            distace_arr = [self distance];
+            left_arr = [DataManager getRegion];
+            
+        }else if (listType == List_Service){
+            
+            left_arr = [DataManager getService];
+        }
         
         _listType = listType;
         
@@ -116,6 +129,41 @@
 
 #pragma mark - 事件处理
 
+//距离
+- (NSArray *)distance
+{
+    NSArray *items = @[@"200",@"500",@"1000",@"1500",@"2000",@"3000",@"4000"];
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:items.count];
+    for (int i = 0; i < items.count; i ++) {
+        
+        RegionClass *region = [[RegionClass alloc]init];
+        region.id = [[items objectAtIndex:i]intValue];
+        region.name = [NSString stringWithFormat:@"%@米",[items objectAtIndex:i]];
+        [arr addObject:region];
+    }
+    return arr;
+}
+
+- (void)reloadRightTableRegionId:(int)regionId
+{
+    if (_listType == List_Area) {
+        
+        right_arr = [DataManager getRegionSubForRegionId:regionId];
+        
+    }else if (_listType == List_Service){
+        
+        right_arr = [DataManager getServiceSubForRegionId:regionId];
+    }
+    
+    [self.rightTable reloadData];
+    
+}
+
+- (void)reloadDataLeft
+{
+    [self.leftTable reloadData];
+}
+
 - (void)actionBlock:(ListActionBlock)aBlock
 {
     _aBlock = aBlock;
@@ -131,7 +179,7 @@
     
     if (_aBlock) {
         
-        _aBlock(Action_Back,@"back");
+        _aBlock(Action_Back,@"back",0);
     }
 }
 
@@ -204,13 +252,69 @@
         {
             [self showOrHiddenHeaderView:NO];
         }
+        
+        if (_listType == List_Area) {
+            
+            
+            if (indexPath.row == 0) {
+                
+                //附近
+                
+                right_arr = distace_arr;
+                
+                [self.rightTable reloadData];
+                
+            }else if (indexPath.row == 1){
+                
+                //全城
+                
+                NSLog(@"选择全城");
+                
+                _aBlock(Action_Select,@"全城",999);
+                
+                
+            }else
+            {
+                RegionClass *region = [left_arr objectAtIndex:indexPath.row - 2];
+                
+                [self reloadRightTableRegionId:region.regionid];
+            }
+            
+        }
+        else if (_listType == List_Service){
+            
+            
+            ServiceClass *service = [left_arr objectAtIndex:indexPath.row];
+            
+            [self reloadRightTableRegionId:service.pid];
+            
+        }
+        
+        
+        
     }else
     {
-        NSString *select = [right_arr objectAtIndex:indexPath.row];
+        NSString *selectName;
+        int selectId = 0;
+        
+        if (_listType == List_Area) {
+            
+            RegionClass *region = [right_arr objectAtIndex:indexPath.row];
+            
+            selectName = region.name;
+            selectId = region.id;
+            
+        }else if (_listType == List_Service){
+            
+            ServiceClass *service = [right_arr objectAtIndex:indexPath.row];
+            
+            selectName = service.name;
+            selectId = service.id;
+        }
         
         if (_aBlock) {
             
-            _aBlock(Action_Select,select);
+            _aBlock([selectName hasSuffix:@"米"] ? Action_Distance : Action_Select,selectName,selectId);
         }
     }
 }
@@ -220,7 +324,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == self.leftTable) {
-        return left_arr.count;
+        
+        return left_arr.count + (_listType == List_Area ? 2 : 0);
     }
     return right_arr.count;
 }
@@ -267,7 +372,6 @@
                 
             }else
             {
-                
                 UIView *he = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 160, 44)];
                 cell.backgroundView = he;
                 
@@ -281,12 +385,56 @@
             
         }
         
-        cell.textLabel.text = [NSString stringWithFormat:@"    %@",[left_arr objectAtIndex:indexPath.row]];
+        if (_listType == List_Area) {
+            
+            if (indexPath.row == 0) {
+                
+                //附近
+                
+                cell.textLabel.text = [NSString stringWithFormat:@"    %@",@"附近"];
+                
+            }else if (indexPath.row == 1){
+               
+                //全城
+                
+                cell.textLabel.text = [NSString stringWithFormat:@"    %@",@"全城"];
+                
+            }else
+            {
+                RegionClass *region = [left_arr objectAtIndex:indexPath.row - 2];
+                
+                cell.textLabel.text = [NSString stringWithFormat:@"    %@",region.regionname];
+            }
+            
+        }else if (_listType == List_Service) {
+            
+            
+            ServiceClass *service = [left_arr objectAtIndex:indexPath.row];
+            cell.textLabel.text = [NSString stringWithFormat:@"    %@",service.pname];
+            
+        }
+        
+        
         cell.contentView.backgroundColor = [UIColor colorWithHexString:@"f7f7f7"];
-    }else
+        
+    }else if(tableView == _rightTable)
     {
-        cell.textLabel.text = [NSString stringWithFormat:@"    %@",[right_arr objectAtIndex:indexPath.row]];
-        cell.contentView.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
+        
+        if (_listType == List_Area) {
+            
+            RegionClass *region = [right_arr objectAtIndex:indexPath.row];
+            
+            cell.textLabel.text = [NSString stringWithFormat:@"    %@",region.name];
+            
+        }else if (_listType == List_Service) {
+            
+            
+            ServiceClass *service = [right_arr objectAtIndex:indexPath.row];
+            
+            cell.textLabel.text = [NSString stringWithFormat:@"    %@",service.name];
+            cell.contentView.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
+            
+        }
     }
     
     return cell;

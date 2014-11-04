@@ -10,6 +10,8 @@
 
 @interface DataManager : NSObject
 
+//区域
+
 + (void)addRegionId:(int)regionId
          regionName:(NSString *)regionName;
 
@@ -20,5 +22,18 @@
 + (NSArray *)getRegion;
 
 + (NSArray *)getRegionSubForRegionId:(int)regionId;
+
+//服务
+
++ (void)addService:(int)pid
+       serviceName:(NSString *)pName;
+
++ (void)addServiceSubId:(int)serviceId
+             regionName:(NSString *)serviceName
+               parentId:(int)parentId;
+
++ (NSArray *)getService;
+
++ (NSArray *)getServiceSubForRegionId:(int)regionId;
 
 @end

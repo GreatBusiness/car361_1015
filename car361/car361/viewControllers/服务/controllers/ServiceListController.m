@@ -22,9 +22,6 @@
     MenuSortView *sortView;//排序列表
     ListTable *areaTable;//地区列表
     ListTable *classTable;//服务分类列表
-    
-    NSArray *region_arr;//区
-    NSDictionary *region_sub_dic;//街道 (key为上级id 字符串)
 }
 
 @property(nonatomic,retain)RefreshTableView *table;
@@ -51,7 +48,17 @@
     
     [self getServerList];
     
-    [self getArea];
+    
+    BOOL area_updated = [LTools cacheBoolForKey:CAR_AREA_UPDATED];
+    
+    if (area_updated) {
+        
+        [areaTable reloadDataLeft];
+        
+    }else
+    {
+        [self getArea];
+    }
 
 }
 
@@ -96,27 +103,30 @@
 {
     areaTable = [[ListTable alloc]initWithFrame:CGRectMake(0, menu_back.bottom, ALL_FRAME.size.width, ALL_FRAME.size.height - 30 - menu_back.bottom - 64) listType:List_Area];
     [self.view addSubview:areaTable];
-    [areaTable actionBlock:^(ActionType type, NSString *select) {
+    [areaTable actionBlock:^(ActionType type, NSString *selectName,int selectId) {
         if (type == Action_Back) {
             
             //            self.btn.selected = NO;
 
         }else if (type == Action_Select){
 
-            NSLog(@"select %@",select);
+            NSLog(@"select %@ id %d",selectName,selectId);
+        }else if (type == Action_Distance){
+            
+            NSLog(@"distance %@ id %d",selectName,selectId);
         }
     }];
     
     
     classTable = [[ListTable alloc]initWithFrame:CGRectMake(0, menu_back.bottom, ALL_FRAME.size.width, ALL_FRAME.size.height - 30 - menu_back.bottom - 64) listType:List_Service];
     [self.view addSubview:classTable];
-    [classTable actionBlock:^(ActionType type, NSString *select) {
+    [classTable actionBlock:^(ActionType type, NSString *selectName,int selectId) {
         if (type == Action_Back) {
             
             
         }else if (type == Action_Select){
             
-            NSLog(@"select %@",select);
+            NSLog(@"select %@ id %d",selectName,selectId);
         }
     }];
 
@@ -200,6 +210,10 @@
             }
             
         }
+        
+        [areaTable reloadDataLeft];
+                
+        [LTools cacheBool:YES ForKey:CAR_AREA_UPDATED];
     }
 
 }

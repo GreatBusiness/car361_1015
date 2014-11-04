@@ -48,6 +48,10 @@
 //是否需要更新
 #define UPDATE_BBSSUB_LIST @"UPDATE_BBSSUB_LIST" //是否论坛加入状态列表
 
+
+#define CAR_AREA_UPDATED @"carAreaUpdated"//区域更新标识
+#define CAR_SERVICE_UPDATED @"serviceUpdated" //服务更新标识
+
 typedef void(^ urlRequestBlock)(NSDictionary *result,NSError *erro);
 
 typedef void(^versionBlock)(BOOL isNewVersion,NSString *updateUrl,NSString *updateContent);//版本更新
@@ -93,6 +97,11 @@ typedef void(^versionBlock)(BOOL isNewVersion,NSString *updateUrl,NSString *upda
 + (void)cache:(id)dataInfo ForKey:(NSString *)key;
 //取
 + (id)cacheForKey:(NSString *)key;
+
+
++ (void)cacheBool:(BOOL)boo ForKey:(NSString *)key;
+
++ (BOOL)cacheBoolForKey:(NSString *)key;
 
 
 #pragma mark - 文件本地存储

@@ -12,7 +12,7 @@
 
 @interface ClassifyViewController ()
 {
-    NSMutableArray *dataArray;
+    NSArray *dataArray;
 }
 
 @end
@@ -40,9 +40,16 @@
     self.navigationItem.titleView = _titleLabel;
     
     
-    dataArray = [NSMutableArray array];
-    
-    [self getClassData];
+    BOOL serviceUpdate = [LTools cacheBoolForKey:CAR_SERVICE_UPDATED];
+    if (!serviceUpdate) {
+        [self getClassData];
+        
+    }else
+    {
+        dataArray = [DataManager getService];
+        
+        [self.tableView reloadData];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,13 +79,28 @@
             NSArray *result_arr = (NSArray *)result;
             for (NSDictionary *aDic  in result_arr) {
                 ServiceClass *class = [[ServiceClass alloc]initWithDictionary:aDic];
-                [weakDataArray addObject:class];
+//                [weakDataArray addObject:class];
+                
+                [DataManager addService:class.pid serviceName:class.pname];
+                
+                for (NSDictionary *subDic in class.content) {
+                   
+                    ServiceClass *class_sub = [[ServiceClass alloc]initWithDictionary:subDic];
+                    
+                    [DataManager addServiceSubId:class_sub.id regionName:class_sub.name parentId:class.pid];
+                    
+                }
+                
             }
+            
+            
+            [LTools cacheBool:YES ForKey:CAR_SERVICE_UPDATED];
+            
+            dataArray = [DataManager getService];
+            
             [weakSelf.tableView reloadData];
             
         }
-        
-//        NSDictionary *dic = [result objectForKey:@"content"];
         
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
@@ -101,7 +123,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     ServiceClass *class = [dataArray objectAtIndex:section];
-    return class.content.count;
+    
+    NSArray *sub = [DataManager getServiceSubForRegionId:class.pid];
+    
+    return sub.count;
 }
 
 
@@ -112,10 +137,16 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
-    ServiceClass *class = [dataArray objectAtIndex:indexPath.section];
-    NSDictionary *second = [class.content objectAtIndex:indexPath.row];
-    cell.textLabel.text = [second objectForKey:@"name"];
+    
     cell.textLabel.font = [UIFont systemFontOfSize:12];
+    
+    ServiceClass *class = [dataArray objectAtIndex:indexPath.section];
+    NSArray *sub = [DataManager getServiceSubForRegionId:class.pid];
+
+    ServiceClass *class_sub = [sub objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = class_sub.name;
+    
     return cell;
 }
 
