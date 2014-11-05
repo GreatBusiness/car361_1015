@@ -20,4 +20,6 @@
 @property(nonatomic,assign)int id;
 @property(nonatomic,retain)NSString *name;
 
+@property(nonatomic,assign)int parentId;//上一级id
+
 @end

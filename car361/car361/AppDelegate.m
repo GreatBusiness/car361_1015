@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 
+#import "Location.h"
+
 @interface AppDelegate ()
 
 @end
@@ -24,6 +26,8 @@
     [self.window setRootViewController:root];
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [[Location shareInstance] startLocation];
     
     
     self.window.backgroundColor = [UIColor whiteColor];

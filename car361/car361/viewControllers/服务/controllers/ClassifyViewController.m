@@ -190,7 +190,15 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    ServiceClass *class = [dataArray objectAtIndex:indexPath.section];
+    NSArray *sub = [DataManager getServiceSubForRegionId:class.pid];
+    
+    ServiceClass *class_sub = [sub objectAtIndex:indexPath.row];
+    
     ServiceListController *detailViewController = [[ServiceListController alloc] initWithNibName:@"ServiceListController" bundle:nil];
+    detailViewController.cid = class_sub.id;
+    detailViewController.service_sub_name = class_sub.name;
+    
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 

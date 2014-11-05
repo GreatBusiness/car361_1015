@@ -16,12 +16,19 @@
 
 #import "RegionClass.h"
 
+#import "Location.h"
+
 @interface ServiceListController ()<UITableViewDataSource,RefreshDelegate>
 {
     UIView *menu_back;//选项卡
     MenuSortView *sortView;//排序列表
     ListTable *areaTable;//地区列表
     ListTable *classTable;//服务分类列表
+    
+//    int param_cid; //服务的id
+    int param_region;//城市地区
+    int param_area;//城市下级
+    float param_square;//范围
 }
 
 @property(nonatomic,retain)RefreshTableView *table;
@@ -47,6 +54,11 @@
     [self createSortMenu];
     
     [self getServerList];
+    
+    
+    self.titleLabel.text = self.service_sub_name;
+    
+    [[self buttonForIndex:1] setTitle:self.service_sub_name forState:UIControlStateNormal];
     
     
     BOOL area_updated = [LTools cacheBoolForKey:CAR_AREA_UPDATED];
@@ -76,7 +88,7 @@
     [self.view addSubview:menu_back];
     
     CGFloat awidth = ALL_FRAME.size.width / 3.f;
-    NSArray *titles = @[@"东直门",@"汽车美容",@"默认排序"];
+    NSArray *titles = @[@"全城",@"汽车美容",@"默认排序"];
     for (int i = 0; i < 3; i ++) {
         
         UIButton *menu_btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -103,31 +115,63 @@
 {
     areaTable = [[ListTable alloc]initWithFrame:CGRectMake(0, menu_back.bottom, ALL_FRAME.size.width, ALL_FRAME.size.height - 30 - menu_back.bottom - 64) listType:List_Area];
     [self.view addSubview:areaTable];
-    [areaTable actionBlock:^(ActionType type, NSString *selectName,int selectId) {
+    [areaTable actionBlock:^(ActionType type, NSString *selectName,NSString *selectId) {
         if (type == Action_Back) {
             
-            //            self.btn.selected = NO;
+            [self refreshButtonState:0];
 
-        }else if (type == Action_Select){
-
-            NSLog(@"select %@ id %d",selectName,selectId);
         }else if (type == Action_Distance){
             
-            NSLog(@"distance %@ id %d",selectName,selectId);
+            NSLog(@"distance %@ id %@",selectName,selectId);
+        
+            param_square = [selectId intValue];
+            
+        }else if (type == Action_Area){
+            
+            NSLog(@"area %@ id %@",selectName,selectId);
+            
+            NSArray *arr = [selectId componentsSeparatedByString:@","];
+            if (arr.count > 1) {
+                
+                int subId = [[arr objectAtIndex:0]intValue];
+                int parentId = [[arr objectAtIndex:1]intValue];
+                param_region = parentId;//一级城市
+                param_area = subId;//二级
+            }
+            
+        }else if (type == Action_WholeCity){
+            
+            NSLog(@"whole %@ id %@",selectName,selectId);
+            
+            param_region = 0;//一级城市
+            param_area = 0;//二级
         }
+        
+        [[self buttonForIndex:0] setTitle:selectName forState:UIControlStateNormal];
+        
+        [self updateParam];
     }];
     
     
     classTable = [[ListTable alloc]initWithFrame:CGRectMake(0, menu_back.bottom, ALL_FRAME.size.width, ALL_FRAME.size.height - 30 - menu_back.bottom - 64) listType:List_Service];
     [self.view addSubview:classTable];
-    [classTable actionBlock:^(ActionType type, NSString *selectName,int selectId) {
+    [classTable actionBlock:^(ActionType type, NSString *selectName,NSString *selectId) {
         if (type == Action_Back) {
             
+            [self refreshButtonState:1];
             
-        }else if (type == Action_Select){
+        }else if (type == Action_Service){
             
-            NSLog(@"select %@ id %d",selectName,selectId);
+            NSLog(@"select %@ id %@",selectName,selectId);
+            
+            self.cid = [selectId intValue];
+            
+            [[self buttonForIndex:1] setTitle:selectName forState:UIControlStateNormal];
+            
+            self.titleLabel.text = selectName;
         }
+        
+        [self updateParam];
     }];
 
 }
@@ -140,12 +184,13 @@
         
         if (tag == 0) {
             
-            UIButton *btn = (UIButton *)[self.view viewWithTag:102];
-            [weakSelf clickToOpenMenu:btn];
+            [self refreshButtonState:3];
             
         }else if (tag == 1){
          
             NSLog(@"sort %@ id %d",sortName,sortId);
+            
+            [[self buttonForIndex:2] setTitle:sortName forState:UIControlStateNormal];
         }
         
     }];
@@ -153,6 +198,35 @@
 }
 
 #pragma mark - 事件处理
+
+/**
+ *  0 -- 2 获取button
+ */
+- (UIButton *)buttonForIndex:(int)index
+{
+    UIButton *btn = (UIButton *)[self.view viewWithTag:index + 100];
+    return btn;
+}
+
+- (void)updateParam
+{
+    _table.pageNum = 1;
+    _table.isReloadData = YES;
+    [self getServerList];
+}
+
+/**
+ *  更新button状态（点击底部）
+ *
+ *  @param index 0 --> 3
+ */
+
+- (void)refreshButtonState:(int)index
+{
+    UIButton *btn = (UIButton *)[self.view viewWithTag:index + 100];
+    
+    [self clickToOpenMenu:btn];
+}
 
 - (void)clickToOpenMenu:(UIButton *)sender
 {
@@ -225,16 +299,29 @@
     //http://www.car361.cn/api.php?c=service&a=showlist&city=beijing&cid=2&region=1&area=3&lng=116.27079010&lat=39.95080947&square=0.5&page=1&type=json
     
     
+    Location *loc = [Location shareInstance];
+    CLLocationCoordinate2D current = loc.currentCoor;
+    
+//    int param_cid; //服务的id
+//    int param_region;//城市地区
+//    int param_area;//城市下级
     
     NSString *city = @"beijing";
-    int cityId = 2;
-    int region = 1;
-    int area  = 3;
+    int cid = self.cid; //服务的id
+    int region = param_region;
+    int area  = param_area;
     NSString *lng = @"116.27079010";//经度
     NSString *lat = @"39.95080947";//纬度
+
+//    int cid = 2; //服务的id
+//    int region = 1;
+//    int area  = 3;
+//    NSString *lng = NSStringFromFloat(current.longitude);//经度
+//    NSString *lat = NSStringFromFloat(current.latitude);//纬度
+    
     float square = 100.0;
     
-    NSString *url = [NSString stringWithFormat:CAR_SERVICE_LIST,city,cityId,region,area,lng,lat,square,_table.pageNum];
+    NSString *url = [NSString stringWithFormat:CAR_SERVICE_LIST,city,cid,region,area,lng,lat,square,_table.pageNum];
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
         
@@ -284,12 +371,14 @@
 {
     NSLog(@"loadNewData");
     
-    
+    [self getServerList];
 }
 
 - (void)loadMoreData
 {
     NSLog(@"loadMoreData");
+    
+    [self getServerList];
     
 }
 

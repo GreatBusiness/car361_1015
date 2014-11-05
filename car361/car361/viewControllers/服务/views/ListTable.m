@@ -193,6 +193,15 @@
         weakSelf.frame = aFrame;
         
     }];
+    
+}
+
+- (void)back
+{
+    if (_aBlock) {
+        
+        _aBlock(Action_Back,@"back",0);
+    }
 }
 
 //显示或者隐藏head
@@ -270,7 +279,11 @@
                 
                 NSLog(@"选择全城");
                 
-                _aBlock(Action_Select,@"全城",999);
+                _aBlock(Action_WholeCity,@"全城",NSStringFromInt(999));
+                
+                [self showOrHidden:NO];
+                
+                [self back];
                 
                 
             }else
@@ -295,27 +308,55 @@
     }else
     {
         NSString *selectName;
-        int selectId = 0;
+        NSString *selectId;//一级和二级 用,分割
         
         if (_listType == List_Area) {
             
             RegionClass *region = [right_arr objectAtIndex:indexPath.row];
             
             selectName = region.name;
-            selectId = region.id;
+
+            int parentId = region.parentId;
+            
+            ActionType aType;
+            
+            if ([selectName hasSuffix:@"米"]) {
+                
+                selectId = NSStringFromInt(region.id);
+                aType = Action_Distance;
+                
+            }else
+            {
+                selectId = [NSString stringWithFormat:@"%d,%d",region.id,parentId];//后面是上一级id
+                aType = Action_Area;
+            }
+            
+            if (_aBlock) {
+                
+                _aBlock(aType,selectName,selectId);
+                
+//                _aBlock(Action_Area,selectName,selectId);
+            }
+            
             
         }else if (_listType == List_Service){
             
             ServiceClass *service = [right_arr objectAtIndex:indexPath.row];
             
             selectName = service.name;
-            selectId = service.id;
+            selectId = NSStringFromInt(service.id);
+            
+            
+            if (_aBlock) {
+                
+                _aBlock(Action_Service,selectName,selectId);
+            }
         }
         
-        if (_aBlock) {
-            
-            _aBlock([selectName hasSuffix:@"米"] ? Action_Distance : Action_Select,selectName,selectId);
-        }
+        
+        [self showOrHidden:NO];
+        
+        [self back];
     }
 }
 

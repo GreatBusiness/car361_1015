@@ -10,8 +10,10 @@
 
 typedef enum{
     Action_Back = 0,//收回
-    Action_Select, //选择
-    Action_Distance //距离
+    Action_Service, //选择
+    Action_Distance, //距离
+    Action_Area, //地区
+    Action_WholeCity //全城
     
 }ActionType;
 
@@ -20,7 +22,7 @@ typedef enum {
     List_Service //服务类别
 }ListType;
 
-typedef void(^ListActionBlock)(ActionType type,NSString *selectName,int selectId);
+typedef void(^ListActionBlock)(ActionType type,NSString *selectName,NSString *selectId);
 
 @interface ListTable : UIView<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,retain)UIView *headView;

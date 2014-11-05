@@ -133,7 +133,7 @@
 }
 
 //一级区域
-+ (NSArray *)getRegionSubForRegionId:(int)regionId
++ (NSArray *)getRegionSubForRegionId:(int)parentId
 {
     //打开数据库
     sqlite3 *db = [DataBase openDB];
@@ -144,7 +144,7 @@
     
     NSMutableArray *arr = [NSMutableArray array];
     
-    sqlite3_bind_int(stmt, 1, regionId);
+    sqlite3_bind_int(stmt, 1, parentId);
     
     if (result == SQLITE_OK) {
         
@@ -156,6 +156,7 @@
             RegionClass *region = [[RegionClass alloc]init];
             region.id = regionId;
             region.name = regionName;
+            region.parentId = parentId;
             
             [arr addObject:region];
         }

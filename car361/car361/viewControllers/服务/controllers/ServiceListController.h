@@ -10,4 +10,7 @@
 
 @interface ServiceListController : FBBaseViewController
 
+@property(nonatomic,assign)int cid;//服务id
+@property(nonatomic,retain)NSString *service_sub_name;//二级服务name
+
 @end

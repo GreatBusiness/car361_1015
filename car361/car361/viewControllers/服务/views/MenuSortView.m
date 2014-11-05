@@ -123,6 +123,8 @@
     if (sortBlock) {
         sortBlock(1,title,(int)indexPath.row);
     }
+    
+    [self show:NO];
 }
 
 @end
