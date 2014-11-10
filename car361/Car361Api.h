@@ -47,4 +47,7 @@ alpha:(a)]
 
 #define CAR_AREA_STREET @"http://www.car361.cn/api.php?c=service&a=getarea&type=json"
 
+//服务介绍
+#define CAR_SERVICE_INTRODUCE @"http://www.car361.cn/api.php?c=service&a=showinfo&id=2&type=json"
+
 #endif

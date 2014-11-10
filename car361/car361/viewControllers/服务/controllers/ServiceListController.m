@@ -18,6 +18,8 @@
 
 #import "Location.h"
 
+#import "ServiceDescriptionController.h"
+
 @interface ServiceListController ()<UITableViewDataSource,RefreshDelegate>
 {
     UIView *menu_back;//选项卡
@@ -384,6 +386,10 @@
 
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ServiceDescriptionController *detail = [[ServiceDescriptionController alloc]init];
+    ServiceInfoClass *info = [_table.dataArray objectAtIndex:indexPath.row];
+    detail.infoClass = info;
+    [self.navigationController pushViewController:detail animated:YES];
     
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
