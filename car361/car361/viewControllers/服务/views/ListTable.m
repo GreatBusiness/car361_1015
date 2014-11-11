@@ -39,16 +39,6 @@
         self.clipsToBounds = YES;
         
         
-        if (listType == List_Area) {
-            
-            distace_arr = [self distance];
-            left_arr = [DataManager getRegion];
-            
-        }else if (listType == List_Service){
-            
-            left_arr = [DataManager getService];
-        }
-        
         _listType = listType;
         
         if (listType == List_Area) {
@@ -71,6 +61,31 @@
         [self addSubview:_rightTable];
         _rightTable.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
         
+        
+        //初始化状态
+        
+        if (listType == List_Area) {
+            
+            left_arr = [DataManager getRegion];
+            
+            //right 显示
+            distace_arr = [self distance];
+            right_arr = distace_arr;
+            [self.rightTable reloadData];
+            
+        }else if (listType == List_Service){
+            
+            left_arr = [DataManager getService];
+            
+            ServiceClass *service = [left_arr objectAtIndex:0];
+            
+            [self reloadRightTableRegionId:service.pid];
+            
+        }
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [_leftTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [_rightTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
         
         
         [self createBottomButton];

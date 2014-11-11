@@ -73,7 +73,6 @@
     {
         [self getArea];
     }
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -147,6 +146,11 @@
             
             param_region = 0;//一级城市
             param_area = 0;//二级
+        }
+        
+        if (type == Action_Back) {
+            
+            return ;
         }
         
         [[self buttonForIndex:0] setTitle:selectName forState:UIControlStateNormal];

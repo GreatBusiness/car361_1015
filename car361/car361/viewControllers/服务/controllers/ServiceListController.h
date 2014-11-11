@@ -8,6 +8,13 @@
 
 #import "FBBaseViewController.h"
 
+typedef enum {
+    
+    list_business = 0,
+    list_other
+    
+}List_Type;
+
 @interface ServiceListController : FBBaseViewController
 
 @property(nonatomic,assign)int cid;//服务id

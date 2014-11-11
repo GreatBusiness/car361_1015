@@ -9,6 +9,7 @@
 #import "ServiceViewController.h"
 #import "ClassifyViewController.h"
 #import "AppDelegate.h"
+#import "ServiceListController.h"
 
 @interface ServiceViewController ()
 {
@@ -50,7 +51,7 @@
     mainView.backgroundColor = [UIColor clearColor];
     mainView.center = CGPointMake(160, ((iPhone5 ? 568 : 480) - 44 -49) / 2.f);
     
-    NSArray *titles = @[@"洗车",@"贴膜",@"美容",@"更多"];
+    NSArray *titles = @[@"洗车",@"贴膜",@"打蜡",@"更多"];
     
     for (int i = 0; i < 4; i ++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -101,7 +102,44 @@
         ClassifyViewController *class = [[ClassifyViewController alloc]init];
         class.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:class animated:YES];
+        
+        return;
     }
+    
+    int cid;
+    NSString *service_subName;
+    switch (sender.tag) {
+        case 100:
+        {
+            //@"洗车"
+            cid = 1;
+            service_subName = @"洗车";
+        }
+            break;
+        case 101:
+        {
+            //@"贴膜"
+            cid = 10;
+            service_subName = @"贴膜";
+        }
+            break;
+        case 102:
+        {
+            //@"打蜡
+            cid = 2;
+            service_subName = @"打蜡";
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    ServiceListController *detailViewController = [[ServiceListController alloc] initWithNibName:@"ServiceListController" bundle:nil];
+    detailViewController.hidesBottomBarWhenPushed = YES;
+    detailViewController.cid = cid;
+    detailViewController.service_sub_name = service_subName;
+    [self.navigationController pushViewController:detailViewController animated:YES];
     
 }
 

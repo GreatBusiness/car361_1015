@@ -15,6 +15,8 @@
 #import "CarHeader.h"
 #import "AppDelegate.h"
 
+#import "ServiceListController.h"
+
 @interface RootViewController ()
 {
     
@@ -42,7 +44,11 @@
 {
     ServiceViewController * rootVC = [[ServiceViewController alloc] init];
     
-    BusinessViewController * fabuCarVC = [[BusinessViewController alloc] init];
+    ServiceListController * fabuCarVC = [[ServiceListController alloc] init];
+    
+    //默认汽车美容--洗车
+    fabuCarVC.cid = 1;
+    fabuCarVC.service_sub_name = @"洗车";
     
     MiddleViewController * searchCarVC = [[MiddleViewController alloc] init];
     
