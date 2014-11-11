@@ -94,13 +94,13 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify2];
         
         web = [[UIWebView alloc]init];
-        web.backgroundColor = [UIColor orangeColor];
+        web.backgroundColor = [UIColor whiteColor];
         web.tag = 1000;
         [cell.contentView addSubview:web];
 //        web.scalesPageToFit = YES;
     }
     
-    web.frame = CGRectMake(0, 0, ALL_FRAME.size.width, ALL_FRAME.size.height - 35 - 140 - 44);
+    web.frame = CGRectMake(0, 0, ALL_FRAME.size.width, ALL_FRAME.size.height - 35 - 95 - 44);
     [web loadHTMLString:content baseURL:nil];
     
     return cell;
@@ -116,9 +116,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 140.f;
+        return 95.f;
     }
-    return ALL_FRAME.size.height - 35 - 140 - 44;
+    return ALL_FRAME.size.height - 35 - 95 - 44;
 }
 
 @end

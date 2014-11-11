@@ -97,6 +97,9 @@
                 shopInfo.view.frame = CGRectMake(0, aFrameY, self.view.frame.size.width, self.view.frame.size.height-35);
                 [self.view addSubview:shopInfo.view];
             }
+            
+            shopInfo.infoClass = self.infoClass;
+            
             [self controlViewController:shopInfo];
 
             

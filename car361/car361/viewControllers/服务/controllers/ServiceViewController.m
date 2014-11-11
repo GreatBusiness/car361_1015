@@ -29,6 +29,7 @@
     self.titleLabel.text = @"服务";
     
     [self createCoverView];
+    
     [self createBackView];
     
     [self  createMainMenu];

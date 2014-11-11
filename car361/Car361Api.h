@@ -50,4 +50,10 @@ alpha:(a)]
 //服务介绍
 #define CAR_SERVICE_INTRODUCE @"http://www.car361.cn/api.php?c=service&a=showinfo&id=2&type=json"
 
+//商家介绍
+#define CAR_SHOP_INTRODUCE @"http://www.car361.cn/api.php?c=serviceshop&a=showinfo&shopid=2&type=json"
+
+//商家服务
+#define CAR_SHOP_SERVICE @"http://www.car361.cn/api.php?c=serviceshop&a=showservice&shopid=2&type=json"
+
 #endif

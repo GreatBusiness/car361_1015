@@ -2,15 +2,16 @@
 //  ShopIntroduceController.h
 //  car361
 //
-//  Created by lichaowei on 14/11/10.
+//  Created by lichaowei on 14/11/11.
 //  Copyright (c) 2014年 lcw. All rights reserved.
 //
 
-#import "FBBaseViewController.h"
+#import <UIKit/UIKit.h>
 
-/**
- *  商家介绍
- */
-@interface ShopIntroduceController : FBBaseViewController
+#import "ServiceInfoClass.h"
+
+@interface ShopIntroduceController : UITableViewController
+
+@property(nonatomic,retain)ServiceInfoClass *infoClass;
 
 @end

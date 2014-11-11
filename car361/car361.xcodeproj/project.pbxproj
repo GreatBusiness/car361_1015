@@ -17,6 +17,17 @@
 		132CE11019EEC3AA00C87D2B /* LRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CE10F19EEC3AA00C87D2B /* LRefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		132CE11719EECC6200C87D2B /* navigation_backGroud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 132CE11519EECC6200C87D2B /* navigation_backGroud@2x.png */; };
 		132CE11819EECC6200C87D2B /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 132CE11619EECC6200C87D2B /* back@2x.png */; };
+		134CFD271A123E000035B0CE /* ShopIntroduceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 134CFD251A123E000035B0CE /* ShopIntroduceCell.m */; };
+		134CFD281A123E000035B0CE /* ShopIntroduceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134CFD261A123E000035B0CE /* ShopIntroduceCell.xib */; };
+		134CFD2C1A1241780035B0CE /* ShopIntroduceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 134CFD2A1A1241780035B0CE /* ShopIntroduceController.m */; };
+		134CFD2D1A1241780035B0CE /* ShopIntroduceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134CFD2B1A1241780035B0CE /* ShopIntroduceController.xib */; };
+		134CFD311A1242E10035B0CE /* ShopServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 134CFD2F1A1242E10035B0CE /* ShopServiceController.m */; };
+		134CFD321A1242E10035B0CE /* ShopServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134CFD301A1242E10035B0CE /* ShopServiceController.xib */; };
+		134CFD361A1243920035B0CE /* ShopServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 134CFD341A1243920035B0CE /* ShopServiceCell.m */; };
+		134CFD371A1243920035B0CE /* ShopServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134CFD351A1243920035B0CE /* ShopServiceCell.xib */; };
+		134CFD3A1A1246DB0035B0CE /* ShopServiceClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 134CFD391A1246DB0035B0CE /* ShopServiceClass.m */; };
+		134CFD3E1A1249870035B0CE /* CommentInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 134CFD3C1A1249870035B0CE /* CommentInputCell.m */; };
+		134CFD3F1A1249870035B0CE /* CommentInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134CFD3D1A1249870035B0CE /* CommentInputCell.xib */; };
 		136BFB991A07D11D00EF453F /* ServiceInfoClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 136BFB981A07D11D00EF453F /* ServiceInfoClass.m */; };
 		136BFB9C1A07E32100EF453F /* RegionClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 136BFB9B1A07E32100EF453F /* RegionClass.m */; };
 		136BFBA01A07E87800EF453F /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 136BFB9F1A07E87800EF453F /* DataBase.m */; };
@@ -63,7 +74,7 @@
 		138BD00719ED716B00575692 /* fuwu_jieshao_navbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFE219ED716B00575692 /* fuwu_jieshao_navbg.png */; };
 		138BD00819ED716B00575692 /* fuwu_jieshao_rightico@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFE319ED716B00575692 /* fuwu_jieshao_rightico@2x.png */; };
 		138BD00919ED716B00575692 /* fuwu_pingjia_defaulatheader.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFE419ED716B00575692 /* fuwu_pingjia_defaulatheader.png */; };
-		138BD00A19ED716B00575692 /* fuwu_pingjia_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFE519ED716B00575692 /* fuwu_pingjia_star.png */; };
+		138BD00A19ED716B00575692 /* fuwu_pingjia_star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFE519ED716B00575692 /* fuwu_pingjia_star@2x.png */; };
 		138BD00B19ED716B00575692 /* fuwu_pingjia_starblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFE619ED716B00575692 /* fuwu_pingjia_starblue.png */; };
 		138BD00C19ED716B00575692 /* fuwu_pingjia_xuxian.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFE719ED716B00575692 /* fuwu_pingjia_xuxian.png */; };
 		138BD00E19ED716B00575692 /* gengduo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138BCFE919ED716B00575692 /* gengduo@2x.png */; };
@@ -92,10 +103,6 @@
 		138D6A4A1A0A135300420DD8 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 138D6A491A0A135300420DD8 /* Location.m */; };
 		13925FFF1A10F21D0093758E /* ServiceDescriptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13925FFD1A10F21D0093758E /* ServiceDescriptionController.m */; };
 		139260001A10F21D0093758E /* ServiceDescriptionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13925FFE1A10F21D0093758E /* ServiceDescriptionController.xib */; };
-		1392600F1A10F5C40093758E /* ShopIntroduceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1392600D1A10F5C40093758E /* ShopIntroduceController.m */; };
-		139260101A10F5C40093758E /* ShopIntroduceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1392600E1A10F5C40093758E /* ShopIntroduceController.xib */; };
-		139260141A10F5ED0093758E /* ShopServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139260121A10F5ED0093758E /* ShopServiceController.m */; };
-		139260151A10F5ED0093758E /* ShopServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139260131A10F5ED0093758E /* ShopServiceController.xib */; };
 		139260191A10F61D0093758E /* UserCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139260171A10F61D0093758E /* UserCommentController.m */; };
 		1392601A1A10F61D0093758E /* UserCommentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139260181A10F61D0093758E /* UserCommentController.xib */; };
 		1392601E1A110CB70093758E /* ServiceIntroduceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1392601C1A110CB70093758E /* ServiceIntroduceController.m */; };
@@ -191,6 +198,23 @@
 		132CE11219EEC74D00C87D2B /* Car361Api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Car361Api.h; sourceTree = "<group>"; };
 		132CE11519EECC6200C87D2B /* navigation_backGroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_backGroud@2x.png"; sourceTree = "<group>"; };
 		132CE11619EECC6200C87D2B /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		134CFD241A123E000035B0CE /* ShopIntroduceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopIntroduceCell.h; sourceTree = "<group>"; };
+		134CFD251A123E000035B0CE /* ShopIntroduceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopIntroduceCell.m; sourceTree = "<group>"; };
+		134CFD261A123E000035B0CE /* ShopIntroduceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopIntroduceCell.xib; sourceTree = "<group>"; };
+		134CFD291A1241780035B0CE /* ShopIntroduceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopIntroduceController.h; sourceTree = "<group>"; };
+		134CFD2A1A1241780035B0CE /* ShopIntroduceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopIntroduceController.m; sourceTree = "<group>"; };
+		134CFD2B1A1241780035B0CE /* ShopIntroduceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopIntroduceController.xib; sourceTree = "<group>"; };
+		134CFD2E1A1242E10035B0CE /* ShopServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopServiceController.h; sourceTree = "<group>"; };
+		134CFD2F1A1242E10035B0CE /* ShopServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopServiceController.m; sourceTree = "<group>"; };
+		134CFD301A1242E10035B0CE /* ShopServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopServiceController.xib; sourceTree = "<group>"; };
+		134CFD331A1243920035B0CE /* ShopServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopServiceCell.h; sourceTree = "<group>"; };
+		134CFD341A1243920035B0CE /* ShopServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopServiceCell.m; sourceTree = "<group>"; };
+		134CFD351A1243920035B0CE /* ShopServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopServiceCell.xib; sourceTree = "<group>"; };
+		134CFD381A1246DB0035B0CE /* ShopServiceClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopServiceClass.h; sourceTree = SOURCE_ROOT; };
+		134CFD391A1246DB0035B0CE /* ShopServiceClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopServiceClass.m; sourceTree = SOURCE_ROOT; };
+		134CFD3B1A1249870035B0CE /* CommentInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInputCell.h; sourceTree = "<group>"; };
+		134CFD3C1A1249870035B0CE /* CommentInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentInputCell.m; sourceTree = "<group>"; };
+		134CFD3D1A1249870035B0CE /* CommentInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentInputCell.xib; sourceTree = "<group>"; };
 		136BFB971A07D11D00EF453F /* ServiceInfoClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoClass.h; sourceTree = SOURCE_ROOT; };
 		136BFB981A07D11D00EF453F /* ServiceInfoClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoClass.m; sourceTree = SOURCE_ROOT; };
 		136BFB9A1A07E32100EF453F /* RegionClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionClass.h; sourceTree = SOURCE_ROOT; };
@@ -262,7 +286,7 @@
 		138BCFE219ED716B00575692 /* fuwu_jieshao_navbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fuwu_jieshao_navbg.png; sourceTree = "<group>"; };
 		138BCFE319ED716B00575692 /* fuwu_jieshao_rightico@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fuwu_jieshao_rightico@2x.png"; sourceTree = "<group>"; };
 		138BCFE419ED716B00575692 /* fuwu_pingjia_defaulatheader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fuwu_pingjia_defaulatheader.png; sourceTree = "<group>"; };
-		138BCFE519ED716B00575692 /* fuwu_pingjia_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fuwu_pingjia_star.png; sourceTree = "<group>"; };
+		138BCFE519ED716B00575692 /* fuwu_pingjia_star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fuwu_pingjia_star@2x.png"; sourceTree = "<group>"; };
 		138BCFE619ED716B00575692 /* fuwu_pingjia_starblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fuwu_pingjia_starblue.png; sourceTree = "<group>"; };
 		138BCFE719ED716B00575692 /* fuwu_pingjia_xuxian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fuwu_pingjia_xuxian.png; sourceTree = "<group>"; };
 		138BCFE919ED716B00575692 /* gengduo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gengduo@2x.png"; sourceTree = "<group>"; };
@@ -295,12 +319,6 @@
 		13925FFC1A10F21D0093758E /* ServiceDescriptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDescriptionController.h; sourceTree = "<group>"; };
 		13925FFD1A10F21D0093758E /* ServiceDescriptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDescriptionController.m; sourceTree = "<group>"; };
 		13925FFE1A10F21D0093758E /* ServiceDescriptionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceDescriptionController.xib; sourceTree = "<group>"; };
-		1392600C1A10F5C40093758E /* ShopIntroduceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopIntroduceController.h; sourceTree = "<group>"; };
-		1392600D1A10F5C40093758E /* ShopIntroduceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopIntroduceController.m; sourceTree = "<group>"; };
-		1392600E1A10F5C40093758E /* ShopIntroduceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopIntroduceController.xib; sourceTree = "<group>"; };
-		139260111A10F5ED0093758E /* ShopServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopServiceController.h; sourceTree = "<group>"; };
-		139260121A10F5ED0093758E /* ShopServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopServiceController.m; sourceTree = "<group>"; };
-		139260131A10F5ED0093758E /* ShopServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopServiceController.xib; sourceTree = "<group>"; };
 		139260161A10F61D0093758E /* UserCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentController.h; sourceTree = "<group>"; };
 		139260171A10F61D0093758E /* UserCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommentController.m; sourceTree = "<group>"; };
 		139260181A10F61D0093758E /* UserCommentController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCommentController.xib; sourceTree = "<group>"; };
@@ -434,6 +452,15 @@
 				139260201A110D680093758E /* IntroduceCell.h */,
 				139260211A110D680093758E /* IntroduceCell.m */,
 				139260221A110D680093758E /* IntroduceCell.xib */,
+				134CFD241A123E000035B0CE /* ShopIntroduceCell.h */,
+				134CFD251A123E000035B0CE /* ShopIntroduceCell.m */,
+				134CFD261A123E000035B0CE /* ShopIntroduceCell.xib */,
+				134CFD331A1243920035B0CE /* ShopServiceCell.h */,
+				134CFD341A1243920035B0CE /* ShopServiceCell.m */,
+				134CFD351A1243920035B0CE /* ShopServiceCell.xib */,
+				134CFD3B1A1249870035B0CE /* CommentInputCell.h */,
+				134CFD3C1A1249870035B0CE /* CommentInputCell.m */,
+				134CFD3D1A1249870035B0CE /* CommentInputCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -805,6 +832,8 @@
 				136BFB981A07D11D00EF453F /* ServiceInfoClass.m */,
 				136BFB9A1A07E32100EF453F /* RegionClass.h */,
 				136BFB9B1A07E32100EF453F /* RegionClass.m */,
+				134CFD381A1246DB0035B0CE /* ShopServiceClass.h */,
+				134CFD391A1246DB0035B0CE /* ShopServiceClass.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -841,7 +870,7 @@
 				138BCFE219ED716B00575692 /* fuwu_jieshao_navbg.png */,
 				138BCFE319ED716B00575692 /* fuwu_jieshao_rightico@2x.png */,
 				138BCFE419ED716B00575692 /* fuwu_pingjia_defaulatheader.png */,
-				138BCFE519ED716B00575692 /* fuwu_pingjia_star.png */,
+				138BCFE519ED716B00575692 /* fuwu_pingjia_star@2x.png */,
 				138BCFE619ED716B00575692 /* fuwu_pingjia_starblue.png */,
 				138BCFE719ED716B00575692 /* fuwu_pingjia_xuxian.png */,
 				138BCFE919ED716B00575692 /* gengduo@2x.png */,
@@ -886,12 +915,12 @@
 				1392601B1A110CB70093758E /* ServiceIntroduceController.h */,
 				1392601C1A110CB70093758E /* ServiceIntroduceController.m */,
 				1392601D1A110CB70093758E /* ServiceIntroduceController.xib */,
-				1392600C1A10F5C40093758E /* ShopIntroduceController.h */,
-				1392600D1A10F5C40093758E /* ShopIntroduceController.m */,
-				1392600E1A10F5C40093758E /* ShopIntroduceController.xib */,
-				139260111A10F5ED0093758E /* ShopServiceController.h */,
-				139260121A10F5ED0093758E /* ShopServiceController.m */,
-				139260131A10F5ED0093758E /* ShopServiceController.xib */,
+				134CFD291A1241780035B0CE /* ShopIntroduceController.h */,
+				134CFD2A1A1241780035B0CE /* ShopIntroduceController.m */,
+				134CFD2B1A1241780035B0CE /* ShopIntroduceController.xib */,
+				134CFD2E1A1242E10035B0CE /* ShopServiceController.h */,
+				134CFD2F1A1242E10035B0CE /* ShopServiceController.m */,
+				134CFD301A1242E10035B0CE /* ShopServiceController.xib */,
 				139260161A10F61D0093758E /* UserCommentController.h */,
 				139260171A10F61D0093758E /* UserCommentController.m */,
 				139260181A10F61D0093758E /* UserCommentController.xib */,
@@ -1073,6 +1102,7 @@
 				138BD00619ED716B00575692 /* fuwu_jieshao_nav_activebg.png in Resources */,
 				194011C719F102F90065053D /* nav_btn_bg_lighted@2x.png in Resources */,
 				194011C819F102F90065053D /* send@2x.png in Resources */,
+				134CFD371A1243920035B0CE /* ShopServiceCell.xib in Resources */,
 				138BD00819ED716B00575692 /* fuwu_jieshao_rightico@2x.png in Resources */,
 				194011C519F102F90065053D /* nav_btn_bg.png in Resources */,
 				138BD02619ED729B00575692 /* gengduohover@2x.png in Resources */,
@@ -1084,7 +1114,6 @@
 				138BD01619ED716B00575692 /* img01.png in Resources */,
 				138BCFFC19ED716B00575692 /* changshi@2x.png in Resources */,
 				194011BB19F102F90065053D /* item_ok@2x.png in Resources */,
-				139260101A10F5C40093758E /* ShopIntroduceController.xib in Resources */,
 				194011C319F102F90065053D /* nav_bar_bg@2x.png in Resources */,
 				132CE11719EECC6200C87D2B /* navigation_backGroud@2x.png in Resources */,
 				131108FA19F176250068356B /* fuwu_sort_bottom@2x.png in Resources */,
@@ -1095,7 +1124,6 @@
 				138BD00C19ED716B00575692 /* fuwu_pingjia_xuxian.png in Resources */,
 				1392601F1A110CB70093758E /* ServiceIntroduceController.xib in Resources */,
 				138BD01719ED716B00575692 /* img02.png in Resources */,
-				139260151A10F5ED0093758E /* ShopServiceController.xib in Resources */,
 				1923C19419F75C5D00BF0DCD /* bt_star_a@2x.png in Resources */,
 				138BCF2B19ED630D00575692 /* LaunchScreen.xib in Resources */,
 				138BD01119ED716B00575692 /* gengduo_shouye_jiantou@2x.png in Resources */,
@@ -1110,6 +1138,7 @@
 				138BCF7819ED6F4000575692 /* BusinessViewController.xib in Resources */,
 				1923C19319F75C5D00BF0DCD /* bt_star_a.png in Resources */,
 				194011B519F102F90065053D /* blueArrow.png in Resources */,
+				134CFD281A123E000035B0CE /* ShopIntroduceCell.xib in Resources */,
 				138BD00019ED716B00575692 /* dibiao_putong@2x.png in Resources */,
 				194011B619F102F90065053D /* blueArrow@2x.png in Resources */,
 				138BCF7D19ED6F5900575692 /* CommonViewController.xib in Resources */,
@@ -1119,17 +1148,19 @@
 				132CE11819EECC6200C87D2B /* back@2x.png in Resources */,
 				194011B719F102F90065053D /* icon_rightArrow@2x.png in Resources */,
 				138BD01D19ED716B00575692 /* youhui@2x.png in Resources */,
+				134CFD3F1A1249870035B0CE /* CommentInputCell.xib in Resources */,
 				138BD03419ED76B500575692 /* tabbar_selected@2x.png in Resources */,
 				138BCF2819ED630D00575692 /* Images.xcassets in Resources */,
 				194011D019F102F90065053D /* UMFeedbackViewController.xib in Resources */,
 				138BCF6E19ED6EC500575692 /* ServiceViewController.xib in Resources */,
+				134CFD321A1242E10035B0CE /* ShopServiceController.xib in Resources */,
 				138BD02719ED729B00575692 /* shangjiahover@2x.png in Resources */,
 				1923C19619F75C5D00BF0DCD /* bt_star_b@2x.png in Resources */,
 				138BD01C19ED716B00575692 /* Thumbs.db in Resources */,
 				138BCF6819ED6D6600575692 /* RootViewController.xib in Resources */,
 				138BD00419ED716B00575692 /* fuwu_jieshao_biaogeright.png in Resources */,
 				138BD01019ED716B00575692 /* gengduo_shouye_anniu.png in Resources */,
-				138BD00A19ED716B00575692 /* fuwu_pingjia_star.png in Resources */,
+				138BD00A19ED716B00575692 /* fuwu_pingjia_star@2x.png in Resources */,
 				138BD01819ED716B00575692 /* menu.png in Resources */,
 				194011C619F102F90065053D /* nav_btn_bg@2x.png in Resources */,
 				138BCFFB19ED716B00575692 /* body_bg.png in Resources */,
@@ -1152,6 +1183,7 @@
 				138BCFFF19ED716B00575692 /* dibiao_fujin@2x.png in Resources */,
 				138BD00319ED716B00575692 /* fuwu_botimg@2x.png in Resources */,
 				194011B419F102F90065053D /* background@2x.png in Resources */,
+				134CFD2D1A1241780035B0CE /* ShopIntroduceController.xib in Resources */,
 				138BD00319ED716B00575692 /* fuwu_botimg@2x.png in Resources */,
 				194011C119F102F90065053D /* messages_toolbar_background.png in Resources */,
 				138BD01319ED716B00575692 /* horn.png in Resources */,
@@ -1215,7 +1247,6 @@
 				13925FFF1A10F21D0093758E /* ServiceDescriptionController.m in Sources */,
 				194011CE19F102F90065053D /* UMFeedbackTableViewCellRight.m in Sources */,
 				19D1384419F2630800819360 /* ShangjiajieshaoView.m in Sources */,
-				1392600F1A10F5C40093758E /* ShopIntroduceController.m in Sources */,
 				138BCF7719ED6F4000575692 /* BusinessViewController.m in Sources */,
 				1311090119F179310068356B /* MenuCell.m in Sources */,
 				13FAFBD019F02F030064FC8F /* SzkLoadData.m in Sources */,
@@ -1225,6 +1256,8 @@
 				19C49C2A19F00A9D0090F00E /* ChangshiModel.m in Sources */,
 				194011CB19F102F90065053D /* UMContactViewController.m in Sources */,
 				136BFB9C1A07E32100EF453F /* RegionClass.m in Sources */,
+				134CFD3A1A1246DB0035B0CE /* ShopServiceClass.m in Sources */,
+				134CFD361A1243920035B0CE /* ShopServiceCell.m in Sources */,
 				138BCF8619ED70B900575692 /* MiddleViewController.m in Sources */,
 				19D1383B19F161AD00819360 /* ShangjiafuwuModel.m in Sources */,
 				138BCF2019ED630D00575692 /* AppDelegate.m in Sources */,
@@ -1232,6 +1265,7 @@
 				194011CF19F102F90065053D /* UMFeedbackViewController.m in Sources */,
 				1923C19919F75CA400BF0DCD /* RatingBar.m in Sources */,
 				13753DDB19EEBE2B00F6179E /* LNineImagesView.m in Sources */,
+				134CFD2C1A1241780035B0CE /* ShopIntroduceController.m in Sources */,
 				194011CD19F102F90065053D /* UMFeedbackTableViewCellLeft.m in Sources */,
 				138D6A4A1A0A135300420DD8 /* Location.m in Sources */,
 				19A993ED19F5476700EDC777 /* shangjiafuwuTableViewCell.m in Sources */,
@@ -1239,13 +1273,13 @@
 				138BD02F19ED738D00575692 /* UIColor+ConvertColor.m in Sources */,
 				138BCF1D19ED630D00575692 /* main.m in Sources */,
 				13753DDD19EEBE2B00F6179E /* LSecionView.m in Sources */,
+				134CFD311A1242E10035B0CE /* ShopServiceController.m in Sources */,
 				19C49C3019F012A40090F00E /* ChangshiTableViewCell.m in Sources */,
 				131108F219F15B3D0068356B /* ServiceListController.m in Sources */,
 				19A993F019F560EC00EDC777 /* UserCommentModel.m in Sources */,
 				136BFB991A07D11D00EF453F /* ServiceInfoClass.m in Sources */,
 				136BFBA41A07E8E300EF453F /* DataManager.m in Sources */,
 				19C49C3619F025170090F00E /* ChangshiDetailViewController.m in Sources */,
-				139260141A10F5ED0093758E /* ShopServiceController.m in Sources */,
 				138BCF6719ED6D6600575692 /* RootViewController.m in Sources */,
 				19D1383219F15E4700819360 /* BusinessDetailViewController.m in Sources */,
 				13753DD619EEBE2B00F6179E /* LActionSheet.m in Sources */,
@@ -1259,6 +1293,7 @@
 				13753DDC19EEBE2B00F6179E /* LSearchView.m in Sources */,
 				139FA6DB1A061DF300A52786 /* ServiceCell.m in Sources */,
 				19D1383519F1614800819360 /* FuwujieshaoModel.m in Sources */,
+				134CFD3E1A1249870035B0CE /* CommentInputCell.m in Sources */,
 				132CE11019EEC3AA00C87D2B /* LRefreshTableHeaderView.m in Sources */,
 				138BD03019ED738D00575692 /* UIView+Frame.m in Sources */,
 				19D1383E19F1697E00819360 /* FuwujieshaoView.m in Sources */,
@@ -1267,6 +1302,7 @@
 				1392601E1A110CB70093758E /* ServiceIntroduceController.m in Sources */,
 				19D1384119F1702100819360 /* fuwujieshaoTableViewCell.m in Sources */,
 				132CE10D19EEC39400C87D2B /* RefreshTableView.m in Sources */,
+				134CFD271A123E000035B0CE /* ShopIntroduceCell.m in Sources */,
 				19D1383819F1618B00819360 /* ShangjiaJieShaoModel.m in Sources */,
 				13753DE219EEBEA400F6179E /* LTools.m in Sources */,
 				13FAFBC619F027C10064FC8F /* BaseModel.m in Sources */,
