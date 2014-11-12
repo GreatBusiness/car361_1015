@@ -35,15 +35,13 @@
     UITableView *secondTab;
     
     int currentpage;
-
-    
-    
-    
-    
     
 }
 
-@property(nonatomic,strong)NSString *stringId;
+//@property(nonatomic,strong)NSString *stringId;
+
+@property(nonatomic,strong)NSString *infoId;//信息id
+@property(nonatomic,strong)NSString *shopId;//商家id
 
 @property(nonatomic,strong)UITableView *fuwujieshaoTabVC;
 

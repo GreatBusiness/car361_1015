@@ -77,9 +77,11 @@
             
             left_arr = [DataManager getService];
             
-            ServiceClass *service = [left_arr objectAtIndex:0];
-            
-            [self reloadRightTableRegionId:service.pid];
+            if (left_arr.count > 0) {
+                ServiceClass *service = [left_arr objectAtIndex:0];
+                
+                [self reloadRightTableRegionId:service.pid];
+            }
             
         }
         

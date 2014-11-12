@@ -20,6 +20,8 @@
 
 #import "ServiceDescriptionController.h"
 
+#import "BusinessDetailViewController.h"
+
 @interface ServiceListController ()<UITableViewDataSource,RefreshDelegate>
 {
     UIView *menu_back;//选项卡
@@ -31,6 +33,8 @@
     int param_region;//城市地区
     int param_area;//城市下级
     float param_square;//范围
+    
+    NSString *sortStyle;//price 价格；score 评分；trade 人数
 }
 
 @property(nonatomic,retain)RefreshTableView *table;
@@ -89,7 +93,7 @@
     [self.view addSubview:menu_back];
     
     CGFloat awidth = ALL_FRAME.size.width / 3.f;
-    NSArray *titles = @[@"全城",@"汽车美容",@"默认排序"];
+    NSArray *titles = @[@"全城",@"汽车美容",@"默认"];
     for (int i = 0; i < 3; i ++) {
         
         UIButton *menu_btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -103,8 +107,8 @@
         [menu_btn setTitleColor:[UIColor colorWithHexString:@"515151"] forState:UIControlStateNormal];
         [menu_btn setTitleColor:[UIColor colorWithHexString:@"54ad13"] forState:UIControlStateSelected];
         
-        [menu_btn setTitleEdgeInsets:UIEdgeInsetsMake(0, - 5, 0, 0)];
-        [menu_btn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0,  - awidth - 50 + 30)];
+        [menu_btn setTitleEdgeInsets:UIEdgeInsetsMake(0, - 5 - 5, 0, 0)];
+        [menu_btn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0,  - awidth - 50 + 30 + 10)];
         
         menu_btn.tag = 100 + i;
         
@@ -185,22 +189,61 @@
 - (void)createSortMenu
 {
     __weak typeof(self)weakSelf = self;
-    NSArray *titles = @[@"默认排序",@"距离最近",@"价格由小到大",@"价格由大到小",@"选择人数",@"评价最高",@"最近发布"];
+//    NSArray *titles = @[@"默认排序",@"距离最近",@"价格由小到大",@"价格由大到小",@"选择人数",@"评价最高",@"最近发布"];
+    
+    NSArray *titles = @[@"默认",@"价格",@"评分",@"人数"];
+    
     sortView = [[MenuSortView alloc]initWithFrame:CGRectMake(0, menu_back.bottom, ALL_FRAME.size.width, 0) titles:titles sortBlock:^(int tag, NSString *sortName, int sortId) {
         
         if (tag == 0) {
             
-            [self refreshButtonState:3];
+            [weakSelf refreshButtonState:2];
             
         }else if (tag == 1){
          
             NSLog(@"sort %@ id %d",sortName,sortId);
             
-            [[self buttonForIndex:2] setTitle:sortName forState:UIControlStateNormal];
+            [[weakSelf buttonForIndex:2] setTitle:sortName forState:UIControlStateNormal];
+            
+            [weakSelf sortStyle:sortId];
+            
+            [weakSelf updateParam];
         }
         
     }];
     [self.view addSubview:sortView];
+}
+
+//排序方式
+- (void)sortStyle:(int)sortId
+{
+    //price 价格；score 评分；trade 人数
+    
+    switch (sortId) {
+        case 0:
+        {
+            sortStyle = @"";
+        }
+            break;
+        case 1:
+        {
+            sortStyle = @"price";
+        }
+            break;
+        case 2:
+        {
+            sortStyle = @"score";
+        }
+            break;
+        case 3:
+        {
+            sortStyle = @"trade";
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - 事件处理
@@ -318,7 +361,9 @@
     int area  = param_area;
     NSString *lng = @"116.27079010";//经度
     NSString *lat = @"39.95080947";//纬度
-
+    
+    
+    
 //    int cid = 2; //服务的id
 //    int region = 1;
 //    int area  = 3;
@@ -327,7 +372,7 @@
     
     float square = 100.0;
     
-    NSString *url = [NSString stringWithFormat:CAR_SERVICE_LIST,city,cid,region,area,lng,lat,square,_table.pageNum];
+    NSString *url = [NSString stringWithFormat:CAR_SERVICE_LIST,city,cid,region,area,lng,lat,square,_table.pageNum,sortStyle];
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
         
@@ -390,9 +435,16 @@
 
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ServiceDescriptionController *detail = [[ServiceDescriptionController alloc]init];
+//    ServiceDescriptionController *detail = [[ServiceDescriptionController alloc]init];
+//    ServiceInfoClass *info = [_table.dataArray objectAtIndex:indexPath.row];
+//    detail.infoClass = info;
+//    [self.navigationController pushViewController:detail animated:YES];
+    
+    BusinessDetailViewController *detail = [[BusinessDetailViewController alloc]init];
     ServiceInfoClass *info = [_table.dataArray objectAtIndex:indexPath.row];
-    detail.infoClass = info;
+    detail.shopId = info.shopid;
+    detail.infoId = info.infoid;
+    detail.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detail animated:YES];
     
 }

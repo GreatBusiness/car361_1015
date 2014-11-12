@@ -34,6 +34,8 @@
 
 @property(nonatomic,strong)RTLabel *contentWebview;
 
+@property(nonatomic,strong)UIWebView *web;
+
 @property(nonatomic,strong)FuwujieshaoModel *myModel;
 
 

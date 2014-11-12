@@ -139,7 +139,7 @@
 #pragma mark-用户评价的view
 
 -(void)setUseCommentView{
-    secondTab=[[UITableView alloc]initWithFrame:CGRectMake(3*ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height-30)];
+    secondTab=[[UITableView alloc]initWithFrame:CGRectMake(3 * ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height-30 - 44)];
     [mainScroV addSubview:secondTab];
     secondTab.delegate=self;
     secondTab.dataSource=self;
@@ -177,7 +177,12 @@
         }
         
     }
-    UIButton *button=[LTools createButtonWithType:UIButtonTypeRoundedRect frame:CGRectMake(60, 110, 40, 30) normalTitle:@"提交" image:nil backgroudImage:nil superView:headerView target:self action:@selector(dotheCommitButton:)];
+    UIButton *button=[LTools createButtonWithType:UIButtonTypeRoundedRect frame:CGRectMake(60, 115, 55, 16) normalTitle:@"提交" image:nil backgroudImage:nil superView:headerView target:self action:@selector(dotheCommitButton:)];
+    
+    button.layer.cornerRadius = 5.f;
+    [button setBackgroundColor:RGBCOLOR(252, 100, 0)];
+    [button.titleLabel setFont:[UIFont systemFontOfSize:10]];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     RatingBar *bar = [[RatingBar alloc] initWithFrame:CGRectMake(27, 5, 180, 20) theBloc:^(NSInteger theRateNumber) {
         
@@ -189,7 +194,9 @@
     bar.backgroundColor=[UIColor clearColor];
     [headerView addSubview:bar];
     
-    
+    UIView *viewline=[[UIView alloc]initWithFrame:CGRectMake(0, 140 - 0.5, ALL_FRAME_WIDTH, 0.5)];
+    viewline.backgroundColor=RGBCOLOR(230, 230, 230);
+    [headerView addSubview:viewline];
     
     
     secondTab.tableHeaderView=headerView;
@@ -330,8 +337,9 @@
     
     SzkLoadData *loaddata=[[SzkLoadData alloc]init];
     
+    NSString *url = [NSString stringWithFormat:CAR_SERVICE_INTRODUCE,self.infoId];
     
-    [loaddata SeturlStr:@"http://www.car361.cn/api.php?c=service&a=showinfo&id=2&type=json" mytest:^(NSDictionary *dicinfo, int errcode) {
+    [loaddata SeturlStr:url mytest:^(NSDictionary *dicinfo, int errcode) {
         
         if (errcode==0) {
             
@@ -356,8 +364,9 @@
     
     SzkLoadData *loaddata=[[SzkLoadData alloc]init];
     
+    NSString *url = [NSString stringWithFormat:CAR_SHOP_INTRODUCE,self.shopId];
     
-    [loaddata SeturlStr:@"http://www.car361.cn/api.php?c=serviceshop&a=showinfo&shopid=2&type=json" mytest:^(NSDictionary *dicinfo, int errcode) {
+    [loaddata SeturlStr:url mytest:^(NSDictionary *dicinfo, int errcode) {
         
         if (errcode==0) {
             
@@ -397,7 +406,9 @@
     
     __weak typeof(mainTabV)weakmainTabV=mainTabV;
     
-    [loadda SeturlStr:[NSString stringWithFormat: @"http://www.car361.cn/api.php?c=serviceshop&a=showservice&shopid=2&type=json"] mytest:^(NSDictionary *dicinfo, int errcode) {
+    NSString *url = [NSString stringWithFormat:CAR_SHOP_SERVICE,self.shopId];
+    
+    [loadda SeturlStr:url mytest:^(NSDictionary *dicinfo, int errcode) {
         
         [weakview hide:YES afterDelay:0.4];
         
@@ -433,7 +444,7 @@
     
     __weak typeof(secondTab)weakmainTabV=secondTab;
     
-    [loadda SeturlStr:[NSString stringWithFormat: @"http://www.car361.cn/api.php?c=service&a=commentlist&infoid=2&page=1&type=json&page=%d",currentpage] mytest:^(NSDictionary *dicinfo, int errcode) {
+    [loadda SeturlStr:[NSString stringWithFormat:CAR_SHOP_COMMENT,self.infoId,currentpage] mytest:^(NSDictionary *dicinfo, int errcode) {
         
         [weakview hide:YES afterDelay:0.4];
         

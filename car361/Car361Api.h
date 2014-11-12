@@ -41,19 +41,23 @@ alpha:(a)]
 
 //服务列表
 
-#define CAR_SERVICE_LIST @"http://www.car361.cn/api.php?c=service&a=showlist&city=%@&cid=%d&region=%d&area=%d&lng=%@&lat=%@&square=%f&page=%d&type=json"
+#define CAR_SERVICE_LIST @"http://www.car361.cn/api.php?c=service&a=showlist&city=%@&cid=%d&region=%d&area=%d&lng=%@&lat=%@&square=%f&page=%d&orderby=%@&type=json"
 
 //地区街道
 
 #define CAR_AREA_STREET @"http://www.car361.cn/api.php?c=service&a=getarea&type=json"
 
 //服务介绍
-#define CAR_SERVICE_INTRODUCE @"http://www.car361.cn/api.php?c=service&a=showinfo&id=2&type=json"
+#define CAR_SERVICE_INTRODUCE @"http://www.car361.cn/api.php?c=service&a=showinfo&id=%@&type=json"
 
 //商家介绍
-#define CAR_SHOP_INTRODUCE @"http://www.car361.cn/api.php?c=serviceshop&a=showinfo&shopid=2&type=json"
+#define CAR_SHOP_INTRODUCE @"http://www.car361.cn/api.php?c=serviceshop&a=showinfo&shopid=%@&type=json"
 
 //商家服务
-#define CAR_SHOP_SERVICE @"http://www.car361.cn/api.php?c=serviceshop&a=showservice&shopid=2&type=json"
+#define CAR_SHOP_SERVICE @"http://www.car361.cn/api.php?c=serviceshop&a=showservice&shopid=%@&type=json"
+
+//商家评论
+
+#define CAR_SHOP_COMMENT @"http://www.car361.cn/api.php?c=service&a=commentlist&infoid=%@&type=json&page=%d"
 
 #endif

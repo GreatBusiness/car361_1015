@@ -64,6 +64,14 @@
     sortBlock(0,nil,0);
 }
 
+- (void)back
+{
+    if (sortBlock) {
+        
+        sortBlock(0,nil,0);
+    }
+}
+
 - (void)show:(BOOL)show
 {
    [UIView animateWithDuration:0.2f animations:^{
@@ -125,6 +133,7 @@
     }
     
     [self show:NO];
+    [self back];
 }
 
 @end

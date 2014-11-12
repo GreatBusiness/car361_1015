@@ -19,7 +19,7 @@
         self.titleArr=@[@"名字",@"价格",@"分值",@"已选人数",];
         
         for (int i=0; i<4; i++) {
-            UILabel *testlabel=[LTools createLabelFrame:CGRectMake(0, i*20, 100, 20) title:self.titleArr[i] font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
+            UILabel *testlabel=[LTools createLabelFrame:CGRectMake(10, i*20, 100, 20) title:self.titleArr[i] font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
             [self addSubview:testlabel];
             
         }
@@ -48,12 +48,15 @@
     
     }
     if (!self.priceLabel) {
-        self.priceLabel=[LTools createLabelFrame:CGRectMake(140, 20, 100, 20) title:the_myModel.price font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
+        self.priceLabel=[LTools createLabelFrame:CGRectMake(140, 20, 100, 20) title:the_myModel.price font:15 align:NSTextAlignmentLeft textColor:RGBCOLOR(252, 100, 0)];
         [self addSubview:self.priceLabel];
     }else{
-        self.priceLabel.text=the_myModel.price;
+        
         
     }
+    self.priceLabel.text=[NSString stringWithFormat:@"￥%@",the_myModel.price];
+    
+    
     if (!self.scoreLabel) {
         self.scoreLabel=[LTools createLabelFrame:CGRectMake(140, 40, 100, 20) title:the_myModel.score font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
         [self addSubview:self.scoreLabel];
@@ -68,21 +71,35 @@
         self.tradeLabel.text=the_myModel.trade;
         
     }
-
-    if (self.contentWebview) {
-        self.contentWebview=[[RTLabel alloc]initWithFrame:CGRectMake(0, 80, ALL_FRAME_WIDTH , ALL_FRAME.size.height)];
-        [self addSubview:self.contentWebview];
-        [self.contentWebview setText:the_myModel.content];
-    }else{
-        [self.contentWebview setText:the_myModel.content];
-
     
+    UIView *viewline=[[UIView alloc]initWithFrame:CGRectMake(0, 80-0.5, ALL_FRAME_WIDTH, 0.5)];
+    viewline.backgroundColor=RGBCOLOR(230, 230, 230);
+    [self addSubview:viewline];
+
+//    if (self.contentWebview) {
+//        self.contentWebview=[[RTLabel alloc]initWithFrame:CGRectMake(0, 80, ALL_FRAME_WIDTH , ALL_FRAME.size.height)];
+//        [self addSubview:self.contentWebview];
+//        [self.contentWebview setText:the_myModel.content];
+//    }else{
+//        [self.contentWebview setText:the_myModel.content];
+//
+//    
+//    }
+    
+    if (!self.web) {
+        
+        self.web = [[UIWebView alloc]initWithFrame:CGRectMake(0, 80, ALL_FRAME_WIDTH, ALL_FRAME.size.height - 80 - 64)];
+        [self addSubview:self.web];
+        [self.web loadHTMLString:the_myModel.content baseURL:nil];
+        
+        _web.backgroundColor = [UIColor whiteColor];
+        
+    }else
+    {
+        [self.web loadHTMLString:the_myModel.content baseURL:nil];
     }
     
     self.contentSize=CGSizeMake(ALL_FRAME_WIDTH, self.contentWebview.optimumSize.height+80);
-    
-    
-    
     
 }
 
