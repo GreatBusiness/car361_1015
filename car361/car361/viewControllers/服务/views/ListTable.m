@@ -57,7 +57,7 @@
         [self addSubview:bottom_line];
         
         
-        self.rightTable = [self createTableWithFrame:CGRectMake(frame.size.width / 2.f + 1, headOrigin.y + headSize.height, frame.size.width / 2.f - 1, frame.size.height - headSize.height - 20)];
+        self.rightTable = [self createTableWithFrame:CGRectMake(frame.size.width / 2.f + 1, headOrigin.y + headSize.height, frame.size.width / 2.f - 1, _leftTable.height)];
         [self addSubview:_rightTable];
         _rightTable.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
         
@@ -178,6 +178,26 @@
 
 - (void)reloadDataLeft
 {
+    if (_listType == List_Area) {
+        
+        left_arr = [DataManager getRegion];
+        
+        //right 显示
+        distace_arr = [self distance];
+        right_arr = distace_arr;
+        [self.rightTable reloadData];
+        
+    }else if (_listType == List_Service){
+        
+        left_arr = [DataManager getService];
+        
+        if (left_arr.count > 0) {
+            ServiceClass *service = [left_arr objectAtIndex:0];
+            
+            [self reloadRightTableRegionId:service.pid];
+        }
+    }
+    
     [self.leftTable reloadData];
 }
 

@@ -140,6 +140,7 @@
     detailViewController.hidesBottomBarWhenPushed = YES;
     detailViewController.cid = cid;
     detailViewController.service_sub_name = service_subName;
+
     [self.navigationController pushViewController:detailViewController animated:YES];
     
 }

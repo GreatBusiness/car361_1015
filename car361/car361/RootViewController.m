@@ -49,6 +49,7 @@
     //默认汽车美容--洗车
     fabuCarVC.cid = 1;
     fabuCarVC.service_sub_name = @"洗车";
+    fabuCarVC.aType = list_business;
     
     MiddleViewController * searchCarVC = [[MiddleViewController alloc] init];
     

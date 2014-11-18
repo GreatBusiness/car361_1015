@@ -22,6 +22,8 @@
 
 #import "BusinessDetailViewController.h"
 
+#import "ServiceClass.h"
+
 @interface ServiceListController ()<UITableViewDataSource,RefreshDelegate>
 {
     UIView *menu_back;//选项卡
@@ -47,8 +49,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    CGFloat aDis = _aType == list_business ? 44 : 0;
+    
     //数据展示table
-    _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 36, SCREEN_SIZE.width, SCREEN_SIZE.height  - 49 - 36)];
+    _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 36, SCREEN_SIZE.width, SCREEN_SIZE.height  - 49 - 36 - aDis)];
     _table.refreshDelegate = self;
     _table.dataSource = self;
     
@@ -67,16 +71,9 @@
     [[self buttonForIndex:1] setTitle:self.service_sub_name forState:UIControlStateNormal];
     
     
-    BOOL area_updated = [LTools cacheBoolForKey:CAR_AREA_UPDATED];
-    
-    if (area_updated) {
-        
-        [areaTable reloadDataLeft];
-        
-    }else
-    {
-        [self getArea];
-    }
+    //获取 地区数据  和 服务分类数据
+    [self getClassData];
+    [self getArea];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,7 +115,7 @@
 
 - (void)createAreaAndClassMenu
 {
-    areaTable = [[ListTable alloc]initWithFrame:CGRectMake(0, menu_back.bottom, ALL_FRAME.size.width, ALL_FRAME.size.height - 30 - menu_back.bottom - 64) listType:List_Area];
+    areaTable = [[ListTable alloc]initWithFrame:CGRectMake(0, menu_back.bottom, ALL_FRAME.size.width, ALL_FRAME.size.height - 30 - menu_back.bottom - 64 - 100) listType:List_Area];
     [self.view addSubview:areaTable];
     [areaTable actionBlock:^(ActionType type, NSString *selectName,NSString *selectId) {
         if (type == Action_Back) {
@@ -163,7 +160,7 @@
     }];
     
     
-    classTable = [[ListTable alloc]initWithFrame:CGRectMake(0, menu_back.bottom, ALL_FRAME.size.width, ALL_FRAME.size.height - 30 - menu_back.bottom - 64) listType:List_Service];
+    classTable = [[ListTable alloc]initWithFrame:CGRectMake(0, menu_back.bottom, ALL_FRAME.size.width, ALL_FRAME.size.height - 30 - menu_back.bottom - 64 - 100) listType:List_Service];
     [self.view addSubview:classTable];
     [classTable actionBlock:^(ActionType type, NSString *selectName,NSString *selectId) {
         if (type == Action_Back) {
@@ -343,6 +340,53 @@
 
 #pragma mark - 网络请求
 
+- (void)getClassData
+{
+    
+    BOOL serviceUpdate = [LTools cacheBoolForKey:CAR_SERVICE_UPDATED];
+    if (serviceUpdate) {
+        
+        [classTable reloadDataLeft];
+        
+        return;
+    }
+    
+    __weak typeof(self)weakSelf = self;
+    LTools *tool = [[LTools alloc]initWithUrl:CAR_SERVICE_CLSSES isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        if ([result isKindOfClass:[NSArray class]]) {
+            NSArray *result_arr = (NSArray *)result;
+            for (NSDictionary *aDic  in result_arr) {
+                ServiceClass *class = [[ServiceClass alloc]initWithDictionary:aDic];
+                
+                [DataManager addService:class.pid serviceName:class.pname];
+                
+                for (NSDictionary *subDic in class.content) {
+                    
+                    ServiceClass *class_sub = [[ServiceClass alloc]initWithDictionary:subDic];
+                    
+                    [DataManager addServiceSubId:class_sub.id regionName:class_sub.name parentId:class.pid];
+                    
+                }
+                
+            }
+            
+            
+            [LTools cacheBool:YES ForKey:CAR_SERVICE_UPDATED];
+
+            
+            
+        }
+        
+        
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        
+    }];
+}
+
+
+
 - (void)getServerList
 {
     //http://www.car361.cn/api.php?c=service&a=showlist&city=beijing&cid=2&region=1&area=3&lng=116.27079010&lat=39.95080947&square=0.5&page=1&type=json
@@ -359,18 +403,18 @@
     int cid = self.cid; //服务的id
     int region = param_region;
     int area  = param_area;
-    NSString *lng = @"116.27079010";//经度
-    NSString *lat = @"39.95080947";//纬度
+//    NSString *lng = @"116.27079010";//经度
+//    NSString *lat = @"39.95080947";//纬度
     
     
     
 //    int cid = 2; //服务的id
 //    int region = 1;
 //    int area  = 3;
-//    NSString *lng = NSStringFromFloat(current.longitude);//经度
-//    NSString *lat = NSStringFromFloat(current.latitude);//纬度
+    NSString *lng = NSStringFromFloat(current.longitude);//经度
+    NSString *lat = NSStringFromFloat(current.latitude);//纬度
     
-    float square = 100.0;
+    float square = param_square;
     
     NSString *url = [NSString stringWithFormat:CAR_SERVICE_LIST,city,cid,region,area,lng,lat,square,_table.pageNum,sortStyle];
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
@@ -402,6 +446,16 @@
 
 - (void)getArea
 {
+    BOOL area_updated = [LTools cacheBoolForKey:CAR_AREA_UPDATED];
+    
+    if (area_updated) {
+        
+        [areaTable reloadDataLeft];
+        
+        return;
+        
+    }
+    
     __weak typeof(self)weakSelf = self;
     
     NSString *url = [NSString stringWithFormat:CAR_AREA_STREET];

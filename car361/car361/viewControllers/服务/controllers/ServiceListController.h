@@ -10,7 +10,7 @@
 
 typedef enum {
     
-    list_business = 0,
+    list_business = 1,
     list_other
     
 }List_Type;
@@ -19,5 +19,7 @@ typedef enum {
 
 @property(nonatomic,assign)int cid;//服务id
 @property(nonatomic,retain)NSString *service_sub_name;//二级服务name
+
+@property(nonatomic,assign)List_Type aType;
 
 @end

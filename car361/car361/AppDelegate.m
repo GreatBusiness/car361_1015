@@ -11,6 +11,8 @@
 
 #import "Location.h"
 
+#import "ServiceClass.h"
+
 @interface AppDelegate ()
 
 @end
@@ -29,12 +31,57 @@
     
     [[Location shareInstance] startLocation];
     
+    [self getClassData];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     return YES;
 }
+
+#pragma mark - 网络请求
+
+/**
+ *  获取服务类别
+ */
+- (void)getClassData
+{
+    BOOL serviceUpdate = [LTools cacheBoolForKey:CAR_SERVICE_UPDATED];
+    if (serviceUpdate) {
+        
+        return;
+    }
+    
+    __weak typeof(self)weakSelf = self;
+    LTools *tool = [[LTools alloc]initWithUrl:CAR_SERVICE_CLSSES isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        if ([result isKindOfClass:[NSArray class]]) {
+            NSArray *result_arr = (NSArray *)result;
+            for (NSDictionary *aDic  in result_arr) {
+                ServiceClass *class = [[ServiceClass alloc]initWithDictionary:aDic];
+                
+                [DataManager addService:class.pid serviceName:class.pname];
+                
+                for (NSDictionary *subDic in class.content) {
+                    
+                    ServiceClass *class_sub = [[ServiceClass alloc]initWithDictionary:subDic];
+                    
+                    [DataManager addServiceSubId:class_sub.id regionName:class_sub.name parentId:class.pid];
+                    
+                }
+                
+            }
+            
+            [LTools cacheBool:YES ForKey:CAR_SERVICE_UPDATED];
+        }
+        
+        
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        
+    }];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

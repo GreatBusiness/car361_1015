@@ -196,6 +196,7 @@
     ServiceClass *class_sub = [sub objectAtIndex:indexPath.row];
     
     ServiceListController *detailViewController = [[ServiceListController alloc] initWithNibName:@"ServiceListController" bundle:nil];
+    detailViewController.aType = list_other;
     detailViewController.cid = class_sub.id;
     detailViewController.service_sub_name = class_sub.name;
     
