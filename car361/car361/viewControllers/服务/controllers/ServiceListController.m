@@ -63,6 +63,8 @@
     [self createAreaAndClassMenu];
     [self createSortMenu];
     
+    param_square = 10000;
+    
     [self getServerList];
     
     
@@ -147,6 +149,7 @@
             
             param_region = 0;//一级城市
             param_area = 0;//二级
+            param_square = 1000000;
         }
         
         if (type == Action_Back) {

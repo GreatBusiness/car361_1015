@@ -14,10 +14,10 @@
     self=[super initWithFrame:frame];
     if (self) {
         
-        NSArray * titleArr=@[@"电话",@"地址",@"时间"];
+        NSArray * titleArr=@[@"电话：",@"地址：",@"时间："];
         
         for (int i=0; i<3; i++) {
-            UILabel *testlabel=[LTools createLabelFrame:CGRectMake(100,35+i*20, 100, 20) title:titleArr[i] font:12 align:NSTextAlignmentLeft textColor:[UIColor lightGrayColor]];
+            UILabel *testlabel=[LTools createLabelFrame:CGRectMake(100,35+i*15, 100, 15) title:titleArr[i] font:12 align:NSTextAlignmentLeft textColor:[UIColor lightGrayColor]];
             [self addSubview:testlabel];
             
         }
@@ -27,17 +27,17 @@
         [self addSubview:viewline];
         
         
-        self.nameLabel=[LTools createLabelFrame:CGRectMake(100, 15, ALL_FRAME_WIDTH-100, 20) title:@"" font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
+        self.nameLabel=[LTools createLabelFrame:CGRectMake(100, 15, ALL_FRAME_WIDTH-100, 15) title:@"" font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
         [self addSubview:self.nameLabel];
         
-        self.telePhoneLabel=[LTools createLabelFrame:CGRectMake(130, 35, ALL_FRAME_WIDTH-100, 20) title:@"" font:12 align:NSTextAlignmentLeft textColor:[UIColor lightGrayColor]];
+        self.telePhoneLabel=[LTools createLabelFrame:CGRectMake(130, 35, ALL_FRAME_WIDTH-100, 15) title:@"" font:12 align:NSTextAlignmentLeft textColor:[UIColor lightGrayColor]];
         [self addSubview:self.telePhoneLabel];
         
-        self.addressLabel=[LTools createLabelFrame:CGRectMake(130, 55, ALL_FRAME_WIDTH-100, 20) title:@"" font:9 align:NSTextAlignmentLeft textColor:[UIColor lightGrayColor]];
+        self.addressLabel=[LTools createLabelFrame:CGRectMake(130, 35 + 15, ALL_FRAME_WIDTH-100, 15) title:@"" font:9 align:NSTextAlignmentLeft textColor:[UIColor lightGrayColor]];
         self.addressLabel.numberOfLines=0;
         [self addSubview:self.addressLabel];
         
-        self.timeLabel=[LTools createLabelFrame:CGRectMake(130, 75, ALL_FRAME_WIDTH-100, 20) title:@"" font:12 align:NSTextAlignmentLeft textColor:[UIColor lightGrayColor]];
+        self.timeLabel=[LTools createLabelFrame:CGRectMake(130, 35 + 15 * 2, ALL_FRAME_WIDTH-100, 15) title:@"" font:12 align:NSTextAlignmentLeft textColor:[UIColor lightGrayColor]];
         [self addSubview:self.timeLabel];
         
         self.contnetWebView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 100, ALL_FRAME_WIDTH, ALL_FRAME.size.height-100-64)];
@@ -46,7 +46,7 @@
         
         //商家显示照片
         
-        self.iiconImageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 30, 80, 53)];
+        self.iiconImageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 15, 80, 63)];
         
         [self addSubview:self.iiconImageView];
         

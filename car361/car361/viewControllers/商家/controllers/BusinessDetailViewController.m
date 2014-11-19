@@ -125,7 +125,7 @@
 
 -(void)setShangjiaFuwuView{
     
-    mainTabV=[[UITableView alloc]initWithFrame:CGRectMake(2*ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height-30)];
+    mainTabV=[[UITableView alloc]initWithFrame:CGRectMake(2*ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height- 30 - 49)];
     [mainScroV addSubview:mainTabV];
     mainTabV.delegate=self;
     mainTabV.dataSource=self;
@@ -139,7 +139,7 @@
 #pragma mark-用户评价的view
 
 -(void)setUseCommentView{
-    secondTab=[[UITableView alloc]initWithFrame:CGRectMake(3 * ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height-30 - 44)];
+    secondTab=[[UITableView alloc]initWithFrame:CGRectMake(3 * ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height- 30 - 49)];
     [mainScroV addSubview:secondTab];
     secondTab.delegate=self;
     secondTab.dataSource=self;
@@ -153,38 +153,39 @@
 
 -(void)setSecondTabHeaderV{
 
-    NSArray *tempArr=[NSArray arrayWithObjects:@"评分",@"用户名",@"内容", nil];
+    NSArray *tempArr=[NSArray arrayWithObjects:@"评分：",@"用户名：",@"内容：", nil];
     
     UIView *headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 140)];
     
     headerView.backgroundColor=[UIColor clearColor];
     
-    for (int i=0; i<3; i++) {
-        UILabel *theTempLabel=[LTools createLabelFrame:CGRectMake(12, 12+i*16, 80, 16) title:tempArr[i] font:14 align:NSTextAlignmentRight textColor:[UIColor grayColor]];
-        theTempLabel.textAlignment=NSTextAlignmentLeft;
+    for (int i = 0; i < 3; i++) {
+        
+        UILabel *theTempLabel=[LTools createLabelFrame:CGRectMake(12, 12 + i * (16 + 5), 60, 16) title:tempArr[i] font:14 align:NSTextAlignmentRight textColor:[UIColor grayColor]];
+        theTempLabel.textAlignment=NSTextAlignmentRight;
         [headerView addSubview:theTempLabel];
         
-        if (i<2) {
-            UITextView *textV=[[UITextView alloc]initWithFrame:CGRectMake(60, 28+i*21, 80+100*i, 18+40*i)];
+        if (i < 2) {
+            UITextView *textV=[[UITextView alloc]initWithFrame:CGRectMake(70, 35 + i * (21 + 5), 80+100*i, 18+30*i)];
             CALayer *layer=textV.layer;
             layer.masksToBounds=YES;
-            layer.cornerRadius=2;
+            layer.cornerRadius = 5.f;
             layer.borderColor=[UIColor greenColor].CGColor;
-            layer.borderWidth=0.5;
+            layer.borderWidth = 0.5;
             layer.shadowColor=[[UIColor greenColor]CGColor];
             textV.tag=10000+i;
             [headerView addSubview:textV];
         }
         
     }
-    UIButton *button=[LTools createButtonWithType:UIButtonTypeRoundedRect frame:CGRectMake(60, 115, 55, 16) normalTitle:@"提交" image:nil backgroudImage:nil superView:headerView target:self action:@selector(dotheCommitButton:)];
+    UIButton *button=[LTools createButtonWithType:UIButtonTypeRoundedRect frame:CGRectMake(70, 115, 55, 16) normalTitle:@"提交" image:nil backgroudImage:nil superView:headerView target:self action:@selector(dotheCommitButton:)];
     
     button.layer.cornerRadius = 5.f;
     [button setBackgroundColor:RGBCOLOR(252, 100, 0)];
     [button.titleLabel setFont:[UIFont systemFontOfSize:10]];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
-    RatingBar *bar = [[RatingBar alloc] initWithFrame:CGRectMake(27, 5, 180, 20) theBloc:^(NSInteger theRateNumber) {
+    RatingBar *bar = [[RatingBar alloc] initWithFrame:CGRectMake(27 + 10, 5 + 5, 180, 20) theBloc:^(NSInteger theRateNumber) {
         
         NSLog(@"xx==%ld",(long)theRateNumber);
         
@@ -218,7 +219,7 @@
     
     if (tt2.text.length!=0) {
         
-        NSString *theStrUrl=[NSString stringWithFormat:@"http://www.car361.cn/api.php?c=service&a=commentadd&shopid=1&infoid=2&nickname=%@&content=%@&rating=%d&type=json" ,tt1.text,tt2.text,sender.tag-20];
+        NSString *theStrUrl=[NSString stringWithFormat:@"http://www.car361.cn/api.php?c=service&a=commentadd&shopid=1&infoid=2&nickname=%@&content=%@&rating=%d&type=json" ,tt1.text,tt2.text,(int)sender.tag-20];
         
         NSLog(@"提交评论的地址===%@",theStrUrl);
         

@@ -41,6 +41,8 @@
 		13753DDC19EEBE2B00F6179E /* LSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13753DC719EEBE2B00F6179E /* LSearchView.m */; };
 		13753DDD19EEBE2B00F6179E /* LSecionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13753DC919EEBE2B00F6179E /* LSecionView.m */; };
 		13753DE219EEBEA400F6179E /* LTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 13753DE119EEBEA400F6179E /* LTools.m */; };
+		1387528D1A1CF0F700853145 /* CommentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1387528B1A1CF0F700853145 /* CommentViewCell.m */; };
+		1387528E1A1CF0F700853145 /* CommentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1387528C1A1CF0F700853145 /* CommentViewCell.xib */; };
 		138BCF1D19ED630D00575692 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 138BCF1C19ED630D00575692 /* main.m */; };
 		138BCF2019ED630D00575692 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 138BCF1F19ED630D00575692 /* AppDelegate.m */; };
 		138BCF2819ED630D00575692 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 138BCF2719ED630D00575692 /* Images.xcassets */; };
@@ -240,6 +242,9 @@
 		13753DC919EEBE2B00F6179E /* LSecionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSecionView.m; sourceTree = "<group>"; };
 		13753DE019EEBEA400F6179E /* LTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTools.h; path = views/LTools.h; sourceTree = "<group>"; };
 		13753DE119EEBEA400F6179E /* LTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTools.m; path = views/LTools.m; sourceTree = "<group>"; };
+		1387528A1A1CF0F700853145 /* CommentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewCell.h; sourceTree = "<group>"; };
+		1387528B1A1CF0F700853145 /* CommentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewCell.m; sourceTree = "<group>"; };
+		1387528C1A1CF0F700853145 /* CommentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewCell.xib; sourceTree = "<group>"; };
 		138BCF1719ED630D00575692 /* car361.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = car361.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		138BCF1B19ED630D00575692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		138BCF1C19ED630D00575692 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -676,6 +681,9 @@
 				19A993F219F5653100EDC777 /* UserCommentTableViewCell.m */,
 				1923C19719F75CA400BF0DCD /* RatingBar.h */,
 				1923C19819F75CA400BF0DCD /* RatingBar.m */,
+				1387528A1A1CF0F700853145 /* CommentViewCell.h */,
+				1387528B1A1CF0F700853145 /* CommentViewCell.m */,
+				1387528C1A1CF0F700853145 /* CommentViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1138,6 +1146,7 @@
 				138BCF7819ED6F4000575692 /* BusinessViewController.xib in Resources */,
 				1923C19319F75C5D00BF0DCD /* bt_star_a.png in Resources */,
 				194011B519F102F90065053D /* blueArrow.png in Resources */,
+				1387528E1A1CF0F700853145 /* CommentViewCell.xib in Resources */,
 				134CFD281A123E000035B0CE /* ShopIntroduceCell.xib in Resources */,
 				138BD00019ED716B00575692 /* dibiao_putong@2x.png in Resources */,
 				194011B619F102F90065053D /* blueArrow@2x.png in Resources */,
@@ -1254,6 +1263,7 @@
 				136BFBA01A07E87800EF453F /* DataBase.m in Sources */,
 				138BCF7C19ED6F5900575692 /* CommonViewController.m in Sources */,
 				19C49C2A19F00A9D0090F00E /* ChangshiModel.m in Sources */,
+				1387528D1A1CF0F700853145 /* CommentViewCell.m in Sources */,
 				194011CB19F102F90065053D /* UMContactViewController.m in Sources */,
 				136BFB9C1A07E32100EF453F /* RegionClass.m in Sources */,
 				134CFD3A1A1246DB0035B0CE /* ShopServiceClass.m in Sources */,
