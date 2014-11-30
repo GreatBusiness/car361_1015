@@ -24,6 +24,8 @@
 
 #import "ServiceClass.h"
 
+#import "CustomButtom.h"
+
 @interface ServiceListController ()<UITableViewDataSource,RefreshDelegate>
 {
     UIView *menu_back;//选项卡
@@ -91,28 +93,41 @@
     menu_back.backgroundColor = [UIColor colorWithHexString:@"f8f8f8"];
     [self.view addSubview:menu_back];
     
+    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, menu_back.bottom - 0.5f, menu_back.width, 0.5f)];
+    line.backgroundColor = COLOR_TABLE_LINE;
+    [menu_back addSubview:line];
+    
     CGFloat awidth = ALL_FRAME.size.width / 3.f;
     NSArray *titles = @[@"全城",@"汽车美容",@"默认"];
     for (int i = 0; i < 3; i ++) {
         
-        UIButton *menu_btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        menu_btn.frame = CGRectMake(awidth * i, 0, awidth, menu_back.height);
-        [menu_btn setTitle:[titles objectAtIndex:i] forState:UIControlStateNormal];
-        [menu_btn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-        [menu_back addSubview:menu_btn];
-        [menu_btn setImage:[UIImage imageNamed:@"hornxia"] forState:UIControlStateNormal];
-        [menu_btn setImage:[UIImage imageNamed:@"hornxiahover"] forState:UIControlStateSelected];
-        
-        [menu_btn setTitleColor:[UIColor colorWithHexString:@"515151"] forState:UIControlStateNormal];
-        [menu_btn setTitleColor:[UIColor colorWithHexString:@"54ad13"] forState:UIControlStateSelected];
-        
-        [menu_btn setTitleEdgeInsets:UIEdgeInsetsMake(0, - 5 - 5, 0, 0)];
-        [menu_btn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0,  - awidth - 50 + 30 + 10)];
-        
-        menu_btn.tag = 100 + i;
-        
-        [menu_btn addTarget:self action:@selector(clickToOpenMenu:) forControlEvents:UIControlEventTouchUpInside];
+        CustomButtom *cust_btn = [[CustomButtom alloc]initWithFrame:CGRectMake(awidth * i, 0, awidth, menu_back.height) title:[titles objectAtIndex:i] target:self action:@selector(clickToOpenMenu:) tag:i + 100];
+        [menu_back addSubview:cust_btn];
     }
+
+    
+//    CGFloat awidth = ALL_FRAME.size.width / 3.f;
+//    NSArray *titles = @[@"全城",@"汽车美容",@"默认"];
+//    for (int i = 0; i < 3; i ++) {
+//        
+//        UIButton *menu_btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        menu_btn.frame = CGRectMake(awidth * i, 0, awidth, menu_back.height);
+//        [menu_btn setTitle:[titles objectAtIndex:i] forState:UIControlStateNormal];
+//        [menu_btn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+//        [menu_back addSubview:menu_btn];
+//        [menu_btn setImage:[UIImage imageNamed:@"hornxia"] forState:UIControlStateNormal];
+//        [menu_btn setImage:[UIImage imageNamed:@"hornxiahover"] forState:UIControlStateSelected];
+//        
+//        [menu_btn setTitleColor:[UIColor colorWithHexString:@"515151"] forState:UIControlStateNormal];
+//        [menu_btn setTitleColor:[UIColor colorWithHexString:@"54ad13"] forState:UIControlStateSelected];
+//        
+//        [menu_btn setTitleEdgeInsets:UIEdgeInsetsMake(0, - 5 - 5, 0, 0)];
+//        [menu_btn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0,  - awidth - 50 + 30 + 10)];
+//        
+//        menu_btn.tag = 100 + i;
+//        
+//        [menu_btn addTarget:self action:@selector(clickToOpenMenu:) forControlEvents:UIControlEventTouchUpInside];
+//    }
 }
 
 - (void)createAreaAndClassMenu
@@ -279,14 +294,19 @@
 
 - (void)clickToOpenMenu:(UIButton *)sender
 {
+
     for (int i = 0; i < 3; i ++) {
         UIButton *btn = (UIButton *)[self.view viewWithTag:i + 100];
+        
+        CustomButtom *cus_btn = (CustomButtom *)btn.superview;
+        
         if (btn == sender) {
             btn.selected = !btn.selected;
         }else
         {
             btn.selected = NO;
         }
+        [cus_btn setSelected:btn.selected];
         
         if (sender.tag == 100) {
             
@@ -537,6 +557,7 @@
     [cell setCellWithModel:info];
     
     cell.bottomLine.backgroundColor = COLOR_TABLE_LINE;
+    cell.bottomLine.height = 0.5f;
     
     cell.phoneBtn.layer.cornerRadius = 3.f;
     

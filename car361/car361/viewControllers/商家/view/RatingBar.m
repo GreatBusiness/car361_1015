@@ -49,7 +49,7 @@
         self.starWidth = width;
         for(int i = 0;i<5;i++){
             UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-            img.center = CGPointMake((i+1.5)*width, frame.size.height/2);
+            img.center = CGPointMake((i + 1.5)*width, frame.size.height/2);
             img.image = [UIImage imageNamed:@"bt_star_a"];
             [self.bottomView addSubview:img];
             UIImageView *img2 = [[UIImageView alloc] initWithFrame:img.frame];

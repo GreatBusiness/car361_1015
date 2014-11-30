@@ -11,6 +11,8 @@
 #import "RegionClass.h"
 #import "ServiceClass.h"
 
+#import "AreaViewCell.h"
+
 #define SUMHEIGHT 400
 #define HEADER_HEIGHT 40
 
@@ -25,6 +27,8 @@
     ListType _listType;
     
     NSArray *distace_arr;//距离数组
+    
+    UIView *seperator_view;//商区 和 距离 底部指示
 }
 
 -(instancetype)initWithFrame:(CGRect)frame listType:(ListType)listType
@@ -52,12 +56,14 @@
         _leftTable.backgroundColor = [UIColor colorWithHexString:@"f7f7f7"];
         [self addSubview:_leftTable];
         
-        UIView *bottom_line = [[UIView alloc]initWithFrame:CGRectMake(_leftTable.right, 0, 1.f, _leftTable.height)];
-        bottom_line.backgroundColor = [UIColor colorWithHexString:@"dfdfdf"];
-        [self addSubview:bottom_line];
+        //中间分割线
+        
+        UIView *middle_line = [[UIView alloc]initWithFrame:CGRectMake(_leftTable.right, 0, 0.5f,ALL_FRAME.size.height)];
+        middle_line.backgroundColor = COLOR_TABLE_LINE;
+        [self addSubview:middle_line];
         
         
-        self.rightTable = [self createTableWithFrame:CGRectMake(frame.size.width / 2.f + 1, headOrigin.y + headSize.height, frame.size.width / 2.f - 1, _leftTable.height)];
+        self.rightTable = [self createTableWithFrame:CGRectMake(frame.size.width / 2.f + 0.5, headOrigin.y + headSize.height, frame.size.width / 2.f - 0.5f, _leftTable.height)];
         [self addSubview:_rightTable];
         _rightTable.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
         
@@ -115,8 +121,14 @@
         sender.frame = CGRectMake((self.width/2.f * i), 0, self.width / 2.f, HEADER_HEIGHT);
     }
     
-    UIView *bottom_line = [[UIView alloc]initWithFrame:CGRectMake(0, headView.bottom - 1, headView.width, 2.f)];
-    bottom_line.backgroundColor = [UIColor colorWithHexString:@"dfdfdf"];
+    seperator_view = [[UIView alloc]initWithFrame:CGRectMake(0, headView.bottom - 3 - 0.5f, ALL_FRAME_WIDTH/2.f - 70, 3)];
+    seperator_view.backgroundColor = RGBCOLOR(107, 209, 49);
+    [headView addSubview:seperator_view];
+    
+    seperator_view.center = CGPointMake(ALL_FRAME_WIDTH / 4.f, seperator_view.center.y);
+    
+    UIView *bottom_line = [[UIView alloc]initWithFrame:CGRectMake(0, headView.bottom - 0.5, headView.width, 0.5f)];
+    bottom_line.backgroundColor = COLOR_TABLE_LINE;
     
     [headView addSubview:bottom_line];
     
@@ -284,8 +296,11 @@
 {
     return 44.f;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
     if (tableView == self.leftTable) {
         
         if (_listType == List_Area && indexPath.row == 0) {
@@ -294,7 +309,7 @@
             
             [self showOrHiddenHeaderView:YES];
             
-        }else
+        }else if(_listType == List_Area)
         {
             [self showOrHiddenHeaderView:NO];
         }
@@ -411,57 +426,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identify = @"identify";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    AreaViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        cell = [[AreaViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         
-        UIImageView *icon = [[UIImageView alloc]initWithFrame:CGRectMake(13, (44 - 21/2.f)/2.f, 17/2.f, 21/2.f)];
-        icon.tag = 100;
-        [cell.contentView addSubview:icon];
+        UIView *selectView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 44)];
+        selectView.backgroundColor = RGBCOLOR(238, 238, 238);
         
-        UIView *he = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 160, 44)];
-        he.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
-        cell.selectedBackgroundView = he;
-        
-        UIImageView *green_icon = [[UIImageView alloc]initWithFrame:CGRectMake(13, (44 - 21/2.f)/2.f, 17/2.f, 21/2.f)];
-        green_icon.image = [UIImage imageNamed:@"dibiao_cur"];
-        [he addSubview:green_icon];
+        cell.selectedBackgroundView = selectView;
 
-        
-        UIView *green = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 4, 44)];
-        green.backgroundColor = [UIColor colorWithHexString:@"67d31b"];
-        [he addSubview:green];
-        
-        
-        
-        //17  21
     }
     
+    cell.indexPath = indexPath;
+    
     if (tableView == self.leftTable) {
-        
-        UIImageView *icon = (UIImageView *)[cell.contentView viewWithTag:100];
-        if (_listType == List_Area) {
-            
-            if (indexPath.row == 0) {
-                
-//                icon.image = [UIImage imageNamed:@"dibiao_fujin@2x"];
-                
-//                cell.imageView.image = [UIImage imageNamed:@"dibiao_fujin"];
-                
-            }else
-            {
-                UIView *he = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 160, 44)];
-                cell.backgroundView = he;
-                
-                UIImageView *green_icon = [[UIImageView alloc]initWithFrame:CGRectMake(13, (44 - 21/2.f)/2.f, 17/2.f, 21/2.f)];
-                green_icon.image = [UIImage imageNamed:@"dibiao_putong"];
-                [he addSubview:green_icon];
-                
-//                icon.image = [UIImage imageNamed:@"dibiao_putong"];
-//                cell.imageView.image = [UIImage imageNamed:@"dibiao_putong"];
-            }
-            
-        }
         
         if (_listType == List_Area) {
             
@@ -469,26 +447,26 @@
                 
                 //附近
                 
-                cell.textLabel.text = [NSString stringWithFormat:@"    %@",@"附近"];
+                cell.nameLable.text = [NSString stringWithFormat:@"    %@",@"附近"];
                 
             }else if (indexPath.row == 1){
                
                 //全城
                 
-                cell.textLabel.text = [NSString stringWithFormat:@"    %@",@"全城"];
+                cell.nameLable.text = [NSString stringWithFormat:@"    %@",@"全城"];
                 
             }else
             {
                 RegionClass *region = [left_arr objectAtIndex:indexPath.row - 2];
                 
-                cell.textLabel.text = [NSString stringWithFormat:@"    %@",region.regionname];
+                cell.nameLable.text = [NSString stringWithFormat:@"    %@",region.regionname];
             }
             
         }else if (_listType == List_Service) {
             
             
             ServiceClass *service = [left_arr objectAtIndex:indexPath.row];
-            cell.textLabel.text = [NSString stringWithFormat:@"    %@",service.pname];
+            cell.nameLable.text = [NSString stringWithFormat:@"    %@",service.pname];
             
         }
         
@@ -502,17 +480,26 @@
             
             RegionClass *region = [right_arr objectAtIndex:indexPath.row];
             
-            cell.textLabel.text = [NSString stringWithFormat:@"    %@",region.name];
+            cell.nameLable.text = [NSString stringWithFormat:@"    %@",region.name];
             
         }else if (_listType == List_Service) {
             
             
             ServiceClass *service = [right_arr objectAtIndex:indexPath.row];
             
-            cell.textLabel.text = [NSString stringWithFormat:@"    %@",service.name];
+            cell.nameLable.text = [NSString stringWithFormat:@"    %@",service.name];
             cell.contentView.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
             
         }
+    }
+    
+    
+    if (_listType == List_Area && tableView == _leftTable) {
+        
+        cell.icon.hidden = NO;
+    }else
+    {
+        cell.icon.hidden = YES;
     }
     
     return cell;

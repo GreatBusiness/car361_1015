@@ -16,6 +16,12 @@
 
 @property(nonatomic,strong)UILabel *nickNameLabel;
 
+@property (nonatomic,retain)UIView *startView;//星星
+
+@property (nonatomic,retain)UILabel *serviceTypeLabel;//服务类型
+
+@property (nonatomic,retain)UILabel *priceLabel;//价钱
+
 @property(nonatomic,strong)UILabel *rateLabel;
 
 @property(nonatomic,strong)UILabel *contentLabel;

@@ -22,10 +22,14 @@
 #import "UserCommentTableViewCell.h"
 #import "RatingBar.h"
 
+#define SECTION_HEIGHT 35 //选项 高度
+
 @interface BusinessDetailViewController (){
     
     
     FuwujieshaoView *_fuwujieshaoV;
+    UIView *section_view;//选项view
+    UIView *indicator_view;//选择指示器
 }
 
 @end
@@ -37,7 +41,7 @@
     self.view.backgroundColor=[UIColor whiteColor];
     self.titleLabel.text=@"服务商家";
     
-    mainScroV=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 30, ALL_FRAME_WIDTH,ALL_FRAME.size.height-30)];
+    mainScroV=[[UIScrollView alloc]initWithFrame:CGRectMake(0, SECTION_HEIGHT, ALL_FRAME_WIDTH,ALL_FRAME.size.height - SECTION_HEIGHT)];
     mainScroV.contentSize=CGSizeMake(ALL_FRAME_WIDTH*4, 0);
     mainScroV.delegate=self;
     mainScroV.pagingEnabled=YES;
@@ -46,9 +50,6 @@
     currentpage=1;
     allArr=[NSMutableArray array];
     commentArr=[NSMutableArray array];
-    
-    
-    
     
     [self setSectionView];
     
@@ -66,41 +67,76 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
-    
-    
 }
+
+
+
+#pragma mark 移动 指示器
+
+- (void)moveIndicatorIndex:(int)index
+{
+    CGFloat aWidth = (ALL_FRAME_WIDTH - 20.f)/4;
+    indicator_view.center = CGPointMake(10 + aWidth * index + aWidth / 2.f, indicator_view.center.y);
+}
+
+#pragma mark 创建视图
 
 -(void)setSectionView{
     
     NSLog(@"xxx==%f",ALL_FRAME_WIDTH);
     
+    section_view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, SECTION_HEIGHT)];
+    [self.view addSubview:section_view];
     
+    UIView *firstLine=[[UIView alloc]initWithFrame:CGRectMake(10, 0, 0.5, SECTION_HEIGHT)];
+    firstLine.backgroundColor=RGBCOLOR(180, 180, 180);
+    [section_view addSubview:firstLine];
     
     arrtitle=@[@"服务介绍",@"商家介绍",@"商家服务",@"用户评价"];
     for (int i=0; i<4; i++) {
-        UIButton *testButton=[LTools createButtonWithType:UIButtonTypeCustom frame:CGRectMake(i*ALL_FRAME_WIDTH/4, 0,-0.5+ ALL_FRAME_WIDTH/4 , 30) normalTitle:arrtitle[i] image:nil backgroudImage:nil superView:self.view target:self action:@selector(dobutton:)];
+        UIButton *testButton=[LTools createButtonWithType:UIButtonTypeCustom frame:CGRectMake(10 + i*(ALL_FRAME_WIDTH - 20.f) / 4, 0,(ALL_FRAME_WIDTH - 20.f)/4 - 0.5, SECTION_HEIGHT) normalTitle:arrtitle[i] image:nil backgroudImage:nil superView:self.view target:self action:@selector(dobutton:)];
         [testButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        testButton.tag=800+i;
-        [self.view addSubview:testButton];
+        testButton.tag = 800 + i;
+        [testButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [section_view addSubview:testButton];
         
-        UIView *viewLine=[[UIView alloc]initWithFrame:CGRectMake((i+1)*ALL_FRAME_WIDTH/4, 0, 0.5, 30)];
+        UIView *viewLine=[[UIView alloc]initWithFrame:CGRectMake(testButton.right, 0, 0.5, SECTION_HEIGHT)];
         viewLine.backgroundColor=RGBCOLOR(180, 180, 180);
-        [self.view addSubview:viewLine];
-        
+        [section_view addSubview:viewLine];
     }
     
-    UIView *viewLine=[[UIView alloc]initWithFrame:CGRectMake(0, 30, SELFVIEWWIDTH, 0.5)];
+    UIView *viewLine=[[UIView alloc]initWithFrame:CGRectMake(0, SECTION_HEIGHT - 0.5f, ALL_FRAME_WIDTH, 0.5)];
     viewLine.backgroundColor=RGBCOLOR(140, 150, 160);
-    [self.view addSubview:viewLine];
+    [section_view addSubview:viewLine];
+    
+    [self createIndicator];
     
 }
 
-#pragma mark--服务介绍的View
+
+//创建指示器
+
+- (void)createIndicator
+{
+    indicator_view = [[UIView alloc]initWithFrame:CGRectMake(10, 0, (ALL_FRAME_WIDTH - 20.f)/4, SECTION_HEIGHT)];
+    indicator_view.backgroundColor = [UIColor clearColor];
+    [section_view addSubview:indicator_view];
+    
+    UIView *greenView = [[UIView alloc]initWithFrame:CGRectMake(0, 1, indicator_view.width, 3)];
+    greenView.backgroundColor = RGBCOLOR(119, 217, 53);
+    [indicator_view addSubview:greenView];
+    
+    UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(0.5, indicator_view.bottom - 2, indicator_view.width - 1, 3)];
+    whiteView.backgroundColor = [UIColor whiteColor];
+    [indicator_view addSubview:whiteView];
+    
+}
+
+//服务介绍的View
 
 -(void)setFuwujieshaoTabVCC{
     
-    FuwujieshaoView *   test=[[FuwujieshaoView alloc]initWiththeFrame:CGRectMake(0, 0, 320, ALL_FRAME.size.height-30)];
+    FuwujieshaoView *   test=[[FuwujieshaoView alloc]initWiththeFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height - SECTION_HEIGHT)];
     test.tag=300;
     [mainScroV addSubview:test];
     
@@ -109,11 +145,11 @@
     
 }
 
-#pragma mark--商家介绍的view
+//商家介绍的view
 
 -(void)setShangjiajieshaoView{
     
-    ShangjiajieshaoView *   test=[[ShangjiajieshaoView alloc]initWiththeFrame:CGRectMake(ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height-30)];
+    ShangjiajieshaoView *   test=[[ShangjiajieshaoView alloc]initWiththeFrame:CGRectMake(ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height - SECTION_HEIGHT)];
     test.tag=400;
     [mainScroV addSubview:test];
     [self loadShangjiajieshaoData];
@@ -121,25 +157,22 @@
     
 }
 
-#pragma mark-商家服务的View
+//商家服务的View
 
 -(void)setShangjiaFuwuView{
     
-    mainTabV=[[UITableView alloc]initWithFrame:CGRectMake(2*ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height- 30 - 49)];
+    mainTabV=[[UITableView alloc]initWithFrame:CGRectMake(2*ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height- SECTION_HEIGHT - 49)];
     [mainScroV addSubview:mainTabV];
     mainTabV.delegate=self;
     mainTabV.dataSource=self;
     mainTabV.separatorColor=[UIColor clearColor];
     [self loadChangshiData];
-    
-    
-    
 }
 
-#pragma mark-用户评价的view
+//用户评价的view
 
 -(void)setUseCommentView{
-    secondTab=[[UITableView alloc]initWithFrame:CGRectMake(3 * ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height- 30 - 49)];
+    secondTab=[[UITableView alloc]initWithFrame:CGRectMake(3 * ALL_FRAME_WIDTH, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height- SECTION_HEIGHT - 49)];
     [mainScroV addSubview:secondTab];
     secondTab.delegate=self;
     secondTab.dataSource=self;
@@ -147,8 +180,6 @@
     
     [self setSecondTabHeaderV];
     [self loadUsrCommentData];
-    
-    
 }
 
 -(void)setSecondTabHeaderV{
@@ -192,6 +223,7 @@
         button.tag=20+theRateNumber;
         
     }];
+    bar.starNumber = 5;
     bar.backgroundColor=[UIColor clearColor];
     [headerView addSubview:bar];
     
@@ -212,10 +244,7 @@
     
     UITextView *tt2=(UITextView *)[self.view viewWithTag:10001];
     
-    
     SzkLoadData *loaddata=[[SzkLoadData alloc]init];
-    
-    
     
     if (tt2.text.length!=0) {
         
@@ -231,10 +260,6 @@
                 NSLog(@"thedic===%@",dicinfo);
                 [LTools showMBProgressWithText:@"提交成功" addToView:self.view];
                 
-                
-                
-                
-                
             }
             
         }];
@@ -243,16 +268,7 @@
     }else{
     
         [LTools showMBProgressWithText:@"请输入评论内容" addToView:self.view];
-
-    
-    
     }
-
-    
-    
-    
-    
-
 
 }
 
@@ -268,6 +284,7 @@
         
     }];
     
+    [self moveIndicatorIndex:(int)sender.tag - 800];
     
     switch (sender.tag) {
         case 800:

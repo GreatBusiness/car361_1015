@@ -29,9 +29,6 @@
     self = [super initWithFrame:CGRectMake(frame.origin.x,frame.origin.y, frame.size.width,0)];
     if (self) {
         
-        left_view = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 2, 49)];
-        left_view.backgroundColor = [UIColor greenColor];
-        
         titles_arr = titles;
         sortBlock = aBlock;
         
@@ -77,7 +74,7 @@
    [UIView animateWithDuration:0.2f animations:^{
       
        if (show) {
-           self.height = titles_arr.count * 47.9 + 20 +5+5;
+           self.height = titles_arr.count * 44 + 20 +5+5;
            _table.height = self.height;
        }else
        {
@@ -99,13 +96,24 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-        UIImageView *line = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, cell.width, 1.f)];
-        line.image = [UIImage imageNamed:@"fuwu_jieshao_line"];
+        UIImageView *line = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, cell.width, 0.5f)];
+        line.backgroundColor = COLOR_TABLE_LINE;
         [cell.contentView addSubview:line];
+        line.tag = 99;
+        
+        
+        UIView *leftGreenView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 4, 44)];
+        leftGreenView.backgroundColor = [UIColor colorWithHexString:@"67d31b"];
+        
+        UIView *selectView = [[UIView alloc]initWithFrame:CGRectMake(0, 0.5, ALL_FRAME_WIDTH, 44 - 0.5)];
+        [selectView addSubview:leftGreenView];
+        selectView.backgroundColor = RGBCOLOR(238, 238, 238);
+        
+        cell.selectedBackgroundView = selectView;
+
     }
-    cell.textLabel.font = [UIFont systemFontOfSize:12];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.textLabel.text = [titles_arr objectAtIndex:indexPath.row];
-    cell.selectedBackgroundView.backgroundColor = [UIColor redColor];
     
     return cell;
 }
@@ -119,7 +127,7 @@
 #pragma mark - UITableDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 49;
+    return 44;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
