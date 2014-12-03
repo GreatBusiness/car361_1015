@@ -13,6 +13,7 @@
 
 @interface ServiceViewController ()
 {
+    UIActivityIndicatorView *loadingView;//加载封面菊花
     UIImageView *cover_imageView;
     
     UIImageView *backImageView;
@@ -26,11 +27,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.titleLabel.text = @"服务";
+    self.titleLabel.text = @"汽车管家";
+    
+    self.button_back.hidden = YES;
     
     [self createCoverView];
     
-    [self createBackView];
+//    [self createBackView];
     
     [self  createMainMenu];
     
@@ -47,20 +50,21 @@
 
 - (void)createMainMenu
 {
-    UIView *mainView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 160, 160)];
+    UIView *mainView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_WIDTH)];
     [self.view addSubview:mainView];
     mainView.backgroundColor = [UIColor clearColor];
-    mainView.center = CGPointMake(160, ((iPhone5 ? 568 : 480) - 44 -49) / 2.f);
+    mainView.center = CGPointMake(ALL_FRAME_WIDTH / 2.f, (ALL_FRAME_HEIGHT - 44 -49) / 2.f);
     
-    NSArray *titles = @[@"洗车",@"贴膜",@"打蜡",@"更多"];
+//    NSArray *titles = @[@"洗车",@"贴膜",@"打蜡",@"更多"];
+    NSArray *images = @[@"g_xiche",@"g_jiayou",@"g_weixiu",@"g_more"];
     
     for (int i = 0; i < 4; i ++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setTitle:[titles objectAtIndex:i] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:[images objectAtIndex:i]] forState:UIControlStateNormal];
         [mainView addSubview:btn];
-        btn.frame = CGRectMake(i % 2 * (75 + 10), (i / 2) * (75 + 10), 75, 75);
+        btn.frame = CGRectMake((i % 2) * 144 + 16, (i / 2) * 160, 144, 160);
         [btn setBackgroundColor:[UIColor blackColor]];
-        btn.alpha = 0.5f;
+//        btn.alpha = 0.5f;
         btn.tag = 100 + i;
         [btn addTarget:self action:@selector(clickToDo:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -70,29 +74,41 @@
 {
     UIViewController *root = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
     
-    cover_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5 ? 568 : 480)];
+    cover_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20)];
     cover_imageView.backgroundColor = [UIColor whiteColor];
+    cover_imageView.userInteractionEnabled = YES;
     [root.view addSubview:cover_imageView];
+    
+    loadingView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    loadingView.center = CGPointMake(ALL_FRAME_WIDTH/ 2.f, ALL_FRAME_HEIGHT / 2.f);
+    [cover_imageView addSubview:loadingView];
+    [loadingView startAnimating];
+    
+    
+    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    closeButton.frame = CGRectMake(ALL_FRAME_WIDTH - 50 - 20, 30, 50, 30);
+    [closeButton setTitle:@"跳过" forState:UIControlStateNormal];
+    [closeButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [closeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    closeButton.layer.borderWidth = 0.5f;
+    closeButton.layer.cornerRadius = 3.f;
+    closeButton.layer.borderColor = [UIColor grayColor].CGColor;
+    [cover_imageView addSubview:closeButton];
+    [closeButton addTarget:self action:@selector(hideCover) forControlEvents:UIControlEventTouchUpInside];
+    
     [self getAppCover];
 }
 
+//背景
+
 - (void)createBackView
 {
-    backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, -64, 320, iPhone5 ? 568 : 480)];
+    backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, -64, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT)];
     [self.view addSubview:backImageView];
     
     UIImageView *maskView = [[UIImageView alloc]initWithFrame:backImageView.frame];
     [self.view addSubview:maskView];
     maskView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
-    
-//    NSString *image_url = [LTools cacheForKey:KEY_COVER_IMAGE_URL];
-//    
-//    UIImage *backImage = [LTools sd_imageForUrl:image_url];
-//    
-//    [backImageView setImageToBlur:backImage blurRadius:0.5 completionBlock:^(NSError *error) {
-//        
-//        NSLog(@"error %@",error);
-//    }];
 }
 
 #pragma mark - 事件处理
@@ -155,15 +171,18 @@
         
         NSString *coverurl = [result objectForKey:@"coverurl"];
         
+        [loadingView stopAnimating];
+        
         [LTools cache:coverurl ForKey:KEY_COVER_IMAGE_URL];
         
         [cover_imageView sd_setImageWithURL:[NSURL URLWithString:coverurl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
             [backImageView setImageToBlur:image blurRadius:0.5f completionBlock:^{
                 
+                
             }];
             
-            [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(hideCover) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:2.f target:self selector:@selector(hideCover) userInfo:nil repeats:NO];
             
         }];
         

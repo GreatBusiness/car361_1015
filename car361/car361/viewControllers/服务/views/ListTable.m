@@ -325,22 +325,25 @@
                 
                 [self.rightTable reloadData];
                 
-            }else if (indexPath.row == 1){
-                
-                //全城
-                
-                NSLog(@"选择全城");
-                
-                _aBlock(Action_WholeCity,@"全城",NSStringFromInt(999));
-                
-                [self showOrHidden:NO];
-                
-                [self back];
-                
-                
-            }else
+            }
+            
+//            else if (indexPath.row == 1){
+//                
+//                //全城
+//                
+//                NSLog(@"选择全城");
+//                
+//                _aBlock(Action_WholeCity,@"全城",NSStringFromInt(999));
+//                
+//                [self showOrHidden:NO];
+//                
+//                [self back];
+//                
+//                
+//            }
+            else
             {
-                RegionClass *region = [left_arr objectAtIndex:indexPath.row - 2];
+                RegionClass *region = [left_arr objectAtIndex:indexPath.row - 1];
                 
                 [self reloadRightTableRegionId:region.regionid];
             }
@@ -418,7 +421,7 @@
 {
     if (tableView == self.leftTable) {
         
-        return left_arr.count + (_listType == List_Area ? 2 : 0);
+        return left_arr.count + (_listType == List_Area ? 1 : 0);
     }
     return right_arr.count;
 }
@@ -449,15 +452,19 @@
                 
                 cell.nameLable.text = [NSString stringWithFormat:@"    %@",@"附近"];
                 
-            }else if (indexPath.row == 1){
-               
-                //全城
-                
-                cell.nameLable.text = [NSString stringWithFormat:@"    %@",@"全城"];
-                
-            }else
+            }
+            
+//            else if (indexPath.row == 1){
+//               
+//                //全城
+//                
+//                cell.nameLable.text = [NSString stringWithFormat:@"    %@",@"全城"];
+//                
+//            }
+            
+            else
             {
-                RegionClass *region = [left_arr objectAtIndex:indexPath.row - 2];
+                RegionClass *region = [left_arr objectAtIndex:indexPath.row - 1];
                 
                 cell.nameLable.text = [NSString stringWithFormat:@"    %@",region.regionname];
             }

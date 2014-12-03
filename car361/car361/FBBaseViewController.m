@@ -41,6 +41,8 @@
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    
     //适配ios7navigationbar高度
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)) {
         self.edgesForExtendedLayout = UIRectEdgeNone;

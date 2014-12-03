@@ -39,6 +39,8 @@
     float param_square;//范围
     
     NSString *sortStyle;//price 价格；score 评分；trade 人数
+    
+    MBProgressHUD *loading;
 }
 
 @property(nonatomic,retain)RefreshTableView *table;
@@ -53,6 +55,14 @@
     
     CGFloat aDis = _aType == list_business ? 44 : 0;
     
+    if (_aType == list_business) {
+        self.button_back.hidden = YES;
+    }
+    
+    loading = [LTools MBProgressWithText:@"努力加载中" addToView:self.view];
+    
+    [loading show:YES];
+    
     //数据展示table
     _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 36, SCREEN_SIZE.width, SCREEN_SIZE.height  - 49 - 36 - aDis)];
     _table.refreshDelegate = self;
@@ -65,7 +75,7 @@
     [self createAreaAndClassMenu];
     [self createSortMenu];
     
-    param_square = 10000;
+    param_square = 1000;//默认附近1000
     
     [self getServerList];
     
@@ -73,6 +83,7 @@
     self.titleLabel.text = self.service_sub_name;
     
     [[self buttonForIndex:1] setTitle:self.service_sub_name forState:UIControlStateNormal];
+    [[self buttonForIndex:0] setTitle:@"1000米" forState:UIControlStateNormal];
     
     
     //获取 地区数据  和 服务分类数据
@@ -144,6 +155,12 @@
             NSLog(@"distance %@ id %@",selectName,selectId);
         
             param_square = [selectId intValue];
+            
+            //根据附近距离条件时
+            //区域置 0
+            
+            param_area = 0;
+            param_region = 0;
             
         }else if (type == Action_Area){
             
@@ -460,7 +477,7 @@
             [_table reloadData:tempArr haveMore:haveMore];
         }
         
-        
+        [loading hide:YES];
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         ;

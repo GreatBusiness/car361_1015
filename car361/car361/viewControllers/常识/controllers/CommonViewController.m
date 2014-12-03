@@ -24,9 +24,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.titleLabel.text = @"常识";
+    self.button_back.hidden = YES;
     
-    mainTabV=[[UITableView alloc]initWithFrame:self.view.bounds];
+    mainTabV=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 49 - 44)];
     [self.view addSubview:mainTabV];
     mainTabV.delegate=self;
     mainTabV.dataSource=self;

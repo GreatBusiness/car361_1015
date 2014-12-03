@@ -25,7 +25,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.navigationItem.title=@"更多";
+    self.titleLabel.text = @"更多";
+    self.button_back.hidden = YES;
     
     NSArray *titleArr=@[@"清空缓存",@"意见反馈",@"版本更新",@"关于我们"];
     

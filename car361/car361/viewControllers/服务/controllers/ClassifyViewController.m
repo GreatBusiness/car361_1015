@@ -66,6 +66,26 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)clickToDetail:(UIButton *)sender
+{
+//    (indexPath.section + 1) * 1000 + i
+    
+    int tag = (int)sender.tag;
+    
+    ServiceClass *class = [dataArray objectAtIndex:tag / 1000 - 1];
+    NSArray *sub = [DataManager getServiceSubForRegionId:class.pid];
+    
+    ServiceClass *class_sub = [sub objectAtIndex:tag % 1000];
+    
+    ServiceListController *detailViewController = [[ServiceListController alloc] initWithNibName:@"ServiceListController" bundle:nil];
+    detailViewController.aType = list_other;
+    detailViewController.cid = class_sub.id;
+    detailViewController.service_sub_name = class_sub.name;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+}
+
 #pragma mark - 网络请求
 
 - (void)getClassData
@@ -114,19 +134,49 @@
     return dataArray.count;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    ServiceClass *class = [dataArray objectAtIndex:section];
+//    return class.pname;
+//}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 30.f)];
+    view.backgroundColor = [UIColor whiteColor];
+    UIImageView *icon = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 223/2.f, 39/2.f)];
+    [view addSubview:icon];
+    
     ServiceClass *class = [dataArray objectAtIndex:section];
-    return class.pname;
+    
+    NSString *iconName = @"";
+    
+    NSString *className = [NSString stringWithFormat:@"%@",class.pname];
+    
+    if ([className rangeOfString:@"美容"].length > 0) {
+        iconName = @"m_meirong";
+    }else if ([class.pname rangeOfString:@"改装"].length > 0) {
+        iconName = @"m_gaizhuang";
+    }else if ([class.pname rangeOfString:@"维修"].length > 0) {
+        iconName = @"m_weixiu";
+    }else if ([class.pname rangeOfString:@"装饰"].length > 0) {
+        iconName = @"m_zhuangshi";
+    }
+    
+    icon.image = [UIImage imageNamed:iconName];
+    
+    return view;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    ServiceClass *class = [dataArray objectAtIndex:section];
+//    ServiceClass *class = [dataArray objectAtIndex:section];
+//    
+//    NSArray *sub = [DataManager getServiceSubForRegionId:class.pid];
+//    
+//    return sub.count;
     
-    NSArray *sub = [DataManager getServiceSubForRegionId:class.pid];
-    
-    return sub.count;
+    return 1;
 }
 
 
@@ -136,71 +186,110 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        
+        for (int i = 0 ; i < 10; i ++) {
+            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.frame = CGRectMake(17 + (i % 5) * (13 + 47), 7 + 7 + (i / 5) * (7 + 47), 47, 47);
+            btn.tag = 100 * (indexPath.row + 1) + i;
+            [cell addSubview:btn];
+            btn.layer.cornerRadius = 47 / 2.f;
+            btn.layer.borderWidth = 0.5f;
+            btn.clipsToBounds = YES;
+            btn.titleLabel.font = [UIFont systemFontOfSize:13];
+            btn.titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
+            btn.titleLabel.numberOfLines = 2;
+            
+            [btn addTarget:self action:@selector(clickToDetail:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
+        NSLog(@"---");
     }
     
-    cell.textLabel.font = [UIFont systemFontOfSize:12];
     
     ServiceClass *class = [dataArray objectAtIndex:indexPath.section];
     NSArray *sub = [DataManager getServiceSubForRegionId:class.pid];
-
-    ServiceClass *class_sub = [sub objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = class_sub.name;
+    for (int i = 0; i < 10; i ++) {
+        
+        UIButton *btn = (UIButton *)[cell viewWithTag:100 * (indexPath.row + 1) + i];
+        if (i < sub.count) {
+            
+            btn.hidden = NO;
+            
+            ServiceClass *class_sub = [sub objectAtIndex:i];
+            
+            [btn setTitle:class_sub.name forState:UIControlStateNormal];
+            
+            btn.tag = (indexPath.section + 1) * 1000 + i;
+            
+        }else
+        {
+            btn.hidden = YES;
+        }
+        
+        btn.layer.borderColor = [self colorForIndex:indexPath.section].CGColor;
+        [btn setTitleColor:[self colorForIndex:indexPath.section] forState:UIControlStateNormal];
+    }
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (UIColor *)colorForIndex:(NSInteger)index
+{
+    
+    UIColor *color = [UIColor whiteColor];
+    switch (index) {
+        case 0:
+        {
+            color = [UIColor colorWithHexString:@"47aee6"];
+        }
+            break;
+        case 1:
+        {
+            color = [UIColor colorWithHexString:@"67d31b"];
+        }
+            break;
+        case 2:
+        {
+            color = [UIColor colorWithHexString:@"ffa76d"];
+        }
+            break;
+        case 3:
+        {
+            color = [UIColor colorWithHexString:@"f2d209"];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return color;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    ServiceClass *class = [dataArray objectAtIndex:indexPath.section];
+//    NSArray *sub = [DataManager getServiceSubForRegionId:class.pid];
+//    
+//    ServiceClass *class_sub = [sub objectAtIndex:indexPath.row];
+//    
+//    ServiceListController *detailViewController = [[ServiceListController alloc] initWithNibName:@"ServiceListController" bundle:nil];
+//    detailViewController.aType = list_other;
+//    detailViewController.cid = class_sub.id;
+//    detailViewController.service_sub_name = class_sub.name;
+//    
+//    [self.navigationController pushViewController:detailViewController animated:YES];
+//}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     ServiceClass *class = [dataArray objectAtIndex:indexPath.section];
     NSArray *sub = [DataManager getServiceSubForRegionId:class.pid];
     
-    ServiceClass *class_sub = [sub objectAtIndex:indexPath.row];
-    
-    ServiceListController *detailViewController = [[ServiceListController alloc] initWithNibName:@"ServiceListController" bundle:nil];
-    detailViewController.aType = list_other;
-    detailViewController.cid = class_sub.id;
-    detailViewController.service_sub_name = class_sub.name;
-    
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    return sub.count > 5 ? 130 : 80;
 }
 
 

@@ -18,22 +18,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.view.backgroundColor = [UIColor orangeColor];
     
-    theWebV=[[UIWebView alloc]initWithFrame:self.view.bounds];
+    self.titleLabel.text = @"优惠";
+    self.button_back.hidden = YES;
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    theWebV=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 49 - 44)];
     
     [self.view addSubview:theWebV];
     
     theWebV.delegate=self;
     
     [theWebV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.car361.cn/wap/event/index.php"]]];
-    
-    
-    
-    
-    
-    
-    
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
