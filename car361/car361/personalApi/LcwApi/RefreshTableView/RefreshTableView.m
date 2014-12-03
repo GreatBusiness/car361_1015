@@ -257,6 +257,15 @@
 }
 
 #pragma mark - UIScrollViewDelegate Methods
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    
+    if (_refreshDelegate && [_refreshDelegate respondsToSelector:@selector(scrollViewWillBeginDecelerating)]) {
+        
+        [_refreshDelegate performSelector:@selector(scrollViewWillBeginDecelerating)];
+    }
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (_refreshHeaderView) {

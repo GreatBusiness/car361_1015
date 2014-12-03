@@ -41,6 +41,9 @@
     NSString *sortStyle;//price 价格；score 评分；trade 人数
     
     MBProgressHUD *loading;
+    
+    UIButton *openButton;//记录打开的button
+    UITapGestureRecognizer *tap;
 }
 
 @property(nonatomic,retain)RefreshTableView *table;
@@ -62,6 +65,7 @@
     loading = [LTools MBProgressWithText:@"努力加载中" addToView:self.view];
     
     [loading show:YES];
+
     
     //数据展示table
     _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 36, SCREEN_SIZE.width, SCREEN_SIZE.height  - 49 - 36 - aDis)];
@@ -70,6 +74,11 @@
     
     _table.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_table];
+    
+//    tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapToDo:)];
+//    
+//    [self.view addGestureRecognizer:tap];
+//    tap.enabled = NO;
     
     [self createMenuViews];
     [self createAreaAndClassMenu];
@@ -280,6 +289,17 @@
 
 #pragma mark - 事件处理
 
+- (void)tapToDo:(UIGestureRecognizer *)ges
+{
+    if (ges.state == UIGestureRecognizerStateEnded) {
+        
+        if (openButton.selected) {
+            
+            [self refreshButtonState:(int)openButton.tag - 100];
+        }
+    }
+}
+
 /**
  *  0 -- 2 获取button
  */
@@ -331,17 +351,25 @@
             [classTable showOrHidden:NO];
             [areaTable showOrHidden:sender.selected];
             
+            openButton = sender;
+            
+             tap.enabled = sender.selected;
+            
         }else if (sender.tag == 101){
             
             [sortView show:NO];
             [classTable showOrHidden:sender.selected];
             [areaTable showOrHidden:NO];
+            openButton = sender;
+            tap.enabled = sender.selected;
             
         }else if (sender.tag == 102){
         
             [sortView show:sender.selected];
             [classTable showOrHidden:NO];
             [areaTable showOrHidden:NO];
+            openButton = sender;
+            tap.enabled = sender.selected;
         }
         
     }
@@ -545,6 +573,14 @@
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
 {
     return 80;
+}
+
+- (void)scrollViewWillBeginDecelerating
+{
+    if (openButton.selected) {
+        
+        [self refreshButtonState:(int)openButton.tag - 100];
+    }
 }
 
 #pragma mark - UITableViewDelegate
