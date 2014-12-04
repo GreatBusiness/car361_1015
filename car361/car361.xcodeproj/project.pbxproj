@@ -166,6 +166,7 @@
 		194011CE19F102F90065053D /* UMFeedbackTableViewCellRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 194011AF19F102F90065053D /* UMFeedbackTableViewCellRight.m */; };
 		194011CF19F102F90065053D /* UMFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194011B119F102F90065053D /* UMFeedbackViewController.m */; };
 		194011D019F102F90065053D /* UMFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 194011B219F102F90065053D /* UMFeedbackViewController.xib */; };
+		199854081A30048C007F3367 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 199854071A30048C007F3367 /* backButton@2x.png */; };
 		19A993ED19F5476700EDC777 /* shangjiafuwuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A993EC19F5476700EDC777 /* shangjiafuwuTableViewCell.m */; };
 		19A993F019F560EC00EDC777 /* UserCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A993EF19F560EC00EDC777 /* UserCommentModel.m */; };
 		19A993F319F5653100EDC777 /* UserCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A993F219F5653100EDC777 /* UserCommentTableViewCell.m */; };
@@ -414,6 +415,7 @@
 		194011B019F102F90065053D /* UMFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedbackViewController.h; sourceTree = "<group>"; };
 		194011B119F102F90065053D /* UMFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMFeedbackViewController.m; sourceTree = "<group>"; };
 		194011B219F102F90065053D /* UMFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMFeedbackViewController.xib; sourceTree = "<group>"; };
+		199854071A30048C007F3367 /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
 		19A993EB19F5476700EDC777 /* shangjiafuwuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shangjiafuwuTableViewCell.h; sourceTree = "<group>"; };
 		19A993EC19F5476700EDC777 /* shangjiafuwuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shangjiafuwuTableViewCell.m; sourceTree = "<group>"; };
 		19A993EE19F560EC00EDC777 /* UserCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentModel.h; sourceTree = "<group>"; };
@@ -1003,6 +1005,7 @@
 		1940118C19F102F90065053D /* ThirdService */ = {
 			isa = PBXGroup;
 			children = (
+				199854071A30048C007F3367 /* backButton@2x.png */,
 				1940118D19F102F90065053D /* chat */,
 			);
 			path = ThirdService;
@@ -1176,6 +1179,7 @@
 				194011BC19F102F90065053D /* item_ok_selected@2x.png in Resources */,
 				138BCFFE19ED716B00575692 /* dibiao_cur@2x.png in Resources */,
 				139260241A110D680093758E /* IntroduceCell.xib in Resources */,
+				199854081A30048C007F3367 /* backButton@2x.png in Resources */,
 				138BD01619ED716B00575692 /* img01.png in Resources */,
 				138BCFFC19ED716B00575692 /* changshi@2x.png in Resources */,
 				194011BB19F102F90065053D /* item_ok@2x.png in Resources */,
@@ -1453,6 +1457,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1487,6 +1492,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1513,6 +1519,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -1538,6 +1545,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;

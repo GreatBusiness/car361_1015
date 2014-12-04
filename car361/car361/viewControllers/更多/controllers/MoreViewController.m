@@ -130,18 +130,15 @@
 
 
 - (void)showNativeFeedbackWithAppkey:(NSString *)appkey {
-    
     UMFeedbackViewController *feedbackViewController = [[UMFeedbackViewController alloc] initWithNibName:@"UMFeedbackViewController" bundle:nil];
     feedbackViewController.appkey = appkey;
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:feedbackViewController];
+//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:feedbackViewController];
     //    navigationController.navigationBar.barStyle = UIBarStyleBlack;
     //    navigationController.navigationBar.translucent = NO;
-   // [self.navigationController pushViewController:navigationController animated:YES];
     
-    [self presentViewController:navigationController animated:YES completion:^{
-        
-    }];
-}
+    [self setHidesBottomBarWhenPushed:YES];
+
+    [self.navigationController pushViewController:feedbackViewController animated:YES];}
 
 
 -(void)viewWillAppear:(BOOL)animated{
