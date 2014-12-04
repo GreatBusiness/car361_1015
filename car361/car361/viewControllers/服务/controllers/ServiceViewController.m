@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "ServiceListController.h"
 
+#import "SecondViewController.h"
+
 @interface ServiceViewController ()
 {
     UIActivityIndicatorView *loadingView;//加载封面菊花
@@ -68,6 +70,12 @@
         btn.tag = 100 + i;
         [btn addTarget:self action:@selector(clickToDo:) forControlEvents:UIControlEventTouchUpInside];
     }
+    
+    UIButton *middle = [UIButton buttonWithType:UIButtonTypeCustom];
+    [middle setImage:[UIImage imageNamed:@"g_middle"] forState:UIControlStateNormal];
+    middle.frame = CGRectMake(0, 0, 173/2.f, 173/2.f);
+    [mainView addSubview:middle];
+    middle.center = CGPointMake(mainView.width/2.f, mainView.height/2.f);
 }
 
 - (void)createCoverView
@@ -125,6 +133,8 @@
     
     int cid;
     NSString *service_subName;
+    
+    
     switch (sender.tag) {
         case 100:
         {
@@ -135,9 +145,16 @@
             break;
         case 101:
         {
-            //@"贴膜"
-            cid = 10;
-            service_subName = @"贴膜";
+            //@"加油"
+            
+            SecondViewController *ccc = [[SecondViewController alloc]init];
+            ccc.wordStr = @"加油";
+            ccc.distanceStr = @"2000";
+            
+            ccc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:ccc animated:YES];
+            
+            return;
         }
             break;
         case 102:

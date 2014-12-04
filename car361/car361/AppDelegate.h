@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BMapKit.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    //百度地图
+    BMKMapManager* _mapManager;
+    CLLocationManager *_locationManager;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
