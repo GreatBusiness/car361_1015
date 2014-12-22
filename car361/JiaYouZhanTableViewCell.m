@@ -63,7 +63,7 @@
 
 
 
--(void)setAllWithDic:(NSDictionary *)myDic therow:(NSInteger)themyrow thebloc:(JiaYouZhanTableViewCellBloc)themyBloc
+-(void)setAllWithDic:(NSDictionary *)myDic therow:(NSIndexPath *)themyrow thebloc:(JiaYouZhanTableViewCellBloc)themyBloc
 {
 
     //            NSDictionary *dic = @{@"name":poi.name,@"distance":distanceStr,@"telephone":poi.phone,@"address":poi.address};

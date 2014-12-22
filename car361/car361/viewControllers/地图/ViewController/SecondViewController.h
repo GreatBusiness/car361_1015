@@ -12,13 +12,18 @@
 
 #import "FBBaseViewController.h"
 
+
+
 @interface SecondViewController : FBBaseViewController
+
 {
     
     UITableView *_tableView;//主tableview
     NSMutableArray *_tableViewDataArray;//tableview的数据源
     
     
+    BMKMapView *_mapView;//地图
+
     
     
     //定位相关

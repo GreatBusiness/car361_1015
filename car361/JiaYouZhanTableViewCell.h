@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-typedef void(^JiaYouZhanTableViewCellBloc)(NSInteger indexofpathofRow,int typeofButton);
+typedef void(^JiaYouZhanTableViewCellBloc)(NSIndexPath * indexofpathofRow,int typeofButton);
 
 
 @interface JiaYouZhanTableViewCell : UITableViewCell
@@ -21,7 +21,7 @@ typedef void(^JiaYouZhanTableViewCellBloc)(NSInteger indexofpathofRow,int typeof
 @property (strong, nonatomic)  UIButton *mapButton;
 @property (strong, nonatomic)  UIButton *daohangButton;
 
-@property(nonatomic,assign)NSInteger myrow;
+@property(nonatomic,strong)NSIndexPath* myrow;
 
 @property(nonatomic,copy)JiaYouZhanTableViewCellBloc myBloc;
 
@@ -29,5 +29,5 @@ typedef void(^JiaYouZhanTableViewCellBloc)(NSInteger indexofpathofRow,int typeof
 
 - (IBAction)doDaohangButton:(UIButton *)sender;
 
--(void)setAllWithDic:(NSDictionary *)myDic therow:(NSInteger)themyrow thebloc:(JiaYouZhanTableViewCellBloc)themyBloc;
+-(void)setAllWithDic:(NSDictionary *)myDic therow:(NSIndexPath *)themyrow thebloc:(JiaYouZhanTableViewCellBloc)themyBloc;
 @end

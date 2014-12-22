@@ -73,6 +73,20 @@
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
     
+    
+    
+    
+//    //地图
+//    _mapView = [[BMKMapView alloc]initWithFrame:self.view.frame];
+//    [_mapView setZoomLevel:16];// 设置地图级别
+//    _mapView.isSelectedAnnotationViewFront = YES;
+//    _mapView.delegate = self;//设置代理
+//    _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
+//    _mapView.showsUserLocation = YES;//显示定位图层
+//
+    
+    
+    
 }
 
 
@@ -224,10 +238,23 @@
     
     NSDictionary *dic = _tableViewDataArray[indexPath.row];
     
-    [cell setAllWithDic:dic therow:indexPath.row thebloc:^(NSInteger indexofpathofRow, int typeofButton) {
+    
+    __weak typeof(self)wself=self;
+    [cell setAllWithDic:dic therow:indexPath thebloc:^(NSIndexPath * indexofpathofRow, int typeofButton) {
         
         
-        NSLog(@"row===%d====type===%d",indexPath.row,typeofButton);
+        NSLog(@"row===%@====type===%d",indexofpathofRow,typeofButton);
+        
+        
+        if (typeofButton==2) {
+            
+            [wself touchtoPushThirdWithindexpath:indexofpathofRow];
+        }else{
+        
+            [wself availableMapsApps:indexofpathofRow];
+        }
+        
+        
         
     }];
     
@@ -244,15 +271,55 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    
+//    ThirdViewController *thirdVc = [[ThirdViewController alloc]init];
+//    thirdVc.theBMKPoiResult = self.theBMKPoiResult;
+//    thirdVc.theIndexPath = indexPath;
+//    
+//    [self.navigationController pushViewController:thirdVc animated:YES];
+//    
+    
+}
+
+
+
+#pragma mark---点击进入地图
+
+-(void)touchtoPushThirdWithindexpath:(NSIndexPath*)therow{
     
     ThirdViewController *thirdVc = [[ThirdViewController alloc]init];
     thirdVc.theBMKPoiResult = self.theBMKPoiResult;
-    thirdVc.theIndexPath = indexPath;
-    
+    thirdVc.theIndexPath = therow;
     [self.navigationController pushViewController:thirdVc animated:YES];
+
+}
+
+
+#pragma mark--跳转到百度地图
+
+- (void)availableMapsApps:(NSIndexPath*)therow {
+    
+    BMKPoiInfo *poi = [self.theBMKPoiResult.poiInfoList objectAtIndex:therow.row];
+    
+    CLLocationCoordinate2D startCoor = _guserLocation.location.coordinate;
+    CLLocationCoordinate2D endCoor = poi.pt;
     
     
+    NSString *toName = poi.name;
+    
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"baidumap://map/"]]){
+        NSString *urlString = [NSString stringWithFormat:@"baidumap://map/direction?origin=latlng:%f,%f|name:我的位置&destination=latlng:%f,%f|name:%@&mode=transit",
+                               startCoor.latitude, startCoor.longitude, endCoor.latitude, endCoor.longitude, toName];
+        
+        urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *url = [NSURL URLWithString:urlString];
+        [[UIApplication sharedApplication] openURL:url];
+    }else
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"未安装百度地图" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 
