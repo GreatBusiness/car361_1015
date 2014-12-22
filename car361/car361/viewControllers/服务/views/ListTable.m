@@ -138,8 +138,8 @@
 - (void)createBottomButton
 {
     UIButton *close = [UIButton buttonWithType:UIButtonTypeCustom];
-    [close setImage:[UIImage imageNamed:@"fuwu_sort_bottom"] forState:UIControlStateNormal];
-    close.frame = CGRectMake(0, sumHeight - 20, 320, 20);
+    [close setBackgroundImage:[UIImage imageNamed:@"fuwu_sort_bottom"] forState:UIControlStateNormal];
+    close.frame = CGRectMake(0, sumHeight - 20, ALL_FRAME_WIDTH, 20);
     [self addSubview:close];
     [close addTarget:self action:@selector(clickToBack:) forControlEvents:UIControlEventTouchUpInside];
     bottomBtn = close;

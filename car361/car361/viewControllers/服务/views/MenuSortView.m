@@ -43,7 +43,7 @@
         _table.tableFooterView = footer_view;
         
         UIButton *close = [UIButton buttonWithType:UIButtonTypeCustom];
-        [close setImage:[UIImage imageNamed:@"fuwu_sort_bottom"] forState:UIControlStateNormal];
+        [close setBackgroundImage:[UIImage imageNamed:@"fuwu_sort_bottom"] forState:UIControlStateNormal];
         close.frame = CGRectMake(0, 0, footer_view.width, footer_view.height);
         [footer_view addSubview:close];
         [close addTarget:self action:@selector(clickToClose:) forControlEvents:UIControlEventTouchUpInside];

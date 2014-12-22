@@ -29,16 +29,16 @@
         
         self.imageV=[[UIImageView alloc]initWithFrame:CGRectMake(25, 12, 25, 25)];
         _imageV.layer.cornerRadius = 5;
-        self.imageV.backgroundColor=[UIColor redColor];
+        self.imageV.backgroundColor=[UIColor clearColor];
         [self addSubview:self.imageV];
         
         self.nickNameLabel=[LTools createLabelFrame:CGRectMake(_imageV.right + 10, 12, 60, 16) title:@"" font:8 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
-        _nickNameLabel.backgroundColor = [UIColor redColor];
+        _nickNameLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:self.nickNameLabel];
         
         //评价星星
         self.startView = [[UIView alloc]initWithFrame:CGRectMake(_nickNameLabel.right + 10, 12, 40, 16)];
-        _startView.backgroundColor = [UIColor orangeColor];
+        _startView.backgroundColor = [UIColor clearColor];
         [self addSubview:_startView];
         
         //服务类型

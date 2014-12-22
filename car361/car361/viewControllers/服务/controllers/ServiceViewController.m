@@ -158,7 +158,7 @@
             
             SecondViewController *ccc = [[SecondViewController alloc]init];
             ccc.wordStr = @"加油";
-            ccc.distanceStr = @"2000";
+            ccc.distanceStr = @"2000000";
             
             ccc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:ccc animated:YES];
