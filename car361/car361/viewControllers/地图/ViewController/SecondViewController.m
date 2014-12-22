@@ -8,6 +8,14 @@
 
 #import "SecondViewController.h"
 
+
+
+
+#import "JiaYouZhanTableViewCell.h"
+
+
+
+
 @interface SecondViewController ()<UITableViewDataSource,UITableViewDelegate,BMKPoiSearchDelegate,BMKLocationServiceDelegate>
 {
     MBProgressHUD *loading;
@@ -62,6 +70,7 @@
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
     
 }
@@ -156,8 +165,18 @@
             if (!_tableViewDataArray) {
                 _tableViewDataArray = [NSMutableArray arrayWithCapacity:10];
             }
-            NSDictionary *dic = @{@"name":poi.name,@"distance":distanceStr};
-            [_tableViewDataArray addObject:dic];
+            
+            if (poi.phone.length==0) {
+                NSDictionary *dic = @{@"name":poi.name,@"distance":distanceStr,@"telephone":@"",  @"address":poi.address};
+                [_tableViewDataArray addObject:dic];
+
+            }else{
+                
+                NSDictionary *dic = @{@"name":poi.name,@"distance":distanceStr,@"telephone":poi.phone,  @"address":poi.address};
+                [_tableViewDataArray addObject:dic];
+
+            }
+            
             
         }
         
@@ -196,17 +215,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *identifier = @"identifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    static NSString *identifier = @"JiaYouZhanTableViewCell";
+    JiaYouZhanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        cell = [[JiaYouZhanTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         
     }
     
     NSDictionary *dic = _tableViewDataArray[indexPath.row];
     
-    cell.textLabel.text = [dic objectForKey:@"name"];
-    cell.detailTextLabel.text = [dic objectForKey:@"distance"];
+    [cell setAllWithDic:dic therow:indexPath.row thebloc:^(NSInteger indexofpathofRow, int typeofButton) {
+        
+        
+        NSLog(@"row===%d====type===%d",indexPath.row,typeofButton);
+        
+    }];
+    
+
     
     
     return cell;
@@ -215,7 +240,7 @@
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    return 86;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

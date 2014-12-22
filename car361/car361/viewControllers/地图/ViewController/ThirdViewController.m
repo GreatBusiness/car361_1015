@@ -77,13 +77,16 @@
     
     
     //地图
-    _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0,self.view.bounds.size.width, self.view.bounds.size.height)];
+    _mapView = [[BMKMapView alloc]initWithFrame:self.view.frame];
     [_mapView setZoomLevel:16];// 设置地图级别
     _mapView.isSelectedAnnotationViewFront = YES;
     _mapView.delegate = self;//设置代理
     _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
     _mapView.showsUserLocation = YES;//显示定位图层
+    _mapView.backgroundColor=[UIColor purpleColor];
     [self.view addSubview:_mapView];
+    
+    self.view.backgroundColor=[UIColor orangeColor];
     
     //判断是否开启定位
     if ([CLLocationManager locationServicesEnabled]==NO) {

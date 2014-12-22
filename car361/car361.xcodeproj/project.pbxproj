@@ -186,6 +186,8 @@
 		19D1383E19F1697E00819360 /* FuwujieshaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1383D19F1697E00819360 /* FuwujieshaoView.m */; };
 		19D1384119F1702100819360 /* fuwujieshaoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1384019F1702100819360 /* fuwujieshaoTableViewCell.m */; };
 		19D1384419F2630800819360 /* ShangjiajieshaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1384319F2630800819360 /* ShangjiajieshaoView.m */; };
+		19F494E61A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F494E41A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.m */; };
+		19F494E71A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19F494E51A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.xib */; };
 		AC61C6B5E82C4247A22F8C8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168A2299D704DECB1769488 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -515,6 +517,9 @@
 		19D1384019F1702100819360 /* fuwujieshaoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fuwujieshaoTableViewCell.m; sourceTree = "<group>"; };
 		19D1384219F2630800819360 /* ShangjiajieshaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShangjiajieshaoView.h; sourceTree = "<group>"; };
 		19D1384319F2630800819360 /* ShangjiajieshaoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShangjiajieshaoView.m; sourceTree = "<group>"; };
+		19F494E31A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiaYouZhanTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		19F494E41A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiaYouZhanTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		19F494E51A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JiaYouZhanTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		7CBCF099D93244A58F63258C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9168A2299D704DECB1769488 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -604,6 +609,9 @@
 		135BB8A01A30B14000B88322 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				19F494E31A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.h */,
+				19F494E41A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.m */,
+				19F494E51A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1451,6 +1459,7 @@
 				194011C119F102F90065053D /* messages_toolbar_background.png in Resources */,
 				138BD01319ED716B00575692 /* horn.png in Resources */,
 				138BCF8719ED70B900575692 /* MiddleViewController.xib in Resources */,
+				19F494E71A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.xib in Resources */,
 				194011BE19F102F90065053D /* messages_right_bubble@2x.png in Resources */,
 				13B5D53B1A2F5449007D3A64 /* g_more@2x.png in Resources */,
 				1392601A1A10F61D0093758E /* UserCommentController.xib in Resources */,
@@ -1531,6 +1540,7 @@
 				138BCF7219ED6F0200575692 /* MoreViewController.m in Sources */,
 				194011CF19F102F90065053D /* UMFeedbackViewController.m in Sources */,
 				1923C19919F75CA400BF0DCD /* RatingBar.m in Sources */,
+				19F494E61A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.m in Sources */,
 				13CAFC461A2B246700F6F7B6 /* AreaViewCell.m in Sources */,
 				13753DDB19EEBE2B00F6179E /* LNineImagesView.m in Sources */,
 				134CFD2C1A1241780035B0CE /* ShopIntroduceController.m in Sources */,
