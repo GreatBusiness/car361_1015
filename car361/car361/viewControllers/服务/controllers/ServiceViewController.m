@@ -48,6 +48,11 @@
     
 }
 
+- (CGFloat)numFor:(CGFloat)aNum
+{
+    return aNum * (ALL_FRAME_WIDTH / 320);
+}
+
 #pragma mark - 创建视图
 
 - (void)createMainMenu
@@ -60,11 +65,15 @@
 //    NSArray *titles = @[@"洗车",@"贴膜",@"打蜡",@"更多"];
     NSArray *images = @[@"g_xiche",@"g_jiayou",@"g_weixiu",@"g_more"];
     
+    CGFloat aWidth = (144 * ALL_FRAME_WIDTH / 320) ;
+    CGFloat aHeight = 160 * aWidth / 144;
+    CGFloat aDis = (ALL_FRAME_WIDTH - aWidth * 2) / 2.f;
+    
     for (int i = 0; i < 4; i ++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setImage:[UIImage imageNamed:[images objectAtIndex:i]] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:[images objectAtIndex:i]] forState:UIControlStateNormal];
         [mainView addSubview:btn];
-        btn.frame = CGRectMake((i % 2) * 144 + 16, (i / 2) * 160, 144, 160);
+        btn.frame = CGRectMake((i % 2) * aWidth + aDis, (i / 2) * aHeight, aWidth, aHeight);
         [btn setBackgroundColor:[UIColor blackColor]];
 //        btn.alpha = 0.5f;
         btn.tag = 100 + i;
@@ -72,8 +81,8 @@
     }
     
     UIButton *middle = [UIButton buttonWithType:UIButtonTypeCustom];
-    [middle setImage:[UIImage imageNamed:@"g_middle"] forState:UIControlStateNormal];
-    middle.frame = CGRectMake(0, 0, 173/2.f, 173/2.f);
+    [middle setBackgroundImage:[UIImage imageNamed:@"g_middle"] forState:UIControlStateNormal];
+    middle.frame = CGRectMake(0, 0, [self numFor:173/2.f], [self numFor:173/2.f]);
     [mainView addSubview:middle];
     middle.center = CGPointMake(mainView.width/2.f, mainView.height/2.f);
 }
