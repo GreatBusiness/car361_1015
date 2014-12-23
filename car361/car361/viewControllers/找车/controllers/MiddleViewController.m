@@ -28,6 +28,8 @@
     
     [self.view addSubview:theWebV];
     
+    theWebV.scalesPageToFit = YES;
+    
     theWebV.delegate=self;
     
     [theWebV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.car361.cn/wap/event/index.php"]]];

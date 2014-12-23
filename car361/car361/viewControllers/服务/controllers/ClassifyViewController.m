@@ -187,9 +187,11 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         
+        CGFloat aDis = (ALL_FRAME_WIDTH - 47 * 5) / 6.f;
+    
         for (int i = 0 ; i < 10; i ++) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            btn.frame = CGRectMake(17 + (i % 5) * (13 + 47), 7 + 7 + (i / 5) * (7 + 47), 47, 47);
+            btn.frame = CGRectMake(aDis + (i % 5) * (aDis + 47), 7 + 7 + (i / 5) * (7 + 47), 47, 47);
             btn.tag = 100 * (indexPath.row + 1) + i;
             [cell addSubview:btn];
             btn.layer.cornerRadius = 47 / 2.f;

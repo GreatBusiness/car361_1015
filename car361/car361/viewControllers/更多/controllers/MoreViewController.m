@@ -43,7 +43,7 @@
         titleLabel.text=titleArr[i];
         
         UIImageView *imgV=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"gengduo_shouye_jiantou.png"]];
-        imgV.center=CGPointMake(295, 25);
+        imgV.center=CGPointMake(ALL_FRAME_WIDTH - 25, 25);
         [testButton addSubview:imgV];
         
         [testButton addTarget:self action:@selector(touchButton:) forControlEvents:UIControlEventTouchUpInside];

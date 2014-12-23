@@ -49,7 +49,7 @@
     
     self.titleLabel.text = @"加油站";
     
-    loading = [LTools MBProgressWithText:@"数据加载中..." addToView:self.navigationController.view];
+    loading = [LTools MBProgressWithText:@"数据加载中..." addToView:self.view];
     [loading show:YES];
     
     //搜索类

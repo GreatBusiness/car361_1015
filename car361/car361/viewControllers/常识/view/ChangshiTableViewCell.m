@@ -24,9 +24,10 @@
         _imagev=[[UIImageView alloc]initWithFrame:CGRectMake( 12, 13, 80, 60)];
         [self addSubview:_imagev];
         
-        _title_label=[[UILabel alloc]initWithFrame:CGRectMake(120, 13, 200, 20)];
+        //200
+        _title_label=[[UILabel alloc]initWithFrame:CGRectMake(120, 13, ALL_FRAME_WIDTH - 120 - 12, 20)];
         [self addSubview:_title_label];
-        _date_label=[[UILabel alloc]initWithFrame:CGRectMake(120,33,200, 50)];
+        _date_label=[[UILabel alloc]initWithFrame:CGRectMake(120,33,_title_label.width, 50)];
         _date_label.textAlignment=NSTextAlignmentRight;
         [self addSubview:_date_label];
         
@@ -41,7 +42,7 @@
         
         self.date_label.numberOfLines=0;
         
-        UIView *viewline=[[UIView alloc]initWithFrame:CGRectMake(12, 76+10.5, 320-24, 0.5)];
+        UIView *viewline=[[UIView alloc]initWithFrame:CGRectMake(12, 76+10.5, ALL_FRAME_WIDTH-24, 0.5)];
         viewline.backgroundColor=RGBCOLOR(223, 223, 223);
         [self addSubview:viewline];
         
