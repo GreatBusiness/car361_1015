@@ -22,6 +22,10 @@
         self.commend=[NSString stringWithFormat:@"%@",[dic objectForKey:@"commend"]];
 
         self.content=[NSString stringWithFormat:@"%@",[dic objectForKey:@"content"]];
+        
+        self.htmlsrngcontent=[NSString stringWithFormat:@"%@",[dic objectForKey:@"contenthtml"]];
+
+        
         self.thedetaid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
         self.lat=[NSString stringWithFormat:@"%@",[dic objectForKey:@"lat"]];
         self.level=[NSString stringWithFormat:@"%@",[dic objectForKey:@"level"]];

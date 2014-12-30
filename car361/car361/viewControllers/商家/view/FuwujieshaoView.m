@@ -18,16 +18,16 @@
         
         self.titleArr=@[@"名字",@"价格",@"分值",@"已选人数",];
         
-        for (int i=0; i<4; i++) {
-            UILabel *testlabel=[LTools createLabelFrame:CGRectMake(10, i*20, 100, 20) title:self.titleArr[i] font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
-            [self addSubview:testlabel];
-            
-        }
-        
-        UIView *viewline=[[UIView alloc]initWithFrame:CGRectMake(0, 80, ALL_FRAME_WIDTH, 0.5)];
-        viewline.backgroundColor=RGBCOLOR(230, 230, 230);
-        [self addSubview:viewline];
-        
+//        for (int i=0; i<4; i++) {
+//            UILabel *testlabel=[LTools createLabelFrame:CGRectMake(10, i*20, 100, 20) title:self.titleArr[i] font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
+//            [self addSubview:testlabel];
+//            
+//        }
+//        
+//        UIView *viewline=[[UIView alloc]initWithFrame:CGRectMake(0, 80, ALL_FRAME_WIDTH, 0.5)];
+//        viewline.backgroundColor=RGBCOLOR(230, 230, 230);
+//        [self addSubview:viewline];
+//        
         
         
     }
@@ -37,46 +37,46 @@
 -(void)settheMyModel:(FuwujieshaoModel *)the_myModel{
     
     self.myModel=the_myModel;
-    
-    NSLog(@"thempde=name==%@",the_myModel.price);
-    
-    if (!self.nameLabel) {
-        self.nameLabel=[LTools createLabelFrame:CGRectMake(140, 0, 100, 20) title:the_myModel.name font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
-        [self addSubview:self.nameLabel];
-    }else{
-        self.nameLabel.text=the_myModel.name;
-    
-    }
-    if (!self.priceLabel) {
-        self.priceLabel=[LTools createLabelFrame:CGRectMake(140, 20, 100, 20) title:the_myModel.price font:15 align:NSTextAlignmentLeft textColor:RGBCOLOR(252, 100, 0)];
-        [self addSubview:self.priceLabel];
-    }else{
-        
-        
-    }
-    self.priceLabel.text=[NSString stringWithFormat:@"￥%@",the_myModel.price];
-    
-    
-    if (!self.scoreLabel) {
-        self.scoreLabel=[LTools createLabelFrame:CGRectMake(140, 40, 100, 20) title:the_myModel.score font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
-        [self addSubview:self.scoreLabel];
-    }else{
-        self.scoreLabel.text=the_myModel.score;
-        
-    }
-    if (!self.tradeLabel) {
-        self.tradeLabel=[LTools createLabelFrame:CGRectMake(140, 60, 100, 20) title:the_myModel.trade font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
-        [self addSubview:self.tradeLabel];
-    }else{
-        self.tradeLabel.text=the_myModel.trade;
-        
-    }
-    
-    UIView *viewline=[[UIView alloc]initWithFrame:CGRectMake(0, 80-0.5, ALL_FRAME_WIDTH, 0.5)];
-    viewline.backgroundColor=RGBCOLOR(230, 230, 230);
-    [self addSubview:viewline];
-
-//    if (self.contentWebview) {
+    /*  NSLog(@"thempde=name==%@",the_myModel.price);
+     
+     if (!self.nameLabel) {
+     self.nameLabel=[LTools createLabelFrame:CGRectMake(140, 0, 100, 20) title:the_myModel.name font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
+     [self addSubview:self.nameLabel];
+     }else{
+     self.nameLabel.text=the_myModel.name;
+     
+     }
+     if (!self.priceLabel) {
+     self.priceLabel=[LTools createLabelFrame:CGRectMake(140, 20, 100, 20) title:the_myModel.price font:15 align:NSTextAlignmentLeft textColor:RGBCOLOR(252, 100, 0)];
+     [self addSubview:self.priceLabel];
+     }else{
+     
+     
+     }
+     self.priceLabel.text=[NSString stringWithFormat:@"￥%@",the_myModel.price];
+     
+     
+     if (!self.scoreLabel) {
+     self.scoreLabel=[LTools createLabelFrame:CGRectMake(140, 40, 100, 20) title:the_myModel.score font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
+     [self addSubview:self.scoreLabel];
+     }else{
+     self.scoreLabel.text=the_myModel.score;
+     
+     }
+     if (!self.tradeLabel) {
+     self.tradeLabel=[LTools createLabelFrame:CGRectMake(140, 60, 100, 20) title:the_myModel.trade font:15 align:NSTextAlignmentLeft textColor:[UIColor blackColor]];
+     [self addSubview:self.tradeLabel];
+     }else{
+     self.tradeLabel.text=the_myModel.trade;
+     
+     }
+     
+     UIView *viewline=[[UIView alloc]initWithFrame:CGRectMake(0, 80-0.5, ALL_FRAME_WIDTH, 0.5)];
+     viewline.backgroundColor=RGBCOLOR(230, 230, 230);
+     [self addSubview:viewline];
+     
+*/
+  //    if (self.contentWebview) {
 //        self.contentWebview=[[RTLabel alloc]initWithFrame:CGRectMake(0, 80, ALL_FRAME_WIDTH , ALL_FRAME.size.height)];
 //        [self addSubview:self.contentWebview];
 //        [self.contentWebview setText:the_myModel.content];
@@ -88,15 +88,15 @@
     
     if (!self.web) {
         
-        self.web = [[UIWebView alloc]initWithFrame:CGRectMake(0, 80, ALL_FRAME_WIDTH, ALL_FRAME.size.height - 80 - 64)];
+        self.web = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME.size.height - 64)];
         [self addSubview:self.web];
-        [self.web loadHTMLString:the_myModel.content baseURL:nil];
+        [self.web loadHTMLString:the_myModel.htmlcontent baseURL:nil];
         
         _web.backgroundColor = [UIColor whiteColor];
         
     }else
     {
-        [self.web loadHTMLString:the_myModel.content baseURL:nil];
+        [self.web loadHTMLString:the_myModel.htmlcontent baseURL:nil];
     }
     
     self.contentSize=CGSizeMake(ALL_FRAME_WIDTH, self.contentWebview.optimumSize.height+80);

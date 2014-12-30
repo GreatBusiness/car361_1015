@@ -37,6 +37,9 @@
 
 
 @property(nonatomic,strong)NSString *content;
+
+@property(nonatomic,strong)NSString *htmlsrngcontent;
+
 @property(nonatomic,strong)NSString *thedetaid;
 @property(nonatomic,strong)NSString *lat;
 @property(nonatomic,strong)NSString *level;

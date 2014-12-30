@@ -8,6 +8,8 @@
 
 #import "MiddleViewController.h"
 
+#import "DetailViewController.h"
+
 @interface MiddleViewController ()
 
 @end
@@ -56,6 +58,49 @@
 
     
 }
+
+
+#pragma mark-webview的代理
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+    NSLog(@"request.URL.relativeString====%@",request.URL.relativeString);
+    NSLog(@"request.URL.absoluteString====%@",request.URL.absoluteString);
+    if (request.URL.absoluteString.length>10) {
+        NSString *str_test=[request.URL.absoluteString substringToIndex:9];
+        NSLog(@"str_test=%@",str_test);
+        
+        
+        
+        if ([str_test isEqualToString:@"newslink:"]) {
+            
+            
+            
+            str_test=[request.URL.absoluteString substringFromIndex:9];
+            
+            
+            DetailViewController *_detailVC=[[DetailViewController alloc]init];
+            _detailVC.hidesBottomBarWhenPushed = YES;
+            _detailVC.str_urllink=str_test;
+            
+            [self.navigationController pushViewController:_detailVC animated:YES];
+            
+            
+            NSLog(@"str===%@",str_test);
+            return NO;
+        }
+
+    }
+    
+
+    
+ 
+    //
+    //  request.URL.absoluteString====si:http://img1.fblife.com/attachments1/month_1307/20130712_52cb7fe23659d1665229x01x1BQkPEpd.png.thumb.jpg
+    
+    return YES;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

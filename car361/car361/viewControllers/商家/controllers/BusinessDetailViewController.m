@@ -361,6 +361,9 @@
         
         if (errcode==0) {
             
+            
+            
+            
             NSLog(@"thedic===%@",dicinfo);
             
             FuwujieshaoModel *model=[[FuwujieshaoModel alloc]initWithDictionary:dicinfo];
@@ -387,6 +390,8 @@
     [loaddata SeturlStr:url mytest:^(NSDictionary *dicinfo, int errcode) {
         
         if (errcode==0) {
+            
+            
             
             NSLog(@"thedic===%@",dicinfo);
             

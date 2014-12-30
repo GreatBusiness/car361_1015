@@ -18,7 +18,7 @@
     [super viewDidLoad];
     
     
-    theWebV=[[UIWebView alloc]initWithFrame:self.view.bounds];
+    theWebV=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT  - 44)];
     
     [self.view addSubview:theWebV];
     

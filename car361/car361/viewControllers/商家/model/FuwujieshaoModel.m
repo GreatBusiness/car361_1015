@@ -28,6 +28,8 @@
         
         _content=[NSString stringWithFormat:@"%@",[dic objectForKey:@"content"]];
         
+        _htmlcontent=[NSString stringWithFormat:@"%@",[dic objectForKey:@"contenthtml"]];
+        
         
     }
     

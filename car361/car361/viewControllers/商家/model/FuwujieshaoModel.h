@@ -41,6 +41,8 @@
 @property(nonatomic,strong)NSString *trade;
 @property(nonatomic,strong)NSString *content;//具体介绍
 
+@property(nonatomic,strong)NSString *htmlcontent;
+
 
 -(FuwujieshaoModel *)initWithDictionary:(NSDictionary *)dic;
 

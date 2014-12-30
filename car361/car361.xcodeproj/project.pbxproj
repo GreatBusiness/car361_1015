@@ -146,6 +146,8 @@
 		1923C19419F75C5D00BF0DCD /* bt_star_a@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1923C19019F75C5D00BF0DCD /* bt_star_a@2x.png */; };
 		1923C19519F75C5D00BF0DCD /* bt_star_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1923C19119F75C5D00BF0DCD /* bt_star_b.png */; };
 		1923C19619F75C5D00BF0DCD /* bt_star_b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1923C19219F75C5D00BF0DCD /* bt_star_b@2x.png */; };
+		1925D8891A52D77D00907757 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1925D8871A52D77D00907757 /* DetailViewController.m */; };
+		1925D88A1A52D77D00907757 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1925D8881A52D77D00907757 /* DetailViewController.xib */; };
 		194011B319F102F90065053D /* UMEGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1940119019F102F90065053D /* UMEGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		194011B419F102F90065053D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1940119219F102F90065053D /* background@2x.png */; };
 		194011B519F102F90065053D /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1940119319F102F90065053D /* blueArrow.png */; };
@@ -463,6 +465,9 @@
 		1923C19019F75C5D00BF0DCD /* bt_star_a@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_star_a@2x.png"; sourceTree = "<group>"; };
 		1923C19119F75C5D00BF0DCD /* bt_star_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_star_b.png; sourceTree = "<group>"; };
 		1923C19219F75C5D00BF0DCD /* bt_star_b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_star_b@2x.png"; sourceTree = "<group>"; };
+		1925D8861A52D77D00907757 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		1925D8871A52D77D00907757 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		1925D8881A52D77D00907757 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		1940118F19F102F90065053D /* UMEGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMEGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		1940119019F102F90065053D /* UMEGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMEGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		1940119219F102F90065053D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
@@ -948,6 +953,9 @@
 				138BCF8319ED70B900575692 /* MiddleViewController.h */,
 				138BCF8419ED70B900575692 /* MiddleViewController.m */,
 				138BCF8519ED70B900575692 /* MiddleViewController.xib */,
+				1925D8861A52D77D00907757 /* DetailViewController.h */,
+				1925D8871A52D77D00907757 /* DetailViewController.m */,
+				1925D8881A52D77D00907757 /* DetailViewController.xib */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -1461,6 +1469,7 @@
 				138BCF8719ED70B900575692 /* MiddleViewController.xib in Resources */,
 				19F494E71A47CB6D00BD4D15 /* JiaYouZhanTableViewCell.xib in Resources */,
 				194011BE19F102F90065053D /* messages_right_bubble@2x.png in Resources */,
+				1925D88A1A52D77D00907757 /* DetailViewController.xib in Resources */,
 				13B5D53B1A2F5449007D3A64 /* g_more@2x.png in Resources */,
 				1392601A1A10F61D0093758E /* UserCommentController.xib in Resources */,
 				194011C219F102F90065053D /* messages_toolbar_background@2x.png in Resources */,
@@ -1528,6 +1537,7 @@
 				135BB8A61A30B32A00B88322 /* SecondViewController.m in Sources */,
 				136BFBA01A07E87800EF453F /* DataBase.m in Sources */,
 				138BCF7C19ED6F5900575692 /* CommonViewController.m in Sources */,
+				1925D8891A52D77D00907757 /* DetailViewController.m in Sources */,
 				19C49C2A19F00A9D0090F00E /* ChangshiModel.m in Sources */,
 				194011CB19F102F90065053D /* UMContactViewController.m in Sources */,
 				136BFB9C1A07E32100EF453F /* RegionClass.m in Sources */,
