@@ -171,6 +171,7 @@
             param_area = 0;
             param_region = 0;
             
+            
         }else if (type == Action_Area){
             
             NSLog(@"area %@ id %@",selectName,selectId);
@@ -191,6 +192,10 @@
             param_region = 0;//一级城市
             param_area = 0;//二级
             param_square = 1000000;
+            
+            //根据区域获取时,坐标不要
+            
+            
         }
         
         if (type == Action_Back) {
@@ -474,15 +479,21 @@
 //    NSString *lng = @"116.27079010";//经度
 //    NSString *lat = @"39.95080947";//纬度
     
+//    param_area = 0;
+//    param_region = 0;
     
-    
-//    int cid = 2; //服务的id
-//    int region = 1;
-//    int area  = 3;
     NSString *lng = NSStringFromFloat(current.longitude);//经度
     NSString *lat = NSStringFromFloat(current.latitude);//纬度
     
-    float square = param_square;
+    
+    NSString *square = NSStringFromFloat(param_square);
+    //区域不为空
+    if (param_area != 0 || param_region != 0) {
+        
+        lng = @"";
+        lat = @"";
+        square = @"";
+    }
     
     NSString *url = [NSString stringWithFormat:CAR_SERVICE_LIST,city,cid,region,area,lng,lat,square,_table.pageNum,sortStyle];
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];

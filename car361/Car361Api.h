@@ -41,7 +41,7 @@ alpha:(a)]
 
 //服务列表
 
-#define CAR_SERVICE_LIST @"http://www.car361.cn/api.php?c=service&a=showlist&city=%@&cid=%d&region=%d&area=%d&lng=%@&lat=%@&square=%f&page=%d&orderby=%@&type=json"
+#define CAR_SERVICE_LIST @"http://www.car361.cn/api.php?c=service&a=showlist&city=%@&cid=%d&region=%d&area=%d&lng=%@&lat=%@&square=%@&page=%d&orderby=%@&type=json"
 
 //地区街道
 
